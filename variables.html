@@ -59,30 +59,49 @@
 
                     <section>
                         <h3>Assignment</h3>
-                        <p>Variables can be assigned to other variables too. You can even assignmore than one variable at the same time</p>
+                        <p>You can even assign more than one variable at the same time</p>
                         <pre>
                             <code>
-    >>> intelligent_grade = 95
-    >>> my_grade = intelligent_grade
-    >>> my_friend_grade = my_other_friend_grade = my_grade
-    >>> my_grade # Ayos!
-    95
-    >>> my_friend_grade # Payts kayu pag koypa!
-    95
-    >>> my_other_friend_grade # Utro sad ni!
-    95
+    >>> a, b, c = 1, 2, 3
+    >>> a
+    1
+    >>> b
+    2
+    >>> c
+    3
                             </code>
                         </pre>
                     </section>
 
                     <section>
                         <h3>Assignment</h3>
-                        <p>Statements ca be assigned to variables too.</p>
+                        <p>Variables can be assigned to other variables too</p>
+                        <pre>
+                            <code>
+    >>> valedictorian_assignment = 'Sure 100% correct assignment'
+    >>> my_assignment = valedictorian_assignment
+    >>> my_other_friend_assignment = my_friend_assignment = my_assignment
+    >>> my_assignment # Ayos!
+    'Sure 100% correct assignment'
+    >>> my_friend_assignment # Payts kayu pag koypa!
+    'Sure 100% correct assignment'
+    >>> my_other_friend_assignment # Utro sad ni!
+    'Sure 100% correct assignment'
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>Assignment</h3>
+                        <p>Statements can be assigned to variables too.
+                        </p>
                         <pre>
                             <code>
     >>> pi = 3.1415926535897932
     >>> r = 2
     >>> circumference = 2 * pi * r
+    >>> circumference
+    12.566370614359172
                             </code>
                         </pre>
                     </section>
@@ -96,6 +115,7 @@
                     <section>
                         <h3>Variable Names</h3>
                         <p>Variable names can be arbitrarily long. They can contain both letters and numbers, but they have to begin with a letter. It is legal to use uppercase letters, but it is a good idea to begin variable names with a lowercase letter</p>
+                        <p>Variable names are case sensitive</p>
                         <pre>
                             <code>
    >>> supercalifragilisticexpialidocious = 'mary poppins'
@@ -144,7 +164,9 @@
 
                         <p>But what’s wrong with class?</p>
                     </section>
+                </section>
 
+                <section>
                     <section>
                         <h3>Keywords</h3>
                         <p>It turns out that class is one of Python’s keywords. The interpreter uses keywords to recognize the structure of the program, and they cannot be used as variable names.</p> 
@@ -163,7 +185,9 @@ continue  finally   is        return
 def       for       lambda    try
                         </pre>
                     </section>
+                </section>
 
+                <section>
                     <section>
                         <h3>Examples of variable usage</h3>
                         <pre>
@@ -192,68 +216,70 @@ def       for       lambda    try
                             </code>
                         </pre>
                     </section>
+                </section>
 
+                <section>
                     <section>
-                        <section>
-                            <h3>Shorthand for combining assignment and numeric operators</h3>
-                        </section>
-
-                        <section>
-                            <h3>+=</h3>
-                            <pre>
-                                <code>
-    >>> a = 0
-    >>> a += 10 # a = a + 10
-    >>> a
-    10
-                                </code>
-                            </pre>
-                        </section>
-
-                        <section>
-                            <h3>-=</h3>
-                            <pre>
-                                <code>
-
-    >>> a = 5
-    >>> a -= 3 # a = a - 3
-    >>> a
-    2
-                                </code>
-                            </pre>
-                        </section>
-
-                        <section>
-                            <h3>*=</h3>
-                            <pre>
-                                <code>
-    >>> a = 3
-    >>> a *= 4 # a = a * 4
-    >>> a
-    12
-                                </code>
-                            </pre>
-                        </section>
-
-                        <section>
-                            <h3>/=</h3>
-                            <pre>
-                                <code>
-    >>> a = 100
-    >>> a *= 5 # a = a * 5
-    >>> a
-    20 
-                                </code>
-                            </pre>
-                        </section>
-
-                        <section>
-                            <p>%=, //= are also available</p>
-                        </section>
+                        <h3>Shorthand for combining assignment and numeric operators</h3>
                     </section>
 
                     <section>
+                        <h3>+=</h3>
+                        <pre>
+                            <code>
+>>> a = 0
+>>> a += 10 # a = a + 10
+>>> a
+10
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>-=</h3>
+                        <pre>
+                            <code>
+
+>>> a = 5
+>>> a -= 3 # a = a - 3
+>>> a
+2
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>*=</h3>
+                        <pre>
+                            <code>
+>>> a = 3
+>>> a *= 4 # a = a * 4
+>>> a
+12
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>/=</h3>
+                        <pre>
+                            <code>
+>>> a = 100
+>>> a *= 5 # a = a * 5
+>>> a
+20 
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <p>%=, //= are also available</p>
+                    </section>
+                </section>
+
+                    <section>
                         <h1>End</h1>
+                        <a href="conditionals.html">Go to next topic</a>
                     </section>
                 </section>
             </div>

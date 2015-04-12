@@ -45,6 +45,8 @@
     False
                         </code>
                     </pre>
+
+                    <p class="fragment">.....Aaaaaaaand that's it.</p>
                 </section>
 
                 <section>
@@ -120,6 +122,8 @@
     False
     >>> -100 == 100
     False
+    >>> 100 == 100.0
+    True
                             </code>
                         </pre>
                     </section>
@@ -135,6 +139,8 @@
     True
     >>> -100 != 100
     True
+    >>> 100 != 100.0
+    False
                             </code>
                         </pre>
                     </section>
@@ -151,10 +157,14 @@
     True
     >>> 5 > 5
     False
+    >>> 5 > 4.999999999999
+    True
     >>> 5 >= 5
     True
                             </code>
                         </pre>
+
+                        <p class="fragment">Tip: => is NOT the same as >=</p>
                     </section>
 
                     <section>
@@ -169,10 +179,14 @@
     False
     >>> 5 < 5
     False
+    >>> 5 < 4.999999999999
+    True
     >>> 5 <= 5
     True
                              </code>
                          </pre>
+
+                        <p class="fragment">Tip: =< is NOT the same as <=</p>
                     </section>
 
                     <section>
@@ -180,6 +194,8 @@
                         <pre>
                             <code>
     >>> 5 == True
+    False
+    >>> 5 != 5.0
     False
     >>> 10 > (1,2,3)
     False
@@ -223,7 +239,8 @@
                 </section>
 
                 <section>
-                    <h1>END</h1>
+                    <h1>End</h1>
+                    <a href="variables.html">Go to next topic</a>
                 </section>
             </div>
 		</div>

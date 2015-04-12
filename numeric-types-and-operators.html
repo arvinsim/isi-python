@@ -35,15 +35,16 @@
                 </section>
 
                 <section>
-                    <p>Prerequisites:</p>
+                    <h2>Prerequisites:</h2>
                     <ul>
-                        <li>Arithmetic</li>
+                        <li>Algebra</li>
                         <li>Binary Number System</li>
                         <li>Boolean System</li>
                     </ul>
 
-                    <blockquote class="fragment">Sus, kana raman diay. ISI employee ko! -- Imaginary employee</blockquote>
+                    <div>
                     <img class="fragment" src="http://wallpaper.ultradownloads.com.br/276164_Papel-de-Parede-Meme-Challenge-Accepted_1600x1200.jpg" width="400" height="300" alt="Challenge Accepted" />
+                    </div>
                 </section>
 
                 <section>
@@ -63,7 +64,8 @@
                     <section>
                         <h3>Plain Integers</h3>
 
-                        <p>Plain integers(also just called integers) have 32 bits of precision (sys.maxint is always set to the maximum plain integer value for the current platform, the minimum value is -sys.maxint - 1). NOTE: This is equivalent to `long` in C.</p>
+                        <p>Plain integers(also just called integers) have 32 bits of precision.</p>
+                        <p>For C programmers, this is equivalent to `long` in C</p>
 
                         <pre class="fragment">
                             <code>
@@ -83,7 +85,8 @@
                     <section>
                         <h3>Long Integers</h3>
 
-                        <p>Long integers have unlimited precision. NOTE: This is equivalent to `double` in C.</p>
+                        <p>Long integers have unlimited precision.
+                        <p>For C programmers, this is equivalent to `double` in C.</p>
 
                         <pre class="fragment">
                             <code>
@@ -122,7 +125,10 @@
                             <code>0.125</code>
                         </pre>
 
-                        <p class="fragment">Unfortunately, most decimal fractions cannot be represented exactly as binary fractions. A consequence is that, in general, the decimal floating-point numbers you enter are only approximated by the binary floating-point numbers actually stored in the machine.</p>
+                        <div class="fragment">
+                            <p>Unfortunately, most decimal fractions cannot be represented exactly as binary fractions.</p>
+                            <p>A consequence is that, in general, the decimal floating-point numbers you enter are only approximated by the binary floating-point numbers actually stored in the machine.</p>
+                        </div>
                     </section>
 
                     <section>
@@ -151,7 +157,8 @@
                     <section>
                         <h3>Floats</h3>
                         <p>It’s easy to forget that the stored value is an approximation to the original decimal fraction, because of the way that floats are displayed at the interpreter prompt.</p>  
-                        <p>Python only prints a decimal approximation to the true decimal value of the binary approximation stored by the machine. If Python were to print the true decimal value of the binary approximation stored for 0.1, it would have to display</p>
+                        <p>Python only prints a decimal approximation to the true decimal value of the binary approximation stored by the machine.</p>
+                        <p>If Python were to print the true decimal value of the binary approximation stored for 0.1, it would have to display</p>
 
                         <pre class="fragment">
                             <code>
@@ -447,7 +454,7 @@
                         <p>Examples</p>
                         <pre>
                             <code>
-    >>> 100 % 16
+    >>> 100 % 16 # 16 * 6 = 96
     4
     >>> 50 % 10
     0
@@ -583,21 +590,6 @@
                         <h3>>> (Bitwise right shift)</h3>
                         <pre>
                             <code>
-    >>> -105 >> 1
-    -53
-                            </code>
-                        </pre>
-
-                        <pre>
-        10010111 (decimal −105)
-     =  11001011 (decimal −53)
-                        </pre>
-                    </section>
-
-                    <section>
-                        <h3>>> (Bitwse right shift)</h3>
-                        <pre>
-                            <code>
     >>> -105 >> 2
     -27
                             </code>
@@ -607,6 +599,10 @@
     10010111 (decimal −105)
     = 11100101 (decimal -27)
                         </pre>
+                    </section>
+
+                    <section>
+                        <img src="http://i1.kym-cdn.com/photos/images/facebook/000/081/595/gil-head-explode-again.gif" alt="" />
                     </section>
                 </section>
 
@@ -634,6 +630,11 @@
     '036' 
                         </code>
                     </pre>
+                </section>
+
+                <section>
+                    <h1>End</h1>
+                    <a href="boolean-types-and-operators.html">Go to next topic</a>
                 </section>
             </div>
 		</div>
