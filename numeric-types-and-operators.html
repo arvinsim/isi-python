@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Numeric Types and Operators</title>
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>Numeric Types and Operators</h1>
+                </section>
+
+                <section>
+                    <p>Prerequisites:</p>
+                    <ul>
+                        <li>Arithmetic</li>
+                        <li>Binary Number System</li>
+                        <li>Boolean System</li>
+                    </ul>
+
+                    <blockquote class="fragment">Sus, kana raman diay. ISI employee ko! -- Imaginary employee</blockquote>
+                    <img class="fragment" src="http://wallpaper.ultradownloads.com.br/276164_Papel-de-Parede-Meme-Challenge-Accepted_1600x1200.jpg" width="400" height="300" alt="Challenge Accepted" />
+                </section>
+
+                <section>
+                    <h2>Numeric Types</h2>
+                </section>
+                <section>
+                    <h2>Numeric Types</h2>
+                    <ul>
+                        <li>Plain Integers</li>
+                        <li>Long Integers</li>
+                        <li>Float</li>
+                        <li>Complex</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Plain Integers</h3>
+
+                        <p>Plain integers(also just called integers) have 32 bits of precision (sys.maxint is always set to the maximum plain integer value for the current platform, the minimum value is -sys.maxint - 1). NOTE: This is equivalent to `long` in C.</p>
+
+                        <pre class="fragment">
+                            <code>
+    >>> 0
+    0
+    >>> 1337
+    1337
+    >>> 108128387187
+    108128387187
+    >>> -10
+    -10
+    >>> 1,000,000 # WARNING: This is NOT an integer
+    (1, 0, 0)
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h3>Long Integers</h3>
+
+                        <p>Long integers have unlimited precision. NOTE: This is equivalent to `double` in C.</p>
+
+                        <pre class="fragment">
+                            <code>
+    >>> 231856456374891984564987987
+    231856456374891984564987987
+    >>> -6854567498198469819564
+    -6854567498198469819564
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h3>Floats</h3>
+
+                        <p>Numbers with a decimal point belong to a type called float, because these numbers are represented in a format called floating-point.</p>
+
+                        <pre class="fragment">
+                            <code>
+    >>> 1.2
+    1.2
+    >>> 1000.15687
+    1000.15687
+    >>> 1.2e+2
+    120.0
+    >>> -6854567498198469819564.5
+    -6.85456749819847e+21
+    >>> 123456789.987654321
+    123456789.98765433
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h3>Floats</h3>    
+                        <h4>A Brief Explanation about Floating Point Numbers</h4> 
+                        <p>Floating-point numbers are represented in computer hardware as base 2 (binary) fractions. For example, the decimal fraction</p>
+                        <pre>
+                            <code>0.125</code>
+                        </pre>
+
+                        <p class="fragment">Unfortunately, most decimal fractions cannot be represented exactly as binary fractions. A consequence is that, in general, the decimal floating-point numbers you enter are only approximated by the binary floating-point numbers actually stored in the machine.</p>
+                    </section>
+
+                    <section>
+                        <h3>Floats</h3>    
+                        <p>The problem is easier to understand at first in base 10. Consider the fraction 1/3. You can approximate that as a base 10 fraction:</p>
+
+                        <pre>
+                            <code>0.3</code>
+                        </pre>
+
+                        <div class="fragment">
+                            <p>or, better,
+                            <pre>
+                                <code>0.33</code>
+                            </pre>
+                        </div>
+
+                        <div class="fragment">
+                            <p>or, better,
+                            <pre>
+                                <code>0.333</code>
+                            </pre>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>Floats</h3>
+                        <p>It’s easy to forget that the stored value is an approximation to the original decimal fraction, because of the way that floats are displayed at the interpreter prompt.</p>  
+                        <p>Python only prints a decimal approximation to the true decimal value of the binary approximation stored by the machine. If Python were to print the true decimal value of the binary approximation stored for 0.1, it would have to display</p>
+
+                        <pre class="fragment">
+                            <code>
+    >>> 0.1
+    0.1000000000000000055511151231257827021181583404541015625
+                            </code>
+                        </pre>
+                    </section>
+
+                     <section>
+                         <h3>Floats</h3>
+                         <p>That is more digits than most people find useful, so Python keeps the number of digits manageable by displaying a rounded value instead</p>
+                         <pre class="fragment">
+                            <code>
+    >>> 0.1
+    0.1
+                            </code>
+                         </pre>
+                     </section>
+
+                     <section>
+                         <h3>Floats</h3>
+                         <p>It’s important to realize that this is, in a real sense, an illusion: the value in the machine is not exactly 1/10, you’re simply rounding the display of the true machine value. This fact becomes apparent as soon as you try to do arithmetic with these values</p>
+                         <pre class="fragment">
+                             <code>
+    >>> 0.1 + 0.2
+    0.30000000000000004
+                             </code>
+                         </pre>
+                     </section>
+
+                     <section>
+                         <h3>Floats</h3>
+                         <p>Note that this is in the very nature of binary floating-point: this is not a bug in Python, and it is not a bug in your code either. You’ll see the same kind of thing in all languages that support your hardware’s floating-point arithmetic (although some languages may not display the difference by default, or in all output modes).</p>
+                     </section>
+
+                    <section>
+                        <h3>Complex Numbers</h3>
+                        
+                        <p>In Python, you can put ‘j’ or ‘J’ after a number to make it imaginary, so you can write complex literals easily:</p>
+
+                        <pre class="fragment">
+                            <code>
+    >>> 1j
+    1j
+    >>> 1J
+    1j
+    >>> 1j * 1j
+    (-1+0j)
+                            </code>
+                        </pre>
+
+                        <p class="fragment">The ‘j’ suffix comes from electrical engineering, where the variable ‘i’ is usually used for current.</p>
+                    </section>
+                    <section>
+                        <img src="http://3.bp.blogspot.com/-NUE3XBUBmAM/URQRp6eDSmI/AAAAAAAAAgM/nUl93jr2_uA/s400/My+Brain+is+Full.jpg" width="326" height="300" alt="Brain is Full!" />
+
+                        <div class="fragment">
+                            <p>You don't need to worry too much about this. Most of the time, you only need to work with integers and floats.</p>
+                            <p>If you do need precision, there are plenty of documentation and open source code libraries to help you out.</p>
+                        </div>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Numeric Operators</h2>
+                </section>
+                <section>
+                    <h3>Unary Operators</h3>
+                </section>
+                <section>
+                    <section>
+                        <h4>- (negate)</h4>
+                        <p>Get the negated value of a value</p>
+                        <pre><code>
+    -x
+                        </code></pre>
+
+                        <p>Examples:</p>
+                        <pre>
+                            <code>
+    >>> -1
+    -1
+    >>> -2.0
+    -2.0
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h4>+ (unchange)</h4>
+                        <p>Get the unchanged value of a value</p>
+                        <pre>
+                            <code>
+    +x
+                            </code>
+                        </pre>
+
+                        <p>Examples:</p>
+                        <pre>
+                            <code>
+    >>> +1
+    1
+    >>> +2.0
+    2.0
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <p>There might be some use cases where this is needed but most of the time this operator is unnecessary.</p>
+                        <img class="fragment" src="http://m.memegen.com/3prtal.jpg" width="" height="" alt="I have no idea what they are doing" />
+                    </section>
+                </section>
+
+                <section>
+                    <h3>Binary Operators</h3>
+                </section>
+
+                <section>
+                    <section>
+                        <h4>+ (addition)</h4>
+
+                        <p>Get the sum of two operands</p>
+                        <pre>
+                            <code>
+    x + y
+                            </code>
+                        </pre>
+
+                        <p>Examples</p>
+                        <pre>
+                            <code>
+    >>> 1 + 2
+    3
+    >>> 1.0 + 2.2
+    3.2
+    >>> 1 + (-2)
+    -1
+    >>> 1.0 + 2 # int + float = float
+    3.0
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h4>- (subtraction)</h4>
+
+                        <p>Get the difference of two operands</p>
+                        <pre>
+                            <code>x - y</code>
+                        </pre>
+
+                        <p>Examples</p>
+                        <pre>
+                            <code>
+    >>> 3 - 4
+    -1
+    >>> 3 - (-4)
+    7
+    >>> 5.0 - 2.9
+    2.1
+    >>> 7.0 - 9 # int - float = float
+    -2.0
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h4>* (multiplication)</h4>
+
+                        <p>Get the product of two operands</p>
+                        <pre>
+                            <code>
+    x * y
+                            </code>
+                        </pre>
+
+                        <p>Examples</p>
+                        <pre>
+                            <code>
+    >>> 2 * 3
+    6
+    >>> 3 * (-4)
+    -12
+    >>> 5.0 * 1.5
+    7.5
+    >>>  2.0 * 5 # int * float = float
+    10.0
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h4>/ (division)</h4>
+
+                        <p>Get the quotient of two operands</p>
+                        <pre>
+                            <code>
+    x / y
+                            </code>
+                        </pre>
+
+                        <p>Examples</p>
+                        <pre>
+                            <code>
+    >>> 4 / 2
+    2
+    >>> 20 / -5
+    -4
+    >>> 1.0 / 2.0
+    0.5
+    >>> 1.0 / 2 # int / float = float
+    0.5
+    >>> 1 / 2 # Huh?
+    0
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h4>/ (division)</h4>
+                        <ul>
+                            <li>If either operand is a float, classic division is performed</li>
+                            <li>If both operands are of type int, floor division is performed</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4>// (floor division)</h4>
+
+                        <p>Get the floored quotient of two operands</p>
+                        <pre>
+                            <code>
+    x // y
+                            </code>
+                        </pre>
+
+                        <p>Examples</p>
+                        <pre>
+                            <code>
+    >>> 4 // 2
+    2
+    >>> 20 // -5
+    -4
+    >>> 1.0 // 2.0
+    0.0
+    >>> 1.0 // 2
+    0.0
+    >>> 1 // 2
+    0
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h4>** (exponentiation)</h4>
+
+                        <p>Get the exponent of a number</p>
+                        <pre>
+                            <code>
+    x ** y
+                            </code>
+                        </pre>
+
+                        <p>Examples</p>
+                        <pre>
+                            <code>
+    >>> 2 ** 2
+    4
+    >>> 2 ** -2
+    0.25
+    >>> 3.0 ** 2.0
+    9.0
+    >>> 3.0 ** 2
+    9.0
+    >>> -3.0 ** 2
+    -9.0
+    >>> -3.0 ** -2
+    -0.11111111111111
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h4>% (modulo division)</h4>
+
+                        <p>Get the remainder of a division operations of an operand</p>
+                        <pre>
+                            <code>
+    x % y
+                            </code>
+                        </pre>
+
+
+                        <p>Another way to say it is, "X divided by Y with J remaining." For example, "100 divided by 16 with 4 remaining." The result of % is the J part, or the remaining part.</p>
+                    </section>
+                    <section>
+                        <h4>% (modulo division)</h4>
+                        <p>Examples</p>
+                        <pre>
+                            <code>
+    >>> 100 % 16
+    4
+    >>> 50 % 10
+    0
+    >>> 7 % 2
+    1
+    >>> 7 % -2
+    -1
+    >>> -7 % 2
+    1
+    >>> -7 % -2
+    -1 
+                            </code>
+                        </pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Bitwise Operators</h2>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>~ (Bitwise NOT)</h3>
+                        <p>Returns the complement of x - the number you get by switching each 1 for a 0 and each 0 for a 1.</p>
+                        <pre>
+                            <code>
+    >>> ~7
+    -8
+                            </code>
+                        </pre>
+
+                        <pre>
+    NOT   0111 (decimal 7)
+        = 1000 (decimal 8)
+                        </pre>
+                    </section>
+                    <section>
+                        <h3>& (Bitwise AND)</h3>
+                        <p>Does a "bitwise and". Each bit of the output is 1 if the corresponding bit of x AND of y is 1, otherwise it's 0.</p>
+                        <pre>
+                            <code>
+    >>> 5 & 3
+    1
+                            </code>
+                        </pre>
+
+                        <pre>
+          0101 (decimal 5)
+    AND   0011 (decimal 3)
+        = 0001 (decimal 1)
+                        </pre>
+                    </section>
+                    <section>
+                        <h3>| (Bitwise OR)</h3>
+                        <p>Does a "bitwise or". Each bit of the output is 0 if the corresponding bit of x AND of y is 0, otherwise it's 1.</p>
+                        <pre>
+                            <code>
+    >>> 5 | 3
+    7
+                            </code>
+                        </pre>
+
+                        <pre>
+          0101 (decimal 5)
+    AND   0011 (decimal 3)
+        = 0111 (decimal 7)
+                        </pre>
+                    </section>
+                    <section>
+                        <h3>^ (Bitwise XOR)</h3>
+                        <p>Does a "bitwise exclusive or". Each bit of the output is the same as the corresponding bit in x if that bit in y is 0, and it's the complement of the bit in x if that bit in y is 1.</p> 
+                        <pre>
+                            <code>
+    >>> 5 ^ 3
+    6
+                            </code>
+                        </pre>
+
+                        <pre>
+          0101 (decimal 5)
+    AND   0011 (decimal 3)
+        = 0110 (decimal 6)
+                        </pre>
+                    </section>
+                    <section>
+                        <h3><< (Bitwise left shift)</h3>
+                        <p>Returns x with the bits shifted to the left by y places (and new bits on the right-hand-side are zeros).</p>
+                        <pre>
+                            <code>
+    >>> 23 << 1
+    46
+                            </code>
+                        </pre>
+
+                        <pre>
+       00010111 (decimal +23)
+    =  00101110 (decimal +46)
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3><< (Bitwse left shift)</h3>
+                        <pre>
+                            <code>
+    >>> 23 << 2
+    92
+                            </code>
+                        </pre>
+
+                        <pre>
+       00010111 (decimal +23)
+    =  01011100 (decimal +92)
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>>> (Bitwise right shift)</h3>
+                        <p>Returns x with the bits shifted to the right by y places.</p> 
+                        <pre>
+                            <code>
+    >>> -105 >> 1
+    -53
+                            </code>
+                        </pre>
+
+                        <pre>
+        10010111 (decimal −105)
+     =  11001011 (decimal −53)
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>>> (Bitwise right shift)</h3>
+                        <pre>
+                            <code>
+    >>> -105 >> 1
+    -53
+                            </code>
+                        </pre>
+
+                        <pre>
+        10010111 (decimal −105)
+     =  11001011 (decimal −53)
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>>> (Bitwse right shift)</h3>
+                        <pre>
+                            <code>
+    >>> -105 >> 2
+    -27
+                            </code>
+                        </pre>
+
+                        <pre>
+    10010111 (decimal −105)
+    = 11100101 (decimal -27)
+                        </pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Number representations in different number systems</h2>
+                </section>
+
+                <section>
+                    <pre>
+                        <code>
+    30 # Decimal representation of 30
+    >>> 30
+    30
+
+    0b11110 # Binary representation of 30
+    >>> bin(30)
+    '0b11110'
+
+    0x1e # Hexadecimal representation of 30
+    >>> hex(30)
+    '0x1e'
+
+    036 # Octal representation of 30
+    >>> oct(30)
+    '036' 
+                        </code>
+                    </pre>
+                </section>
+            </div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
