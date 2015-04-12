@@ -36,6 +36,15 @@
 
                 <section>
                     <h2>Boolean Values</h2>
+
+                    <pre>
+                        <code>
+    >>> True
+    True
+    >>> False
+    False
+                        </code>
+                    </pre>
                 </section>
 
                 <section>
@@ -43,7 +52,178 @@
                 </section>
 
                 <section>
+                    <section>
+                        <h3>not (Logical NOT)</h3>
+                        
+                        <pre>
+                            <code>
+    >>> not True
+    False
+    >>> not False
+    True
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>and (Logical AND)</h3>
+
+                        <pre>
+                            <code>
+    >>> True and True
+    True
+    >>> True and False
+    False
+    >>> False and True
+    False
+    >>> False and False
+    False
+                            </code>
+                        </pre>
+
+                        <p class="fragment">Tip: As long as one of the operands is False, the result will be False</p>
+                    </section>
+
+                    <section>
+                        <h3>or (Logical OR)</h3>
+
+                        <pre>
+                            <code>
+    >>> True or True
+    True
+    >>> True or False
+    True
+    >>> False or True
+    True
+    >>> False or False
+    False
+                            </code>
+                        </pre>
+
+                    <p class="fragment">Tip: As long as one of the operands is True, the result will be True</p>
+                    </section>
+                </section>
+
+                <section>
                     <h2>Relational Operators</h2>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>== (Equal to)</h3>
+
+                        <pre>
+                            <code>
+    >>> 100 == 100
+    True
+    >>> 100 == 50
+    False
+    >>> -100 == 100
+    False
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>!= (Not Equal To)</h3>
+
+                        <pre>
+                            <code>
+    >>> 100 != 100
+    False
+    >>> 100 != 50
+    True
+    >>> -100 != 100
+    True
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>&gt; (Greater than)</h3>
+                        <h3>&gt;= (Greater than or equal to)</h3>
+
+                        <pre>
+                            <code>
+    >>> 5 > 10
+    False
+    >>> 10 > 5
+    True
+    >>> 5 > 5
+    False
+    >>> 5 >= 5
+    True
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>&lt; (Less than)</h3>
+                        <h3>&lt;= (Less than or equal to)</h3>
+
+                         <pre>
+                             <code>
+    >>> 5 < 10
+    True
+    >>> 10 < 5
+    False
+    >>> 5 < 5
+    False
+    >>> 5 <= 5
+    True
+                             </code>
+                         </pre>
+                    </section>
+
+                    <section>
+                        <p>You can use the relational operators not just with numbers, but with any data type</p>
+                        <pre>
+                            <code>
+    >>> 5 == True
+    False
+    >>> 10 > (1,2,3)
+    False
+    >>> 7 == '7'
+    False
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <p>Any nonzero number is interpreted as "True"</p>
+
+                        <pre>
+                            <code>
+    >>> 17 and True
+    True
+    >>> 17 or True
+    True 
+    >>> 17 and False
+    False
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <p>This flexibility can be useful, but there are some subtleties to it that might be confusing. You might want to avoid it (unless you know what you are doing).</p>
+
+                        <pre>
+                            <code>
+    >>> 17 or False
+    17
+    >>> 0 and True
+    0
+    >>> 1 > True
+    False
+    >>> 17 > True
+    True
+                            </code>
+                        </pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h1>END</h1>
                 </section>
             </div>
 		</div>

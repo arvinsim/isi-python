@@ -30,6 +30,218 @@
 	<body>
 		<div class="reveal">
             <div class="slides">
+                <section>
+                    <h1>Conditionals</h1>
+                </section>
+
+                <section>
+                    <h2>A Brief review of flowcharting</h2>
+                </section>
+
+                <section>
+                    <h2>Conditionals</h2>
+                    <p>
+                   In order to write useful programs, we almost always need the ability to check conditions and change the behavior of the program accordingly. Conditional statements give us this ability.</p>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>If</h3>
+
+                        <pre>
+                            <code>
+if x > 0:
+    print 'x is positive'
+                            </code>
+                        </pre>
+
+                        <p>The boolean expression after if is called the <em>condition</em>. If it is true, then the indented statement gets executed. If not, nothing happens.</p>
+                    </section>
+
+                    <section>
+                        <h3>If</h3>
+
+                        <p>The indented part is the <em>body</em>. It is composed of one or more statements.</p>
+                        <p>There is no limit on the number of statements that can appear in the body, but there has to be at least one. </p> 
+                    </section>
+
+                    <section>
+                        <h3>If</h3>
+
+                        <p>Occasionally, it is useful to have a body with no statements (usually as a place keeper for code you haven’t written yet). In that case, you can use the pass statement, which does nothing.</p>
+
+                        <pre>
+                            <code>
+    if x < 0:
+        pass     # need to handle negative values!
+                            </code>  
+                        </pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Else</h3>
+                        <p>A second form of the if statement is alternative execution, in which there are two possibilities and the condition determines which one gets executed. The syntax looks like this:</p>
+                        <pre>
+                            <code>
+if x % 2 == 0:
+    print 'x is even'
+else:
+    print 'x is odd'
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>Else</h3>
+                        <p>If the remainder when x is divided by 2 is 0, then we know that x is even, and the program displays a message to that effect. If the condition is false, the second set of statements is executed. Since the condition must be true or false, exactly one of the alternatives will be executed. The alternatives are called branches, because they are branches in the flow of execution.</p>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h3>Elif</h3>
+                        <p>Sometimes there are more than two possibilities and we need more than two branches. One way to express a computation like that is a chained conditional:</p>
+
+                        <pre>
+                            <code>
+if x < y:
+    print 'x is less than y'
+elif x > y:
+    print 'x is greater than y'
+else:
+    print 'x and y are equal' </code>
+                        </pre>
+
+                        <p>elif is an abbreviation of “else if.”</p>
+                    </section>
+
+                    <section>
+                        <h3>Elif</h3>
+                        <p>There is no limit on the number of elif statements. If there is an else clause, it has to be at the end, but there doesn’t have to be one.</p>
+                        <pre>
+                            <code>
+if choice == 'a':
+    draw_a()
+elif choice == 'b':
+    draw_b()
+elif choice == 'c':
+    draw_c()
+elif choice == 'd':
+    draw_d()
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>Elif</h3>
+                        <p>Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch executes, and the statement ends. Even if more than one condition is true, only the first true branch executes.</p>
+                        <pre>
+                            <code>
+x = 10
+if x > 2:
+    print 'x is greater than 2'
+elif x > 3:
+    print 'x is greater than 3' # This will not execute
+                            </code>
+                        </pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Nested Conditionals</h3>
+                        <p>Let us go back to this example</p>
+                        <pre>
+                            <code>
+if x < y:
+    print 'x is less than y'
+elif x > y:
+    print 'x is greater than y'
+else:
+    print 'x and y are equal'
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>Nested Conditionals</h3>
+                        <p>One conditional can also be nested within another. We could have written the example like this:</p>
+                        <pre>
+                            <code>
+if x == y:
+    print 'x and y are equal'
+else:
+    if x < y:
+        print 'x is less than y'
+    else:
+        print 'x is greater than y'
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>Nested Conditionals</h3>
+                        <p>Although the indentation of the statements makes the structure apparent, nested conditionals become difficult to read very quickly. In general, it is a good idea to avoid them when you can.</p>
+                    </section>
+
+                    <section>
+                        <h3>Nested Conditionals</h3>
+                        <pre>
+                            <code>
+if x == 1:
+    print 'x is equal to 1'
+else:
+    if x == 2:
+        print 'x is equal to 2'
+    else:
+        if x == 3:
+            print 'x is equal to 3'
+        else:
+            if x == 4:
+                print 'x is equal to 3'
+            else:
+                if x == 5:
+                    print 'x is equal to 3'
+                else:
+                    if x == 6:
+                        print 'x is equal to 3'
+                    else:
+                        pass #...
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>Nested Conditionals</h3>
+                        <p>Logical operators often provide a way to simplify nested conditional statements. Take this example:</p>
+                        <pre>
+                            <code>
+if 0 < x:
+    if x < 10:
+        print 'x is a positive single-digit number.'
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>Nested Conditionals</h3>
+                        <p>The print statement is executed only if we make it past both conditionals, so we can get the same effect with the and operator:</p>
+
+                        <pre>
+                            <code>
+if 0 < x and x < 10:
+    print 'x is a positive single-digit number.'
+                            </code>
+                        </pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h1>End</h1>
+                </section>
             </div>
 		</div>
 

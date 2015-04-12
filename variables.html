@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Variables</title>
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>Variables</h1>
+                </section>
+
+                <section>
+                    <h2>Variables</h2>
+                    
+                    <p>One of the most powerful features of a programming language is the ability to manipulate variables. A variable is a name that refers to a value.</p>
+                </section>
+
+                <section>
+                    <h2>Assignment</h2>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Assignment</h3>
+                        <p>An assignment statement creates new variables and gives them values. We use the = operator to do assignment.</p>
+                        <pre>
+                            <code>
+    >>> message = 'And now for something completely different'
+    >>> n = 17
+    >>> pi = 3.1415926535897932
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>Assignment</h3>
+                        <p>Variables can be assigned to other variables too. You can even assignmore than one variable at the same time</p>
+                        <pre>
+                            <code>
+    >>> intelligent_grade = 95
+    >>> my_grade = intelligent_grade
+    >>> my_friend_grade = my_other_friend_grade = my_grade
+    >>> my_grade # Ayos!
+    95
+    >>> my_friend_grade # Payts kayu pag koypa!
+    95
+    >>> my_other_friend_grade # Utro sad ni!
+    95
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>Assignment</h3>
+                        <p>Statements ca be assigned to variables too.</p>
+                        <pre>
+                            <code>
+    >>> pi = 3.1415926535897932
+    >>> r = 2
+    >>> circumference = 2 * pi * r
+                            </code>
+                        </pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Variable Names</h2>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Variable Names</h3>
+                        <p>Variable names can be arbitrarily long. They can contain both letters and numbers, but they have to begin with a letter. It is legal to use uppercase letters, but it is a good idea to begin variable names with a lowercase letter</p>
+                        <pre>
+                            <code>
+   >>> supercalifragilisticexpialidocious = 'mary poppins'
+   >>> Supercalifragilisticexpialidocious = 'another mary poppins'
+   >>> supercalifragilisticexpialidocious
+   'mary poppins'
+   >>> Supercalifragilisticexpialidocious
+   'another mary poppins'
+                           </code>
+                        </pre>
+                    </section>
+
+                    
+                    <section>
+                        <h3>Variable Names</h3>
+                        <p>The underscore character, _, can appear in a name. It is often used in names with multiple words, such as my_name or airspeed_of_unladen_swallow.</p>
+                    </section>
+
+                    <section>
+                        <h3>Variable Names</h3>
+                        <p>Programmers generally choose names for their variables that are meaningful—they document what the variable is used for.</p>
+                        <pre>
+                            <code>
+    >>> speed_of_light = 299792458
+    >>> greeting = 'Hello there!'
+    >>> trust_me_I_am_an_engineer = 28976346 # ???
+    >>> shoop_da_whoop = 'imma fire mah lazers' # *facepalm*
+                            </code>   
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>Variable Names</h3>
+                        <p>If you give a variable an illegal name, you get a syntax error:</p> 
+                        <pre>
+                            <code>
+    >>> 76trombones = 'big parade'
+    SyntaxError: invalid syntax
+    >>> more@ = 1000000
+    SyntaxError: invalid syntax
+    >>> class = 'Advanced Theoretical Zymurgy'
+    SyntaxError: invalid syntax
+                            </code>
+                        </pre>
+                        <p>76trombones is illegal because it does not begin with a letter. more@ is illegal because it contains an illegal character, @.</p>
+
+                        <p>But what’s wrong with class?</p>
+                    </section>
+
+                    <section>
+                        <h3>Keywords</h3>
+                        <p>It turns out that class is one of Python’s keywords. The interpreter uses keywords to recognize the structure of the program, and they cannot be used as variable names.</p> 
+                    </section>
+
+                    <section>
+                        <h3>Keywords</h3>
+                        <p>Python 2 has 31 keywords:</p>
+                        <pre>
+and       del       from      not       while    
+as        elif      global    or        with     
+assert    else      if        pass      yield    
+break     except    import    print              
+class     exec      in        raise              
+continue  finally   is        return             
+def       for       lambda    try
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>Examples of variable usage</h3>
+                        <pre>
+                            <code>
+    >>> a = 1
+    >>> a
+    1
+    >>> a = 2
+    >>> a
+    2
+
+    >>> x = 10
+    >>> y = 5
+    >>> x + y
+    15
+
+    >>> a = 2
+    >>> b = 3
+    >>> a + b
+    5
+    >>> a = a + b
+    >>> a
+    5
+    >>> a = a + b
+    8
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <section>
+                            <h3>Shorthand for combining assignment and numeric operators</h3>
+                        </section>
+
+                        <section>
+                            <h3>+=</h3>
+                            <pre>
+                                <code>
+    >>> a = 0
+    >>> a += 10 # a = a + 10
+    >>> a
+    10
+                                </code>
+                            </pre>
+                        </section>
+
+                        <section>
+                            <h3>-=</h3>
+                            <pre>
+                                <code>
+
+    >>> a = 5
+    >>> a -= 3 # a = a - 3
+    >>> a
+    2
+                                </code>
+                            </pre>
+                        </section>
+
+                        <section>
+                            <h3>*=</h3>
+                            <pre>
+                                <code>
+    >>> a = 3
+    >>> a *= 4 # a = a * 4
+    >>> a
+    12
+                                </code>
+                            </pre>
+                        </section>
+
+                        <section>
+                            <h3>/=</h3>
+                            <pre>
+                                <code>
+    >>> a = 100
+    >>> a *= 5 # a = a * 5
+    >>> a
+    20 
+                                </code>
+                            </pre>
+                        </section>
+
+                        <section>
+                            <p>%=, //= are also available</p>
+                        </section>
+                    </section>
+
+                    <section>
+                        <h1>End</h1>
+                    </section>
+                </section>
+            </div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
