@@ -168,7 +168,135 @@
 
                 <section>
                     <h2>For Loops</h2>
-                    There is another loop construct that we haven't discussed yet. But you have to get familiar with the sequence types first(strings, tuples, lists) to be able to work on them.
+                    <p>There is another loop construct that we haven't discussed yet. But you have to get familiar with the sequence types first(strings, tuples, lists) to be able to work on them.....</p>
+                    <img class="fragment" src="http://fc06.deviantart.net/fs70/f/2012/186/6/3/i_lied_logo_by_urbinator17-d564xct.png" width="300" height="400" alt="I lied!" />
+                </section> 
+
+                <section>
+                    <section>
+                        <h3>For Loops</h3>
+                        <p>The for loop loops over each of the elements of a list or iterator, assigning the current element to the variable name given</p>
+                        <img class="fragment" src="http://cdn.meme.am/instances/58114427.jpg" width="400" height="300" alt="" />
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>For Loops using the range function</h3>
+                        <p>Here is the for loop in it's simplest form</p>
+                         <pre>
+                             <code>
+    for i in range(5):
+        print i
+                             </code>
+                         </pre>
+                        <p>Output</p>
+                        <pre>
+                            <code>
+    0
+    1
+    2
+    3
+    4
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <img src="http://www.troll.me/images/jackie-chan-whut/wait-wat-thumb.jpg" alt="" />
+                    </section>
+
+                    <section>
+                        <h3>For Loops using the range function</h3>
+                        <p>Another form of the for loop goes like this</p>
+                        <pre>
+                            <code>
+    for i in range(2, 5):
+        print i
+                            </code>
+                        </pre>
+                        <p>This will output</p>
+                        <pre>
+                            <code>
+    2
+    3
+    4
+                            </code>
+                        </pre>
+                        <p>The loop starts at 2 and ends at 4
+                    </section>
+
+                    <section>
+                        <h3>For Loops using the range function</h3>
+                        <p>You can also assign the result of range to a variable and loop over it.</p>
+                        <pre>
+                            <code>
+    y = range(2, 5)
+    for i in y:
+        print i
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>For Loops using the range function</h3>
+                        <p>There is another form of the range function defines a step</p>
+                        <pre>
+                            <code>
+    for i in range(2, 10, 2)
+        prin ti
+                            </code>
+                        </pre>
+                        <p>Output</p>
+                        <pre>
+                            <code>
+    2
+    4
+    6
+    8
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>For Loops using the range function</h3>
+                        <p>It doesn't matter if we skip a step. If it goes over or equals the end, the loop stops</p>
+                        <pre>
+                            <code>
+    for i in range(2, 9, 2)
+        prin ti
+                            </code>
+                        </pre>
+                        <p>Output</p>
+                        <pre>
+                            <code>
+    2
+    4
+    6
+    8
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>For Loops using the range function</h3>
+                        <p>We can even do the loop in reverse using negative integers</p>
+                        <pre>
+                            <code>
+    for i in range(10, 2, -2)
+        prin ti
+                            </code>
+                        </pre>
+                        <p>Output</p>
+                        <pre>
+                            <code>
+    10
+    8
+    6
+    4
+                            </code>
+                        </pre>
+                    </section>
                 </section>
 
                 <section>
