@@ -90,9 +90,12 @@ Tip: As long as one of the operands is True, the result will be True
 
 Any nonzero number is interpreted as "true"
 
->>> 0 and True
-0
->>> 17 and True
-True
+    >>> 17 and True
+    True
 
 This flexibility can be useful, but there are some subtleties to it that might be confusing. You might want to avoid it (unless you know what you are doing).
+
+    >>> 0 and True
+    0
+    >>> 1 > True
+    False

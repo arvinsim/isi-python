@@ -15,6 +15,8 @@ Plain integers(also just called integers) have 32 bits of precision (sys.maxint 
     108128387187
     >>> -10
     -10
+    >>> 1,000,000 # WARNING: This is NOT an integer
+    (1, 0, 0)
 
 #### Long integers
 
@@ -102,7 +104,7 @@ The ‘j’ suffix comes from electrical engineering, where the variable ‘i’
 
 Ugh, all these numbers are making my head spin. How can I possibly remember all of these?
 
-Unless you are working on fields that require precision like scientific comput, you don't need to worry too much about this. Most of the time, you only need to work with plain integers and floats.
+Unless you are working on fields that require precision like scientific computing, you don't need to worry too much about this. Most of the time, you only need to work with plain integers and floats.
 
 ## Numeric Operators
 
@@ -319,7 +321,7 @@ Examples
     Does a "bitwise exclusive or". Each bit of the output is the same as the corresponding bit in x if that bit in y is 0, and it's the complement of the bit in x if that bit in y is 1. 
 
     >>> 5 ^ 3
-    8
+    6
 
         0101 (decimal 5)
     AND 0011 (decimal 3)

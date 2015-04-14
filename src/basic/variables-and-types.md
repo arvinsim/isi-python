@@ -1,9 +1,3 @@
-# Slide 1
-
-Values, Types and variables
-
-# Slide 2
-
 ## Values
 
 A **value** is one of the basic things a program works with, like a letter or a number. 'Hello, World!' is a value. So are numbers like 1 or 2.
