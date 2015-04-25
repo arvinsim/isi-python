@@ -49,21 +49,192 @@
 					+ built in functions examples
 				</section>
 
+                <section>
+					<h2>Writing your own functions</h2>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Defining a function</h3>
+
+                        <pre><code>
+    def function_name(parameters):
+        code block
+        ...
+        optional return
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Defining a function</h3>
+                        <p>Examples</p>
+
+                        <pre><code></code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Calling a Function</h3>
+
+                        <pre><code>
+    function_name()
+    function_name([arguments])
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Calling a Function</h3>
+                        <p>Examples</p>
+
+                        <pre><code></code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h3>Basic Parameters</h3>
+
+                    <section>
+                        <p>Functions is useless if you can't pass anything to do them. If we want to do that, we need
+                        to pass parameters</p>
+                    </section>
+
+                    <section>
+                        <pre><code>
+    def double(number):
+        print number * 2
+
+    double(5) # Outputs 10
+                        </code></pre>
+                    </section>
+
+
+                    <section>
+                        <p>There can be more than one parameter</p>
+
+                        <pre><code>
+    def show_full_name(first_name, last_name):
+        print "My full name is {} {}".format(first_name, last_name)
+
+    show_full_name("Arthur", "Simon")
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <pre><code>
+    def yay(lots, of, parameters, here):
+        print lots
+        print of
+        print parameters
+        print here
+
+    yay(1, "what", [100,200], { "ha": "ho" })
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>What we saw are just the basics. Later we will tackle more advanced forms of parameters</p>
+                    </section>
+                </section>
+
 				<section>
-					+ def
-					+ function without return
-					+ function with return
-					+ examples
+                    + functions without return
+                    + functions with return
+
+                    <section>
+                        <h3>Functions without return values</h3>
+
+                        <pre><code>
+    def show_greeting():
+        print "Hello World!"
+
+    show_greeting() # Prints the greeting
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>More examples</h3>
+
+                        <pre><code>
+                        </code></pre>
+                    </section>
+
+
+                    <section>
+                        <h3>Functions with return values</h3>
+
+                        <pre><code>
+    def show_greeting():
+        return "Hello World!"
+
+    show_greeting()  # Does nothing
+    print show_greeting()  # Prints out the returned string
+
+    # Assign the returned value to a variable and print
+    # them out
+    greeting = show_greeting()
+    print greeting
+                        </code></pre>
+                    </section>
+
+					<section>
+						<h3>Functions with return values</h3>
+
+                        <pre><code>
+                        </code></pre>
+					</section>
 				</section>
 
 				<section>
 					+ variable scoping
 					+ examples
+                    <section>
+                        <h3>Variable scoping</h3>
+                    </section>
+
+                    <section>
+                        <h3>Variable scoping</h3>
+                        <p>You can use a variable outside of the function inside a function</p>
+                    </section>
+
+                    <section>
+                        <h3>Variable scoping</h3>
+                        <pre><code>
+    message = 'outside'
+
+    def foobar():
+        print message
+
+    print message # Outputs 'outside'
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Variable scoping</h3>
+                        <pre><code>
+                            message
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Variable scoping</h3>
+                        <p>However, variables outside a function would not be overridden if a variable with the same
+                            name is defined or changed inside a function</p>
+                    </section>
+
+                    <section>
+                        <h3>Variable scoping</h3>
+
+                        <pre><code>
+    message = "Outside the function"
+
+    def foobar():
+        message = "Inside the function"
+
+    print message  # Outputs "Outside the function"
+                        </code></pre>
+                    </section>
 				</section>
 
 				<section>
-					+ passing parameters
-					+ passing positional parameters
 					+ passing keyword parameters
 					+ default parameters
 						+ mutable types as defaults gotcha
