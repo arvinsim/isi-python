@@ -50,10 +50,7 @@
 				</section>
 
                 <section>
-					<h2>Writing your own functions</h2>
-                </section>
-
-                <section>
+                    <h2>Writing your own functions</h2>
                     <section>
                         <h3>Defining a function</h3>
 
@@ -66,10 +63,22 @@
                     </section>
 
                     <section>
-                        <h3>Defining a function</h3>
-                        <p>Examples</p>
+                        <p>Basic Examples</p>
 
-                        <pre><code></code></pre>
+                        <pre><code>
+    def foo():
+        u = "thought"
+        print u
+
+    def who(goat):
+        print goat
+
+    def bar(b, c):
+        b = "latitude"
+        c = 2
+        print b
+        print c
+                        </code></pre>
                     </section>
 
                     <section>
@@ -82,10 +91,12 @@
                     </section>
 
                     <section>
-                        <h3>Calling a Function</h3>
-                        <p>Examples</p>
-
-                        <pre><code></code></pre>
+                        <h3>Basic Examples</h3>
+                        <pre><code>
+    foo()
+    who("you?")
+    bar("walay", "pulos")
+                        </code></pre>
                     </section>
                 </section>
 
@@ -119,6 +130,7 @@
                     </section>
 
                     <section>
+                        <p>Any variable type can be passed to functions...</p>
                         <pre><code>
     def yay(lots, of, parameters, here):
         print lots
@@ -126,7 +138,34 @@
         print parameters
         print here
 
-    yay(1, "what", [100,200], { "ha": "ho" })
+    yay(1 + 2, "what", [100,200], { "ha": "ho" })
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>...even functions themselves</p>
+
+                        <pre><code>
+    def foo(f):
+        print f
+
+    def bar():
+        pass
+
+    foo(bar) # Outputs &lt;function bar at 0x1062eb0c8&gt;
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Example of how to use passed functions</p>
+                        <pre><code>
+    def minion(x):
+        print "minion has the {}".format(x)
+
+    def boss(f,x):
+        f(x)
+
+    boss(minion, "banana!")
                         </code></pre>
                     </section>
 
@@ -136,12 +175,10 @@
                 </section>
 
 				<section>
-                    + functions without return
-                    + functions with return
+                    <h2>Functions with return values</h2>
 
                     <section>
-                        <h3>Functions without return values</h3>
-
+                        <p>So far, most of our functions just do some operations and print out some stuff</p>
                         <pre><code>
     def show_greeting():
         print "Hello World!"
@@ -159,14 +196,22 @@
 
 
                     <section>
-                        <h3>Functions with return values</h3>
+                        <p>There is a keyword that allows us to "return" a value from a function to its caller</p>
+                        <pre><code>
+    def show_greeting():
+        return "Hello World!"
 
+    print show_greeting()  # Prints out the returned string
+                        </code></pre>
+                    </section>
+
+                     <section>
+                        <p>You can also ignore the return value or assign it to a variable</p>
                         <pre><code>
     def show_greeting():
         return "Hello World!"
 
     show_greeting()  # Does nothing
-    print show_greeting()  # Prints out the returned string
 
     # Assign the returned value to a variable and print
     # them out
@@ -176,60 +221,103 @@
                     </section>
 
 					<section>
-						<h3>Functions with return values</h3>
-
+                        <p>You can pass the return value of a function to another function</p>
                         <pre><code>
+    def double(x):
+        return x * 2
+
+    def triple(y):
+        return y * 3
+
+    def quadruple(z):
+        return z * 4
+
+    print quadruple(triple(double(2))) # Outputs 48
                         </code></pre>
 					</section>
 				</section>
 
 				<section>
-					+ variable scoping
-					+ examples
+                    <h2>Variable Scoping</h2>
+
+                    <section></section>
+
                     <section>
-                        <h3>Variable scoping</h3>
+                        <p>A function has its own scope.</p>
+                        <p>That is, whatever variables or functions that you declared in it...is accessible only to
+                            itself</p>
                     </section>
 
                     <section>
-                        <h3>Variable scoping</h3>
+                        <img src="http://www.ifac.cnr.it/~zoppetti/corsopython/files/img/LEGB.png" alt="scopes"/>
+                    </section>
+
+                    <section>
                         <p>You can use a variable outside of the function inside a function</p>
-                    </section>
-
-                    <section>
-                        <h3>Variable scoping</h3>
                         <pre><code>
     message = 'outside'
 
     def foobar():
         print message
 
-    print message # Outputs 'outside'
+    foobar() # Outputs 'outside'
                         </code></pre>
                     </section>
 
                     <section>
-                        <h3>Variable scoping</h3>
-                        <pre><code>
-                            message
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h3>Variable scoping</h3>
-                        <p>However, variables outside a function would not be overridden if a variable with the same
-                            name is defined or changed inside a function</p>
-                    </section>
-
-                    <section>
-                        <h3>Variable scoping</h3>
-
+                        <p>Variables outside a function would not be affected by operations or declarations inside a
+                           function</p>
                         <pre><code>
     message = "Outside the function"
+    count = 5
 
     def foobar():
         message = "Inside the function"
+        count = 10
+        count += 1
+        print message
+        print count
 
+    foobar() # Outputs "Inside the function" and 11
     print message  # Outputs "Outside the function"
+    print count # Outputs 5
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Even if functions have the same variable names, they won't conflict with each other</p>
+                        <pre><code>
+    def akong_silingan():
+        phone = "iPhone"
+        print phone
+
+    def ako():
+        phone = "Samsung"
+        print phone
+
+    akong_silingan()
+    ako()
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>It's possible to nest functions</p>
+                        <pre><code>
+    message = "global"
+
+    def foo():
+        message = "in foo"
+
+        def bar():
+            message = "in bar"
+            print message
+
+        bar()
+        print message
+
+    # 'in bar'
+    # 'in foo'
+    foo()
                         </code></pre>
                     </section>
 				</section>
