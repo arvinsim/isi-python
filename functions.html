@@ -326,16 +326,87 @@
                     </section>
 				</section>
 
-				<section>
-					+ passing keyword parameters
-					+ default parameters
-						+ mutable types as defaults gotcha
-				</section>
+                <section>
+                    <h2>Named Parameters</h2>
+                </section>
 
 				<section>
-					+ arbitrary argument lists
-					+ *args
-					+ **kwargs
+                    <h2>Default/Optional Parameters </h2>
+
+                    <section></section>
+
+                    <section>
+                        <p>Supposed that you have a function where we seem to repeatedly pass the same value over and over again</p>
+                        <pre><code>
+    def appendPunctuation(sentence, mark):
+        return sentence + mark
+
+    print appendPunctuation("I'm first", '.')
+    print appendPuncatiation("I'm second", '.')
+    print appendPunctuation("I'm third", '.')
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Function parameters can be defined to have a default value so you don't have to pass parameters, especially
+                        ones that seem to be used most of the time</p>
+                        <pre><code>
+    def appendPunctuation(sentence, mark='.'):
+        return sentence + mark
+
+    print appendPunctuation("I'm first")
+    print appendPuncatiation("I'm second")
+    print appendPunctuation("I'm third")
+                        </code></pre>
+                    </section>
+
+                    <section>
+                       <p>You can have as many optional parameters as you want...</p>
+                       <pre><code>
+    def one_option(a=1):
+        pass
+
+    def more_options(a, b=1, c=1):
+        pass
+
+    def whole_lotta_options(a=1, b=1, c=1, d=1, e=1):
+        pass
+
+    one_option()
+    more_options(1)
+    whole_lotta_options()
+                       </code></pre>
+                    </section>
+
+                    <section>
+                        <p>...but it needs to be after the required parameters</p>
+                        <pre><code>
+    # This will raise a syntax error
+    def so_wrong(a=0, b, c):
+        pass
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        + mutable types as defaults gotcha
+                    </section>
+
+                    <section>
+                        <p>So far, we have been passing the functions the usual way(positional). But there is another
+                        way to pass parameters that is potentially more readable</p>
+                    </section>
+
+                    <section>
+                        <p>We can pass parameters using keywords</p>
+                        <pre><code>
+                        </code></pre>
+                    </section>
+				</section>
+
+                <section>
+                    <h2>Arbitrary number of arguments</h2>
+                    + *args
+                    + **kwargs
 					+ combine *args, **kwargs
 				</section>
 
