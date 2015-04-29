@@ -42,9 +42,24 @@
 					<h1>Functions</h1>
 				</section>
 
-				<section>
-					+ built in functions examples
-				</section>
+                <section>
+                    <h2>What are Functions?</h2>
+
+                    <section>
+                        <p>A function is a named sequence of statements that performs a computation</p>
+                    </section>
+
+                    <section>
+                        <p>We have been using functions already in our previous lessons.</p>
+                        <pre><code>
+    len() cmp() list() min() max()
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>These are called <em>built-in</em> functions. They are already built-into the language itself.</p>
+                    </section>
+                </section>
 
                 <section>
                     <h2>Writing your own functions</h2>
@@ -52,8 +67,14 @@
                     <section></section>
 
                     <section>
+                        <p>Although built-in functions are useful, it certainly does not cover all our use cases. That's
+                            why programming languages allow us to define our own.</p>
+                    </section>
+
+                    <section>
                         <h3>Defining a function</h3>
 
+                        <p>Psuedocode</p>
                         <pre><code>
     def function_name(parameters):
         code block
@@ -82,6 +103,12 @@
                     </section>
 
                     <section>
+                        <p>Defining a function is all well and good, but it does nothing on its own. To actually
+                            execute the statements inside a function, you need to "call" it.
+                        </p>
+                    </section>
+
+                    <section>
                         <h3>Calling a Function</h3>
 
                         <pre><code>
@@ -101,21 +128,27 @@
                 </section>
 
                 <section>
-                    <h2>Basic Parameters</h2>
+                    <h2>Basic Arguments Passing</h2>
 
                     <section></section>
 
                     <section>
-                        <p>Functions is useless if you can't pass anything to do them. If we want to do that, we need
-                        to pass parameters</p>
+                        <p>The function examples that we used so far just executes a bunch of statements. It's no different from
+                        just running them normally.</p>
+                        <p>It would be more useful if we could somehow influence the statements inside it.</p>
                     </section>
 
                     <section>
+                        <p>To do that, we need to learn how to pass arguments</p>
+                    </section>
+
+                    <section>
+                        <h3>Basic Example</h3>
                         <pre><code>
     def double(number):
         print number * 2
 
-    double(5) # Outputs 10
+    double(5) # 5 is the argument. This function call outputs 10
                         </code></pre>
                     </section>
 
@@ -174,6 +207,13 @@
                     <section>
                         <p>What we saw are just the basics. Later we will tackle more advanced forms of parameters</p>
                     </section>
+                </section>
+
+
+                <section>
+                    <h2>Flow of Execution</h2>
+
+                    <section></section>
                 </section>
 
 				<section>
@@ -299,8 +339,8 @@
         phone = "Samsung"
         print phone
 
-    akong_silingan()
-    ako()
+    akong_silingan() # Outputs "iPhone"
+    ako() # Outputs "Samsung"
                         </code></pre>
                     </section>
 
@@ -329,6 +369,42 @@
                 <section>
                     <h2>Named Parameters</h2>
                     <section></section>
+
+                    <section>
+                        <p>So far, what we have been doing is passing arguments via their position relative to the order
+                            in the parameter definitions. But there is another way to pass arguments. We can pass arguments
+                            via <em>named parameters</em>
+                        </p>
+                    </section>
+
+                    <section>
+                        <p>You can use the parameter name to specify it's respective argument</p>
+                        <pre><code>
+    def get_full_name(first_name, middle_name, last_name):
+        return first_name + " " + middle_name + " " + last_name
+
+    print get_full_name(first_name="Arthur",
+                        middle_name="T.",
+                        last_name="Simon")
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>This allows us to pass arguments regardless of position</p>
+                        <pre><code>
+    def get_full_name(first_name, middle_name, last_name):
+        return first_name + " " + middle_name + " " + last_name
+
+    # The preceding function call and the 2 function call below
+    # will output the same string
+    print get_full_name(middle_name="T.",
+                        last_name="Simon",
+                        first_name="Arthur")
+    print get_full_name(last_name="Simon",
+                        middle_name="T.",
+                        first_name="Arthur")
+                        </code></pre>
+                    </section>
                 </section>
 
 				<section>
