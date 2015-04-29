@@ -45,6 +45,8 @@
                 <section>
                     <h2>What are Functions?</h2>
 
+                    <section></section>
+
                     <section>
                         <p>A function is a named sequence of statements that performs a computation</p>
                     </section>
@@ -57,7 +59,8 @@
                     </section>
 
                     <section>
-                        <p>These are called <em>built-in</em> functions. They are already built-into the language itself.</p>
+                        <p>These are called <em>built-in</em> functions. Python already defines what they do and how
+                        they behave.</p>
                     </section>
                 </section>
 
@@ -74,7 +77,7 @@
                     <section>
                         <h3>Defining a function</h3>
 
-                        <p>Psuedocode</p>
+                        <p>Pseudocode</p>
                         <pre><code>
     def function_name(parameters):
         code block
@@ -87,14 +90,14 @@
                         <p>Basic Examples</p>
 
                         <pre><code>
-    def foo():
+    def foo(): # def is the keyword that indicates this is a function
         u = "thought"
         print u
 
-    def who(goat):
+    def who(goat): # 'who' is the name of the function
         print goat
 
-    def bar(b, c):
+    def bar(b, c): # b, c are parameters of the function
         b = "latitude"
         c = 2
         print b
@@ -128,14 +131,72 @@
                 </section>
 
                 <section>
-                    <h2>Basic Arguments Passing</h2>
+                    <h2>Flow of Execution</h2>
+
+                    <section></section>
+
+                    <section>
+                        <p>Our programs so far has been executed in a linear fashion, from top to bottom</p>
+                        <p>You will soon see that functions work differently.</p>
+                    </section>
+
+                    <section>
+                        <p>Take for example this simple function declarations and calls</p>
+                        <pre><code>
+    print "start Program"
+
+    def foo():
+        print "in function foo"
+
+    def bar():
+        print "in function bar"
+
+    print "calling the functions..."
+    bar()
+    foo()
+
+    print "end Program"
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>If we run the code above, the result would be</p>
+                        <pre><code>
+    start Program
+    calling the functions...
+    in function bar
+    in function foo
+    end Program
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Function definitions by themselves do nothing. You need to call them for the function body
+                        to execute.</p>
+                        <p class="fragment">After a function is done, the flow of execution goes back to where it was called.</p>
+                    </section>
+
+                    <section>
+                        <p>You need to define a function first before it can be used(just like variables).
+                        Otherwise, Python will raise an error</p>
+                        <pre><code>
+    excited_ra_kau() # This will raise an error
+
+    def excited_ra_kau():
+        pass
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Passing Arguments</h2>
 
                     <section></section>
 
                     <section>
                         <p>The function examples that we used so far just executes a bunch of statements. It's no different from
                         just running them normally.</p>
-                        <p>It would be more useful if we could somehow influence the statements inside it.</p>
+                        <p class="fragment">It would be more useful if we could somehow influence the statements inside it.</p>
                     </section>
 
                     <section>
@@ -209,13 +270,6 @@
                     </section>
                 </section>
 
-
-                <section>
-                    <h2>Flow of Execution</h2>
-
-                    <section></section>
-                </section>
-
 				<section>
                     <h2>Functions with return values</h2>
 
@@ -232,17 +286,10 @@
                     </section>
 
                     <section>
-                        <h3>More examples</h3>
-
-                        <pre><code>
-                        </code></pre>
-                    </section>
-
-
-                    <section>
                         <p>There is a keyword that allows us to "return" a value from a function to its caller</p>
                         <pre><code>
     def show_greeting():
+        # "return" the value to the caller of the function
         return "Hello World!"
 
     print show_greeting()  # Prints out the returned string
@@ -297,12 +344,28 @@
                     </section>
 
                     <section>
-                        <p>You can use a variable outside of the function inside a function</p>
                         <pre><code>
-    message = 'outside'
+    message = 'outside' # global variable
 
     def foobar():
-        print message
+        foobar_message = 'inside' # local variable
+        foobar_another_message = 'inside' # another local variable
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <pre><code>
+
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>You can use a variable outside of the function inside a function</p>
+                        <pre><code>
+    message = 'outside' # global variable
+
+    def foobar():
+        print message # local variable
 
     foobar() # Outputs 'outside'
                         </code></pre>
@@ -367,14 +430,22 @@
 				</section>
 
                 <section>
-                    <h2>Named Parameters</h2>
+                    <h2>Named Arguments</h2>
                     <section></section>
 
                     <section>
-                        <p>So far, what we have been doing is passing arguments via their position relative to the order
-                            in the parameter definitions. But there is another way to pass arguments. We can pass arguments
-                            via <em>named parameters</em>
+                        <p>So far, what we have been doing is passing arguments relative to their position in the parameter definitions.
                         </p>
+                        <pre><code>
+    def get_full_name(first_name, middle_name, last_name):
+        return first_name + " " + middle_name + " " + last_name
+
+    print get_full_name("Arthur", "T.", "Simon")
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>But there is another way to pass arguments. We can pass arguments via <em>named parameters</em></p>
                     </section>
 
                     <section>
@@ -425,14 +496,14 @@
                     </section>
 
                     <section>
-                        <p>Function parameters can be defined to have a default value so you don't have to pass parameters, especially
-                        ones that seem to be used most of the time</p>
+                        <p>Function parameters can be defined to have a default value so you don't have to explicitly pass arguments, especially
+                        those that seem to be used most of the time</p>
                         <pre><code>
     def appendPunctuation(sentence, mark='.'):
         return sentence + mark
 
     print appendPunctuation("I'm first")
-    print appendPuncatiation("I'm second")
+    print appendPunctuation("I'm second")
     print appendPunctuation("I'm third")
                         </code></pre>
                     </section>
@@ -440,51 +511,51 @@
                     <section>
                        <p>You can have as many optional parameters as you want...</p>
                        <pre><code>
-    def one_option(a=1):
+    def one_parameter(a=1):
         pass
 
-    def more_options(a, b=1, c=1):
+    def more_parameters(a, b=1, c=2):
         pass
 
-    def whole_lotta_options(a=1, b=1, c=1, d=1, e=1):
+    def whole_lotta_parameters(a=1, b=2, c=3, d=4, e=5):
         pass
 
-    one_option()
-    more_options(1)
-    whole_lotta_options()
+    one_option() # a=1
+    more_parameters(100) # a=100, b=1, c=2
+    # a=1, b="b", c=3, d="d"
+    whole_lotta_parameters(d="d", b="b")
                        </code></pre>
                     </section>
 
                     <section>
                         <p>...but it needs to be after the required parameters</p>
                         <pre><code>
-    # This will raise a syntax error
+    # These will raise syntax errors
     def so_wrong(a=0, b, c):
         pass
+
+    def very_wrong(a=0, b, c=1):
+        pass
+
+    # Thought experiment:
+    #
+    # What we would happen if we allow the
+    # function above and call it?
+    #
+    # very_wrong(1, 2)
                         </code></pre>
                     </section>
 
                     <section>
+                        <h3></h3>
                         + mutable types as defaults gotcha
                     </section>
 
-                    <section>
-                        <p>So far, we have been passing the functions the usual way(positional). But there is another
-                        way to pass parameters that is potentially more readable</p>
-                    </section>
-
-                    <section>
-                        <p>We can pass parameters using keywords</p>
-                        <pre><code>
-                        </code></pre>
-                    </section>
 				</section>
 
                 <section>
                     <h2>Arbitrary number of arguments</h2>
-                    + *args
-                    + **kwargs
-					+ combine *args, **kwargs
+
 				</section>
 
                 <section>
