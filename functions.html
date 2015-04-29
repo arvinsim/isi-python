@@ -79,10 +79,10 @@
 
                         <p>Pseudocode</p>
                         <pre><code>
-    def function_name(parameters):
-        code block
+    def [function_name]([parameters]):
+        [code block]
         ...
-        optional return
+        [optional return]
                         </code></pre>
                     </section>
 
@@ -408,7 +408,7 @@
                     </section>
 
                     <section>
-                        <p>It's possible to nest functions</p>
+                        <p>It's possible to nest functions. That is, defining a function inside another function.</p>
                         <pre><code>
     message = "global"
 
@@ -426,6 +426,10 @@
     # 'in foo'
     foo()
                         </code></pre>
+                    </section>
+
+                    <section>
+                        INCEPTION MEME
                     </section>
 				</section>
 
@@ -449,7 +453,7 @@
                     </section>
 
                     <section>
-                        <p>You can use the parameter name to specify it's respective argument</p>
+                        <p>You can use the parameter name to specify its respective argument</p>
                         <pre><code>
     def get_full_name(first_name, middle_name, last_name):
         return first_name + " " + middle_name + " " + last_name
@@ -466,14 +470,13 @@
     def get_full_name(first_name, middle_name, last_name):
         return first_name + " " + middle_name + " " + last_name
 
-    # The preceding function call and the 2 function call below
-    # will output the same string
+    # The 2 function call below will output the same string
     print get_full_name(middle_name="T.",
                         last_name="Simon",
                         first_name="Arthur")
     print get_full_name(last_name="Simon",
-                        middle_name="T.",
-                        first_name="Arthur")
+                        first_name="Arthur",
+                        middle_name="T.")
                         </code></pre>
                     </section>
                 </section>
@@ -490,7 +493,7 @@
         return sentence + mark
 
     print appendPunctuation("I'm first", '.')
-    print appendPuncatiation("I'm second", '.')
+    print appendPunctuation("I'm second", '.')
     print appendPunctuation("I'm third", '.')
                         </code></pre>
                     </section>
@@ -505,6 +508,19 @@
     print appendPunctuation("I'm first")
     print appendPunctuation("I'm second")
     print appendPunctuation("I'm third")
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>You can then simply pass an argument to override the default value if needed</p>
+                        <pre><code>
+    def appendPunctuation(sentence, mark='.'):
+        return sentence + mark
+
+    print appendPunctuation("I'm first") # I'm first.
+    print appendPunctuation("I'm second", '?') # I'm second?
+    # I'm third!
+    print appendPunctuation(mark="!", sentence="I'm third")
                         </code></pre>
                     </section>
 
@@ -547,24 +563,46 @@
                     </section>
 
                     <section>
-                        <h3></h3>
-                        + mutable types as defaults gotcha
+                        <p>Warning: be careful with mutable types as defaults since its behaviour may not be as you
+                        intended</p>
+                        <pre><code>
+    def foo(a, b=[]):
+        b.append(a)
+        return b
+
+    print foo(1) # [1]
+    print foo(2) # [1, 2]
+    print foo(3) # [1, 2, 3]
+                        </code></pre>
                     </section>
 
 				</section>
 
                 <section>
                     <h2>Arbitrary number of arguments</h2>
-
+                    <section>
+                        LATER MEME
+                    </section>
 				</section>
 
                 <section>
-                    <h3></h3>Why functions?
+                    <h2>Why Functions?</h2>
+                    <section></section>
+
                     <section>
-                        + Creating a new function gives you an opportunity to name a group of statements, which makes your program easier to read and debug.
-                        + Functions can make a program smaller by eliminating repetitive code. Later, if you make a change, you only have to make it in one place.
-                        + Dividing a long program into functions allows you to debug the parts one at a time and then assemble them into a working whole.
-                        + Well-designed functions are often useful for many programs. Once you write and debug one, you can reuse it.
+                        <p>Creating a new function gives you an opportunity to name a group of statements, which makes your program easier to read and debug.</p>
+                    </section>
+
+                    <section>
+                        <p>Functions can make a program smaller by eliminating repetitive code. Later, if you make a change, you only have to make it in one place.</p>
+                    </section>
+
+                    <section>
+                        <p>Dividing a long program into functions allows you to debug the parts one at a time and then assemble them into a working whole.</p>
+                    </section>
+
+                    <section>
+                        <p>Well-designed functions are often useful for many programs. Once you write and debug one, you can reuse it.</p>
                     </section>
                 </section>
 
