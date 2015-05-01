@@ -54,7 +54,7 @@
                     <section>
                         <p>We have been using functions already in our previous lessons.</p>
                         <pre><code>
-    len() cmp() list() min() max() range()
+    len() cmp() list() min() max() range() int() float() str()
                         </code></pre>
                     </section>
 
@@ -171,9 +171,8 @@
                     </section>
 
                     <section>
-                        <p>Function definitions by themselves do nothing. You need to call them for the function body
-                        to execute.</p>
-                        <p class="fragment">After a function is done, the flow of execution goes back to where it was called.</p>
+                        <p>After a function is done, the flow of execution goes back to where it was called.</p>
+                        <a href="http://www.pythontutor.com/visualize.html#code=print+%22start+Program%22%0A%0Adef+foo()%3A%0A++++print+%22in+function+foo%22%0A%0Adef+bar()%3A%0A++++print+%22in+function+bar%22%0A%0Aprint+%22calling+the+functions...%22%0Abar()%0Afoo()%0A%0Aprint+%22end+Program%22&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D&curInstr=0">A really nifty visualization</a>
                     </section>
 
                     <section>
@@ -326,7 +325,9 @@
     print quadruple(triple(double(2))) # Outputs 48
                         </code></pre>
 					</section>
+
 				</section>
+
 
 				<section>
                     <h2>Variable Scoping</h2>
@@ -334,9 +335,15 @@
                     <section></section>
 
                     <section>
-                        <p>A function has its own scope.</p>
-                        <p>That is, whatever variables or functions that you declared in it...is accessible only to
-                            itself</p>
+                        <p>When you create a variable inside a function, it is local, which means that it only exists inside the function.</p>
+                        <p>Parameters are also local.</p>
+                        <pre><code>
+    def say_lol(times):
+        message = "lol"
+        return message * times
+
+    print message # This will raise an error
+                        </code></pre>
                     </section>
 
                     <section>
@@ -344,23 +351,21 @@
                     </section>
 
                     <section>
+                        <img src="http://www.goldencockerel.com/pic/product/102062/m_102062_a.jpg" alt="dolls"/>
+                    </section>
+
+
+                    <section>
                         <pre><code>
     message = 'outside' # global variable
 
-    def foobar():
+    def foobar(qux): # qux is a local variable
         foobar_message = 'inside' # local variable
-        foobar_another_message = 'inside' # another local variable
                         </code></pre>
                     </section>
 
                     <section>
-                        <pre><code>
-
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <p>You can use a variable outside of the function inside a function</p>
+                        <p>Global variables can be used inside a function</p>
                         <pre><code>
     message = 'outside' # global variable
 
@@ -372,8 +377,8 @@
                     </section>
 
                     <section>
-                        <p>Variables outside a function would not be affected by operations or declarations inside a
-                           function</p>
+                        <p>Declaring a local variable with the same name as a global variable "masks" the global variable</p>
+                        <p>The function essentially refers to the local variable instead of the global variable.</p>
                         <pre><code>
     message = "Outside the function"
     count = 5
@@ -392,7 +397,11 @@
                     </section>
 
                     <section>
-                        <p>Even if functions have the same variable names, they won't conflict with each other</p>
+                        <a href="http://www.pythontutor.com/visualize.html#code=message+%3D+%22Outside+the+function%22%0Acount+%3D+5%0A%0Adef+foobar()%3A%0A++++message+%3D+%22Inside+the+function%22%0A++++count+%3D+10%0A++++count+%2B%3D+1%0A++++print+message%0A++++print+count%0A%0Afoobar()+%23+Outputs+%22Inside+the+function%22+and+11%0Aprint+message++%23+Outputs+%22Outside+the+function%22%0Aprint+count+%23+Outputs+5&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D">Another Nifty Visualization</a>
+                    </section>
+
+                    <section>
+                        <p>Each function scope is independent of other function scopes</p>
                         <pre><code>
     def akong_silingan():
         phone = "iPhone"
@@ -408,7 +417,7 @@
                     </section>
 
                     <section>
-                        <p>It's possible to nest functions. That is, defining a function inside another function.</p>
+                        <p>It's possible to define or call functions inside another function.</p>
                         <pre><code>
     message = "global"
 
@@ -426,10 +435,13 @@
     # 'in foo'
     foo()
                         </code></pre>
-                    </section>
+                        </section>
 
-                    <section>
-                        INCEPTION MEME
+                        <section>
+                            <a href="http://www.pythontutor.com/visualize.html#code=message+%3D+%22global%22%0A%0Adef+foo()%3A%0A++++message+%3D+%22in+foo%22%0A%0A++++def+bar()%3A%0A++++++++message+%3D+%22in+bar%22%0A++++++++print+message%0A%0A++++bar()%0A++++print+message%0A%0A%23+'in+bar'%0A%23+'in+foo'%0Afoo()&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=2&rawInputLstJSON=%5B%5D&curInstr=0">
+                                <img src="http://upload.wikimedia.org/wikipedia/en/1/18/Inception_OST.jpg" alt="Inception"/>
+                            </a>
+                        </section>
                     </section>
 				</section>
 
@@ -533,12 +545,12 @@
     def more_parameters(a, b=1, c=2):
         pass
 
-    def whole_lotta_parameters(a=1, b=2, c=3, d=4, e=5):
+    def whole_lotta_parameters(a=1, b=2, c=3, d=4, e=None):
         pass
 
     one_parameter() # a=1
     more_parameters(100) # a=100, b=1, c=2
-    # a=1, b="b", c=3, d="d"
+    # a=1, b="b", c=3, d="d", e=None
     whole_lotta_parameters(d="d", b="b")
                        </code></pre>
                     </section>
@@ -576,12 +588,26 @@
                         </code></pre>
                     </section>
 
+                    <section>
+                        <p>This is the safe way to do it</p>
+                        <pre><code>
+    def foo(a, b=None):
+        if b is None:
+            b = []
+        b.append(a)
+        return b
+
+    print foo(1) # [1]
+    print foo(2) # [2]
+    print foo(3) # [3]
+                        </code></pre>
+                    </section>
 				</section>
 
                 <section>
                     <h2>Arbitrary number of arguments</h2>
                     <section>
-                        LATER MEME
+                        <img src="http://www.ohoho.si/en/iimg/390/i.jpg" width="300" height="300"/>
                     </section>
 				</section>
 
@@ -607,12 +633,7 @@
                 </section>
 
 				<section>
-					+ exercises
-					+ Simple
-						+ Lyrics
-
-					+ Hard
-						+
+                    quit()
 				</section>
 			</div>
 		</div>
