@@ -1,39 +1,61 @@
-- Define a function max_of_three() that takes three numbers as arguments and returns the largest of them.
-- Define a function sum() and a function multiply() that sums and multiplies (respectively) all the numbers in a list of
- numbers. For example, sum([1, 2, 3, 4]) should return 10, and multiply([1, 2, 3, 4]) should return 24.
-- Define a function double_list() that takes a list and returns a list with the items doubled
-For example. double_list([1,2,3,4]) should return [2,4,6,8]
+# Function Exercises
 
+## Passing Arguments
 
++ Choose a song that you like. Using functions, divide that song to some logical divisions(chorus, verse, bridge, etc) 
+and print out the whole lyrics of the song without copy pasting the parts of the song that are repeated.
 
++ Define a procedure histogram() that takes a list of integers and prints a histogram to the screen. For example, 
+histogram([4, 9, 7]) should print the following:
 
-- Choose a song that you like. Using functions, divide that song to some logical divisions(chorus, verse, bridge, etc) and print out the whole lyrics of the song
-
-without copy pasting the parts of the song that are repeated.
-
-
-- Define a procedure histogram() that takes a list of integers and prints a histogram to the screen. For example, histogram([4, 9, 7]) should print the following:
 ****
 *********
 *******
 
+## Returning Functions
+
++ Define 2 functions, do_nothing1 and do_nothing2 that returns nothing. One of the functions must use the return 
+keyword.
+
++ Define a function rectangle_dimensions() that takes a width and length/height of a rectangle and returns the area and 
+perimeter based on those values.
+
+Perimeter is calculated as the sum of twice the width and twice the length
+Area is calculated as the product of the width and length
+
++ Define two functions: (1) indent() which accepts a string and indents it by 4; (2) AUthor
+
+
+'   Shadow and Claw - Gene Wolfe'
+
+## Named Parameters and Default Parameters
+
 - Define a function that draws a rectangle using asterisks as default, accepting a parameter that defines how many asterisks to draw for its width and height
 
-draw_rectangle(1)
+draw_rectangle(size=1)
 
+<pre>
 *
+</pre>
 
-draw_rectangle(2)
+draw_rectangle(size=2)
 
+<pre>
 **
 **
+</pre>
 
-draw_rectangle(3)
+draw_rectangle(size=3)
+
+<pre>
 ***
 * *
 ***
+</pre>
 
-draw_rectangle(10)
+draw_rectangle(size=10)
+
+<pre>
 *********
 *       *
 *       *
@@ -44,11 +66,17 @@ draw_rectangle(10)
 *       *
 *       *
 *********
+</pre>
 
-draw_rectangle(3, '-')
----
-- -
----
+draw_rectangle(character='+', size=10)
+
+<pre>
++++
++ +
++++
+</pre>
+
+## Advanced 
 
 - Define a function reverse() that computes the reversal of a string. For example, reverse("I am testing") should return the string "gnitset ma I”.
 - Define a function is_palindrome() that recognizes palindromes (i.e. words that look the same written backwards). For example, is_palindrome("radar") should return True.
