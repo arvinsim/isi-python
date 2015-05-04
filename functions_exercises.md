@@ -1,8 +1,9 @@
 # Function Exercises
 
-![](http://db.irowiki.org/image/monster/1002.png "Poring")
 
 ## Basic Exercises 
+
+*Level*: ![](http://db.irowiki.org/image/monster/1002.png "Poring")
 
 ### Functions with and without arguments
 
@@ -78,9 +79,10 @@ perimeter based on those values. Perimeter is calculated as the sum of twice the
         +++
     </pre>
 
-![](http://vignette3.wikia.nocookie.net/ragnarok8812/images/f/f5/RO_Deviling.gif/revision/latest?cb=20130131215804 "Deviling")
 
 ## Advanced Exercises
+
+*Level:*  ![](http://vignette3.wikia.nocookie.net/ragnarok8812/images/f/f5/RO_Deviling.gif/revision/latest?cb=20130131215804 "Deviling")
 
 + Write a version of a palindrome recognizer that also accepts phrase palindromes such as "Go hang a salami I'm a lasagna hog.", "Was it a rat I saw?",
  "Step on no pets", "Sit on a potato pan, Otis", "Lisa Bonet ate no basil", "Satan, oscillate my metallic sonatas", "I roamed under it as a tired nude Maori",
