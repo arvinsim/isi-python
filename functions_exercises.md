@@ -1,6 +1,10 @@
 # Function Exercises
 
-## Passing Arguments
+![](http://db.irowiki.org/image/monster/1002.png "Poring")
+
+## Basic Exercises 
+
+### Functions with and without arguments
 
 + Choose a song that you like. Using functions, divide that song to some logical divisions(chorus, verse, bridge, etc) 
 and print out the whole lyrics of the song without copy pasting the parts of the song that are repeated.
@@ -14,7 +18,7 @@ histogram([4, 9, 7]) should print the following:
     *******
 </pre>
 
-## Returning values
+### Functions with and without return values
 
 + Define 2 functions, `do_nothing()` and `do_nothing2()` that returns nothing. One of the functions must use the `return`
 keyword.
@@ -26,9 +30,7 @@ perimeter based on those values. Perimeter is calculated as the sum of twice the
     + `reverse()` that computes the reversal of a string. For example, reverse("I am testing") should return the string "gnitset ma I”
     + `is_palindrome()` that recognizes palindromes (i.e. words that look the same written backwards). For example, is_palindrome("radar") should return True.
 
-
-
-## Named Parameters and Default Parameters
+### Named Parameters and Default Parameters
 
 - Define a function that draws a rectangle using asterisks as default, accepting a parameter that defines how many asterisks to draw for its width and height
 
@@ -76,7 +78,9 @@ perimeter based on those values. Perimeter is calculated as the sum of twice the
         +++
     </pre>
 
-## Advanced 
+![](http://vignette3.wikia.nocookie.net/ragnarok8812/images/f/f5/RO_Deviling.gif/revision/latest?cb=20130131215804 "Deviling")
+
+## Advanced Exercises
 
 + Write a version of a palindrome recognizer that also accepts phrase palindromes such as "Go hang a salami I'm a lasagna hog.", "Was it a rat I saw?",
  "Step on no pets", "Sit on a potato pan, Otis", "Lisa Bonet ate no basil", "Satan, oscillate my metallic sonatas", "I roamed under it as a tired nude Maori",
