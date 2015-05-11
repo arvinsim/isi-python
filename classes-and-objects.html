@@ -108,8 +108,12 @@
             </section>
 
             <section>
-                <p>Sometimes objects represent more abstract entities, like an object that represents an open file,
-                    or an object which provides the service of translating measurements from U.S. customary to metric.</p>
+                <p>Sometimes objects represent more abstract entities</p>
+                <p>For example,</p>
+                <ul>
+                    <li>an object that represents an open file</li>
+                    <li>an object which provides the service of translating measurements from U.S. customary to metric.</li>
+                </ul>
             </section>
 
             <section>
@@ -147,13 +151,62 @@
             </section>
 
             <section>
-                + Class Example
-                + Class example with properties
-                + Empty class example
+                <pre><code>
+    class TestClass(object):
+        ...
+                </code></pre>
+            </section>
+
+            <section>
+                <pre><code>
+    class TestClass(object):
+        test_property = "test string"
+                </code></pre>
+            </section>
+
+            <section>
+                <pre><code>
+    class NothingHere(object):
+        pass
+                </code></pre>
             </section>
 
             <section>
                 <p>Just like functions, they do nothing by themselves.</p>
+            </section>
+        </section>
+
+        <section>
+            <h2>Properties/Attributes</h2>
+            <section></section>
+
+            <section>
+                <p>In the previous example, there was a variable named test_property</p>
+                <pre><code>
+    class TestClass(object):
+        test_property = "test string"
+                </code></pre>
+            </section>
+
+            <section>
+                <p>These are what you call properties</p>
+            </section>
+
+            <section>
+                <p>What are properties?</p>
+                <p>+ Explanation of what properties are</p>
+            </section>
+
+            <section>
+                <pre><code>
+    class Person(object):
+        age = 18
+        sex = "female"
+        location = {
+            'city': 'Cagayan de Oro',
+            'street': 'Claro Recto'
+        }
+                </code></pre>
             </section>
         </section>
 
@@ -172,46 +225,117 @@
             </section>
 
             <section>
-                <p>When we instantiate, we create a new object. That new object is called an instance of the class you created it
+                <p>When we instantiate, we create a new object. That new object is an instance of the class you created it
                     from.</p>
+                <pre><code>
+    class Person(object):
+        pass
+
+    ogag = Person()
+                </code></pre>
             </section>
 
             <section>
                 <p>Each instance is unique. It is separate from other instances.</p>
+                <pre><code>
+    wangbu = Person()
+    print ogag == wangbu # False
+                </code></pre>
             </section>
 
             <section>
-                <p>The type of an instance is that of its class. Basically, a class is its own datatype!</p>
+                <p>The type of an instance is that of its class. Basically, a class is its own datatype.</p>
+                <pre><code>
+    print type(ogag) # <class '__main__.Person'>
+                </code></pre>
             </section>
         </section>
 
         <section>
-            <h2>Properties/Attributes</h2>
-            <section></section>
+            <h2>More on properties</h2>
 
             <section>
-                + What are properties?
+                <p>Remember this code?</p>
+                <pre><code>
+    class Person(object):
+        age = 18
+        sex = "female"
+        location = {
+            'city': 'Cagayan de Oro',
+            'street': 'Claro Recto'
+        }
+                </code></pre>
             </section>
 
             <section>
-                + Properties are attributes of an object
+                <p>Let's instantiate a new person</p>
+                <pre><code>
+    p = Person()
+                </code></pre>
             </section>
 
             <section>
-                + Class example with properties that intuitively refer to the object.
+                <h3>Getting Properties</h3>
             </section>
 
             <section>
-                + getting properties
+                <p>Suppose we want to get information about that person. In this case, we want to get the
+                properties or attributes. We do it like this.</p>
+
+                <pre><code>
+    p.age # don't do anything with the property
+    print p.age # print the property
+    dat_age = p.age # assign the property
+                </code></pre>
             </section>
 
             <section>
-                + setting properties
+                <h3>Setting Properties</h3>
+            </section>
+
+            <section>
+                <p>Let's try instantiating another person</p>
+                <pre><code>
+                    ogag = Person()
+                </code></pre>
+            </section>
+
+            <section>
+                <p>While ogag is a person, the properties doesn't seem to describe him correctly</p>
+                <pre><code>
+    print ogag.age # 18? Asa ka pa!
+    print ogag.female # female? *pukes*
+                </code></pre>
+            </section>
+
+            <section>
+                <p>What we need to do is to set the properties to a more correct one. We do it like this.</p>
+                <pre>
+    ogag.age = 27
+    ogag.sex = "male"
+                </pre>
+            </section>
+
+            <section>
+                <p>If we print them out, we see that they have changed</p>
+                <pre><code>
+    print ogag.age
+    print ogag.sex
+                </code></pre>
             </section>
         </section>
+
 
         <section>
             <h2>Methods</h2>
+        </section>
+
+        <section>
+            <h2>Constructors</h2>
+        </section>
+
+        <section>
+            <h2>More on methods</h2>
         </section>
 
         <section>
