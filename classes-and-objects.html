@@ -64,7 +64,9 @@
             </section>
 
             <section>
-                <p>INTRODUCING OBJECT ORIENTED PROGRAMMING!</p>
+                <p>Introducing...</p>
+                <img class="fragment" src="http://i.imgur.com/3dMJuPE.jpg" alt="Object Oriented Programming!"/>
+
             </section>
         </section>
 
@@ -73,35 +75,17 @@
             <section></section>
 
             <section>
-                <p>
-                    Object-oriented programming (OOP) is a programming paradigm based on the concept of "objects",
-                    which are data structures that contain data, in the form of fields, often known as attributes; and code, in the form of procedures, often known as methods.
-                </p>
-            </section>
-
-            <section>
-                <p>That was a mouthful of words, let us translate that to something a layman can understand</p>
-            </section>
-
-            <section>
-                <p>Arthur's Definition of OOP</p>
-                <p>Object Oriented Programming is programming using "objects" in real life as an analogy. Objects has attributes and some can do some stuff</p>
-                (trademarked) (copyrighted)
-            </section>
-        </section>
-
-        <section>
-            <h2>Objects</h2>
-            <section></section>
-
-            <section>
-                + Objects are the heart and soul of Python
+                <p>What is Object Oriented Programming(OOP)?</p>
+                <p class="fragment">A programming paradigm based on the concept of "objects", which are data structures that contain:</p>
+                <ul class="fragment">
+                    <li>data in the form of fields, often known as attributes or properties</li>
+                    <li>code in the form of procedures, often known as methods or class functions</li>
+                </ul>
             </section>
 
             <section>
                 <p>Objects can sometimes correspond to things found in the world.</p>
-                <p>For example,</p>
-                <ul>
+                <ul class="fragment">
                     <li>A graphics program may have objects such as "circle," "square," "menu".</li>
                     <li>An online shopping system might have objects such as "shopping cart," "customer," and "product."</li>
                 </ul>
@@ -109,19 +93,10 @@
 
             <section>
                 <p>Sometimes objects represent more abstract entities</p>
-                <p>For example,</p>
-                <ul>
+                <ul class="fragment">
                     <li>an object that represents an open file</li>
                     <li>an object which provides the service of translating measurements from U.S. customary to metric.</li>
                 </ul>
-            </section>
-
-            <section>
-                + Objects have attributes
-            </section>
-
-            <section>
-                + Objects can do stuff
             </section>
         </section>
 
@@ -129,18 +104,6 @@
             <h2>Introduction to Classes</h2>
         </section>
 
-        <section>
-            <h2>What is a class?</h2>
-            <section></section>
-
-            <section>
-                <p>Classes are simply how you implement and apply the concept of objects.</p>
-            </section>
-
-            <section>
-                <p>Think of classes as "blueprints" for your objects</p>
-            </section>
-        </section>
 
         <section>
             <h2>Defining a Class</h2>
@@ -152,27 +115,36 @@
 
             <section>
                 <pre><code>
-    class TestClass(object):
+    class OldStyleClass():
+        ...
+
+    class NewStyleClass(object):
         ...
                 </code></pre>
             </section>
 
             <section>
                 <pre><code>
-    class TestClass(object):
-        test_property = "test string"
-                </code></pre>
-            </section>
+    class OldStyleClass():
+        pass
 
-            <section>
-                <pre><code>
-    class NothingHere(object):
+    class NewStyleClass(object):
         pass
                 </code></pre>
             </section>
 
             <section>
-                <p>Just like functions, they do nothing by themselves.</p>
+                <pre><code>
+    class OldStyleClass():
+        osp = "a property of a old style class"
+
+    class NewStyleClass(object):
+        nsp = "a property of a new style class"
+                </code></pre>
+            </section>
+
+            <section>
+                Just like functions, class definitions do nothing by themselves.
             </section>
         </section>
 
@@ -181,20 +153,63 @@
             <section></section>
 
             <section>
-                <p>In the previous example, there was a variable named test_property</p>
+                <p>In the previous example, there was a variable named nsp</p>
                 <pre><code>
-    class TestClass(object):
-        test_property = "test string"
+    class NewStyleClass(object):
+        nsp = "a property of a new style class"
                 </code></pre>
             </section>
 
             <section>
-                <p>These are what you call properties</p>
+                <p>This is what you call a property</p>
             </section>
 
             <section>
                 <p>What are properties?</p>
                 <p>+ Explanation of what properties are</p>
+            </section>
+
+            <section>
+                <pre><code>
+    class Person(object):
+        """A Person. Persons have these attributes
+
+            age: a number representing the age of person
+            sex: a string representing the sex of the person
+            location: a dictionary representing a set of data related to
+                    the Person's location
+        """
+        age = 18
+        sex = "female"
+        location = {
+            'city': 'Cagayan de Oro',
+            'street': 'Claro Recto'
+        }
+                </code></pre>
+            </section>
+
+            <section>
+                <p>There are two types of properties:</p>
+                <ul>
+                    <li>class</li>
+                    <li>instance</li>
+                </ul>
+                <p class="fragment">For now, ignore this distinction. It will be brought up later on.</p>
+            </section>
+        </section>
+
+        <section>
+            <h2>What is a class?</h2>
+            <section></section>
+
+            <section>
+                <p>A user-defined prototype for an object that defines a set of attributes that characterize any object of the class.</p>
+                <p class="fragment">Put simply, <strong>classes are how you implement and apply the concept of objects.</strong></p>
+            </section>
+
+            <section>
+                <p>Think of classes as "blueprints" for your objects</p>
+                <p class="fragment">In our last example, the class Person is a blueprint for making Person objects</p>
             </section>
 
             <section>
@@ -208,6 +223,7 @@
         }
                 </code></pre>
             </section>
+        </section>
         </section>
 
         <section>
@@ -231,22 +247,51 @@
     class Person(object):
         pass
 
-    ogag = Person()
+    john = Person()
                 </code></pre>
             </section>
 
             <section>
-                <p>Each instance is unique. It is separate from other instances.</p>
+                <p>The syntax is</p>
                 <pre><code>
-    wangbu = Person()
-    print ogag == wangbu # False
+    Person() #&lt;name_of_class&gt;()
+                </code></pre>
+            </section>
+
+            <section>
+                <p><strong>Warning:</strong> Instantiating an object looks exactly like a function call.</p>
+                <p class="fragment">Python Programmers use the convention below to differentiate between the two:</p>
+                <ul class="fragment">
+                    <li>Classes start with an Uppercase() letter</li>
+                    <li>Functions start with a lowercase() letter</li>
+                </ul>
+            </section>
+
+            <section>
+                <pre><code>
+    def doppelganger():
+        pass
+
+    class Doppelganger(object):
+        pass
+
+    print doppelganger()
+    print Doppelganger()
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Each instance is unique</p>
+                <pre><code>
+    jane = Person()
+    print john == jane # False
                 </code></pre>
             </section>
 
             <section>
                 <p>The type of an instance is that of its class. Basically, a class is its own datatype.</p>
                 <pre><code>
-    print type(ogag) # <class '__main__.Person'>
+    print type(john) # &lt;class '__main__.Person'&gt;
                 </code></pre>
             </section>
         </section>
@@ -270,7 +315,7 @@
             <section>
                 <p>Let's instantiate a new person</p>
                 <pre><code>
-    p = Person()
+    jane = Person()
                 </code></pre>
             </section>
 
@@ -283,9 +328,9 @@
                 properties or attributes. We do it like this.</p>
 
                 <pre><code>
-    p.age # don't do anything with the property
-    print p.age # print the property
-    dat_age = p.age # assign the property
+    jane.age # don't do anything with the property
+    print jane.age # print the property
+    a_persons_age = jane.age # assign the property
                 </code></pre>
             </section>
 
@@ -296,31 +341,56 @@
             <section>
                 <p>Let's try instantiating another person</p>
                 <pre><code>
-                    ogag = Person()
+                    john = Person()
                 </code></pre>
             </section>
 
             <section>
-                <p>While ogag is a person, the properties doesn't seem to describe him correctly</p>
+                <p>Assuming John is a middle aged male, the properties doesn't seem to describe him correctly</p>
                 <pre><code>
-    print ogag.age # 18? Asa ka pa!
-    print ogag.female # female? *pukes*
+    print john.age # 18
+    print john.sex # female
                 </code></pre>
             </section>
 
             <section>
-                <p>What we need to do is to set the properties to a more correct one. We do it like this.</p>
-                <pre>
-    ogag.age = 27
-    ogag.sex = "male"
-                </pre>
+                <p>We can change the properties value by setting them. The syntax is shown below:</p>
+                <pre><code>
+    john.age = 35
+    john.sex = 'male'
+                </code></pre>
             </section>
 
             <section>
-                <p>If we print them out, we see that they have changed</p>
+                <p>If we print the properties, we see that they have changed</p>
                 <pre><code>
-    print ogag.age
-    print ogag.sex
+    print john.age # 35
+    print john.sex # 'male'
+                </code></pre>
+            </section>
+
+            <section>
+                <p>You can add new properties to an object after instantiation.</p>
+                <pre><code>
+    john.first_name = "John"
+    john.last_name = "Doe"
+    print john.first_name
+    print john.last_name
+                </code></pre>
+            </section>
+
+            <section>
+                <p>However, that is not considered a good habit. Always declare your properties in the class definition if possible</p>
+                <pre><code>
+    class Person(object):
+        first_name = ""
+        last_name = ""
+        age = 18
+        sex = "female"
+        location = {
+            'city': 'Cagayan de Oro',
+            'street': 'Claro Recto'
+        }
                 </code></pre>
             </section>
         </section>
