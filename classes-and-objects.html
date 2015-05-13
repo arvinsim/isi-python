@@ -78,7 +78,7 @@
                 <p>What is Object Oriented Programming(OOP)?</p>
                 <p class="fragment">A programming paradigm based on the concept of "objects", which are data structures that contain:</p>
                 <ul class="fragment">
-                    <li>data in the form of fields, often known as attributes or properties</li>
+                    <li>data in the form of fields, often known as attributes or attributes</li>
                     <li>code in the form of procedures, often known as methods or class functions</li>
                 </ul>
             </section>
@@ -136,37 +136,44 @@
             <section>
                 <pre><code>
     class OldStyleClass():
-        osp = "a property of a old style class"
+        osp = "an attribute of a old style class"
 
     class NewStyleClass(object):
-        nsp = "a property of a new style class"
+        nsp = "an attribute of a new style class"
                 </code></pre>
             </section>
 
             <section>
-                Just like functions, class definitions do nothing by themselves.
+                <p>Just like functions, class definitions do nothing by themselves and have their own scope.</p>
             </section>
         </section>
 
         <section>
-            <h2>Properties/Attributes</h2>
+            <h2>Attributes</h2>
             <section></section>
 
             <section>
                 <p>In the previous example, there was a variable named nsp</p>
                 <pre><code>
     class NewStyleClass(object):
-        nsp = "a property of a new style class"
+        nsp = "an attribute of a new style class"
                 </code></pre>
             </section>
 
             <section>
-                <p>This is what you call a property</p>
+                <p>This is what you call an attribute</p>
             </section>
 
             <section>
-                <p>What are properties?</p>
-                <p>+ Explanation of what properties are</p>
+                <ul>
+                    <li>Attributes belong to the scope of the class</li>
+                    <li>The value in the declaration is their default value</li>
+                    <li>Just like variables, they can be of any data type</li>
+                </ul>
+            </section>
+
+            <section>
+                <p>Think of attributes as variables that describe an object.</p>
             </section>
 
             <section>
@@ -183,13 +190,14 @@
         sex = "female"
         location = {
             'city': 'Cagayan de Oro',
-            'street': 'Claro Recto'
+            'street': 'Claro M. Recto Avenue',
+            'country': 'Philippines'
         }
                 </code></pre>
             </section>
 
             <section>
-                <p>There are two types of properties:</p>
+                <p>There are two types of attributes:</p>
                 <ul>
                     <li>class</li>
                     <li>instance</li>
@@ -227,7 +235,7 @@
         </section>
 
         <section>
-            <h2>Classes and Objects</h2>
+            <h2>Objects</h2>
             <section></section>
 
             <section>
@@ -236,7 +244,7 @@
             </section>
 
             <section>
-                <p>The term for creating an object is instantiation</p>
+                <p>The term for creating an object is instantiation.</p>
                 <p>Creating an object == Instantiating an object</p>
             </section>
 
@@ -297,7 +305,7 @@
         </section>
 
         <section>
-            <h2>More on properties</h2>
+            <h2>More on attributes</h2>
 
             <section>
                 <p>Remember this code?</p>
@@ -320,33 +328,33 @@
             </section>
 
             <section>
-                <h3>Getting Properties</h3>
+                <h3>Getting attributes</h3>
             </section>
 
             <section>
                 <p>Suppose we want to get information about that person. In this case, we want to get the
-                properties or attributes. We do it like this.</p>
+                attributes. We do it like this:</p>
 
                 <pre><code>
-    jane.age # don't do anything with the property
-    print jane.age # print the property
-    a_persons_age = jane.age # assign the property
+    jane.age                    # don't do anything with the property
+    print jane.age              # print the property
+    a_persons_age = jane.age    # assign the property
                 </code></pre>
             </section>
 
             <section>
-                <h3>Setting Properties</h3>
+                <h3>Setting attributes</h3>
             </section>
 
             <section>
                 <p>Let's try instantiating another person</p>
                 <pre><code>
-                    john = Person()
+    john = Person()
                 </code></pre>
             </section>
 
             <section>
-                <p>Assuming John is a middle aged male, the properties doesn't seem to describe him correctly</p>
+                <p>Assuming John is a middle aged male, the attributes doesn't seem to describe him correctly</p>
                 <pre><code>
     print john.age # 18
     print john.sex # female
@@ -354,7 +362,7 @@
             </section>
 
             <section>
-                <p>We can change the properties value by setting them. The syntax is shown below:</p>
+                <p>We can change the attributes value by setting them. The syntax is shown below:</p>
                 <pre><code>
     john.age = 35
     john.sex = 'male'
@@ -362,7 +370,7 @@
             </section>
 
             <section>
-                <p>If we print the properties, we see that they have changed</p>
+                <p>If we print the attributes, we see that they have changed</p>
                 <pre><code>
     print john.age # 35
     print john.sex # 'male'
@@ -370,7 +378,7 @@
             </section>
 
             <section>
-                <p>You can add new properties to an object after instantiation.</p>
+                <p>Note: You can add new attributes to an object after instantiation.</p>
                 <pre><code>
     john.first_name = "John"
     john.last_name = "Doe"
@@ -380,7 +388,7 @@
             </section>
 
             <section>
-                <p>However, that is not considered a good habit. Always declare your properties in the class definition if possible</p>
+                <p>However, that is not considered a good habit. Always declare your attributes in the class definition if possible</p>
                 <pre><code>
     class Person(object):
         first_name = ""
@@ -398,30 +406,186 @@
 
         <section>
             <h2>Methods</h2>
+            <section></section>
+
+            <section>
+                <p>If attributes defines what objects are, methods defines what objects do</p>
+            </section>
+
+            <section>
+                <p>Methods are just functions for a class. As such, they are just like functions except for some
+                differences</p>
+            </section>
+
+            <section>
+                <p>1.) They have a mandatory first parameter called self</p>
+                <pre><code>
+    class Vehicle(object):
+        def move_forward(self):
+            pass
+                </code></pre>
+            </section>
+
+            <section>
+                <p>2.) They are called like attributes</p>
+                <pre><code>
+    class Vehicle(object):
+        def move_forward(self):
+            pass
+
+    car = Vehicle()
+    car.move_forward()
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Think of it this way:</p>
+                <ul>
+                    <li>attributes -> object variables</li>
+                    <li>methods -> object functions</li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <h2>Self</h2>
+            <section></section>
+
+            <section>
+                <p>Here are some important things to remember about self</p>
+            </section>
+
+            <section>
+                <p>1.) Even though self is the first parameter, arguments passed to the method correspond only to the second
+                parameter and up</p>
+                <pre><code>
+    class Vehicle(object):
+        def turn_on(self):
+            pass
+
+    car = Vehicle()
+    car.turn_on()
+                </code></pre>
+            </section>
+
+            <section>
+                <pre><code>
+    class Vehicle(object):
+        def move(self, direction="left", distance=0):
+            pass
+
+    car = Vehicle()
+    car.move(direction="right", distance=100)
+                </code></pre>
+            </section>
+
+            <section>
+                <p>2.) self refers to the current instance of the object. You can access the current instance's attributes
+                via self</p>
+                <pre><code>
+    class Vehicle(object):
+        def get_full_name(self):
+            return "{} {}".format(self.manufacturer, self.name)
+
+    skyline = Vehicle()
+    skyline.manufacturer = "Nissan"
+    skyline.name = "Skyline GT-R"
+    print skyline.get_full_name() # Nissan Skyline GT-R
+
+    impreza = Vehicle()
+    impreza.manufacturer = "Subaru"
+    impreza.name = "Impreza WRX"
+    print impreza.get_full_name() # Subaru Impreza WRX
+                </code></pre>
+            </section>
+
+            <section>
+                <p>3.)You can access other methods via self too.</p>
+                <pre><code>
+    class Vehicle(object):
+        def get_full_name(self):
+            return "{} {} {}".format(
+                self.manufacturer,
+                self.name,
+                self.get_body_type())
+
+        def get_body_type(self):
+            return "grand tourer"
+
+    skyline = Vehicle()
+    skyline.manufacturer = "Nissan"
+    skyline.name = "Skyline GT-R"
+    print skyline.get_full_name() # Nissan Skyline GT-R ground tourer
+                </code></pre>
+            </section>
         </section>
 
         <section>
             <h2>Constructors</h2>
+            <section></section>
+
+            <section>
+                <p>There is a special method for classes that you can implement that will automatically execute once
+            you instantiate an object</p>
+            </section>
+
+            <section>
+                <p>This method is called a constructor</p>
+            </section>
+
+            <section>
+                <p>The syntax for implementing it is shown below</p>
+                <pre><code>
+    class Vehicle(object):
+        def __init__(self, ...): # This is the signature of a constructor
+            pass
+                </code></pre>
+            </section>
+
+            <section>
+                <p>If we try to instantiate an object, the constructor will automatically execute</p>
+                <pre><code>
+    class Vehicle(object):
+        def __init__(self): # This is the signature of a constructor
+            print "Creating a Vehicle object"
+
+    car = Vehicle() # "Creating a Vehicle object" will be printed
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Just like functions, constructors can be set with whatever parameters you want.</p>
+                <pre><code>
+    class Vehicle(object):
+        def __init__(self, name="", manufacturer="", body_style=""):
+            print """
+            Creating a {} {} with a {} body style
+            """.format(manufacturer, name, body_style)
+                </code></pre>
+
+            </section>
+            <section>
+                <p>To pass arguments to it, pass it in the instantiation call</p>
+                <pre><code>
+    class Vehicle(object):
+        def __init__(self, name="", manufacturer="", body_style=""):
+            print """
+            Creating a {} {} with a {} body style
+            """.format(manufacturer, name, body_style)
+
+    # Prints "Creating a Toyota Sprinter Trueno with
+    # a coupe body style
+    car = Vehicle(
+        manufacturer="Toyota",
+        body_style="coupe",
+        name="Sprinter Trueno"
+    )
+                </code></pre>
+            </section>
         </section>
 
         <section>
-            <h2>More on methods</h2>
-        </section>
-
-        <section>
-            <h2>Case Study</h2>
-
-            <section>
-                + Pure Procedural
-            </section>
-
-            <section>
-                + Function based
-            </section>
-
-            <section>
-                + Class based
-            </section>
+            <h2>Instance and Class Attributes</h2>
         </section>
     </div>
 </div>
