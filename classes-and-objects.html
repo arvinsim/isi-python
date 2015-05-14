@@ -101,7 +101,7 @@
         </section>
 
         <section>
-            <h2>Introduction to Classes</h2>
+            <h2>Classes</h2>
         </section>
 
 
@@ -202,7 +202,6 @@
                     <li>class</li>
                     <li>instance</li>
                 </ul>
-                <p class="fragment">For now, ignore this distinction. It will be brought up later on.</p>
             </section>
         </section>
 
@@ -227,7 +226,8 @@
         sex = "female"
         location = {
             'city': 'Cagayan de Oro',
-            'street': 'Claro Recto'
+            'street': 'Claro M. Recto Avenue',
+            'country': 'Philippines'
         }
                 </code></pre>
             </section>
@@ -236,6 +236,10 @@
 
         <section>
             <h2>Objects</h2>
+        </section>
+
+        <section>
+            <h2>Creating Objects</h2>
             <section></section>
 
             <section>
@@ -315,7 +319,8 @@
         sex = "female"
         location = {
             'city': 'Cagayan de Oro',
-            'street': 'Claro Recto'
+            'street': 'Claro M. Recto Avenue',
+            'country': 'Philippines'
         }
                 </code></pre>
             </section>
@@ -397,7 +402,8 @@
         sex = "female"
         location = {
             'city': 'Cagayan de Oro',
-            'street': 'Claro Recto'
+            'street': 'Claro M. Recto Avenue',
+            'country': 'Philippines'
         }
                 </code></pre>
             </section>
@@ -452,7 +458,7 @@
             <section></section>
 
             <section>
-                <p>Here are some important things to remember about self</p>
+                <p>Here are some important things to remember about the self keyword</p>
             </section>
 
             <section>
@@ -585,7 +591,79 @@
         </section>
 
         <section>
-            <h2>Instance and Class Attributes</h2>
+            <h2>Class and Instance Attributes</h2>
+            <section></section>
+
+            <section>
+                <p>Class attributes are defined below the class declaration</p>
+                <pre><code>
+    class Vehicle(object):
+        color = "red"
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Class attributes are called by using the class name instead of the object instance</p>
+                <pre><code>
+    car = Vehicle()
+    print Vehicle.color
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Instance attributes are defined in the constructor using self</p>
+                <pre><code>
+    class Vehicle(object):
+        def __init__(self):
+            self.manufacturer = "Ferrari"
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Instance attributes are called using the instance name</p>
+                <pre><code>
+    car = Vehicle()
+    print car.manufacturer
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Class attributes are shared between all instances of that class while instance attributes are not.</p>
+                <pre><code>
+    car1 = Vehicle()
+    car2 = Vehicle()
+
+    Vehicle.color = "blue"
+    car1.manufacturer = "Maserati"
+    car2.manufacturer = "Lamborghini"
+
+    print car1.color
+    print car1.manufacturer
+    print car2.color
+    print car2.manufacturer
+                </code></pre>
+            </section>
+
+            <section>
+                <p>The order of precedence when variables are accessed.</p>
+                <ol>
+                    <li>Instance Attributes of that attribute name</li>
+                    <li>Class Attributes of that attribute name</li>
+                </ol>
+            </section>
+
+            <section>
+                <pre><code>
+    class Vehicle():
+        color = "red"
+
+    car1 = Vehicle()
+    car2 = Vehicle()
+
+    print car1.color
+    print car2.color
+                </code></pre>
+            </section>
         </section>
     </div>
 </div>
