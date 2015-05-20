@@ -1,3 +1,5 @@
+import random
+
 #====================================================================================================
 # CountLeObject
 #====================================================================================================
@@ -118,16 +120,21 @@ class Player(object):
     def __init__(self):
         self.hand = []
 
+    def receive_card(self, card):
+        self.hand.append(card)
 
 class Card(object):
     def __init__(self, suit, rank):
         self.suit = suit
         self.rank = rank
     def __repr__(self):
-        return "Suit: {}, Rank: {}".format(self.suit, self.rank)
+        return "(CARD: {} {})".format(self.rank, self.suit)
 
 class Deck(object):
     def __init__(self):
+        self.reshuffle()
+
+    def reshuffle(self):
         self.cards = []
         for rank in range(1, 14):
             if rank == 1:
@@ -142,14 +149,33 @@ class Deck(object):
             for suit in ['Spades', 'Hearts', 'Diamonds', 'Clubs']:
                 self.cards.append(Card(suit, rank))
 
-    # TODO
-    def deal_poker_hands(self, number):
-        if number < 2 and number > 8:
-            print "Invalid number was passed!"
+    def get_card_from_deck(self):
+        index = random.randrange(0, len(self.cards) - 1)
+        return self.cards.pop(index)
+
+    def deal_poker_hands(self, number_of_players):
+        if number_of_players < 2 and number_of_players > 8:
+            print "Invalid number_of_players was passed!"
             return
 
-d = Deck()
+        # ...and the player list
+        players = []
 
+        for x in range(number_of_players):
+            player = Player()
+
+            for y in range(2):
+                card = self.get_card_from_deck()
+                player.receive_card(card)
+
+            players.append(player)
+
+        return players
+
+d = Deck()
+players = d.deal_poker_hands(4)
+for index, player in enumerate(players):
+    print "Player {} has this hand: {}".format(index+1, player.hand)
 
 
 
