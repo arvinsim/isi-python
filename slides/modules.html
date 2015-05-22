@@ -25,7 +25,7 @@
 			var link = document.createElement( 'link' );
 			link.rel = 'stylesheet';
 			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../revealjs/css/print/pdf.css' : '../revealjs/css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
@@ -42,12 +42,88 @@
                     <h1>Modules, Packages and More</h1>
                 </section>
 
-                <section>
-                    <h2>Modules</h2>
-                    + import statement
-                    + from ... import statement
-                    + from ... import * statement
-                </section>
+				<section>
+					<h2>Modules</h2>
+				</section>
+
+				<section>
+					<h3>modules</h3>
+
+					<section>
+						<p>A module is a file containing Python definitions and statements</p>
+					</section>
+
+					<section>
+						<p>The file name is the module name with the suffix, <code>.py</code> appended.</p>
+						<table>
+							<tr>
+								<th>module name</th>
+								<th>filename</th>
+							</tr>
+							<tr>
+								<td>fubar</td>
+								<td>fubar.py</td>
+							</tr>
+						</table>
+					</section>
+
+				</section>
+
+				<section>
+					<h3>import Statement</h3>
+
+					<section>
+						<p>To use a module, we use the <code>import</code> command</p>
+						<pre><code>
+    # import a file
+    import fubar
+						</code></pre>
+					</section>
+
+					<section>
+						<p>Assume that we have this simple module</p>
+						<pre><code>
+    # physics.py
+
+    solar_luminous_efficacy = 93
+
+    def get_speed_of_light():
+    	return 299792458
+
+    class ElectroMagneticConstants(object):
+    	magnetic_flux_quantum = 2.067833758e-15
+
+    class ElectronAtomConstants(object):
+        def __init__(self):
+            self.electron_rest_mass = 9.10938291e-31
+						</code></pre>
+					</section>
+
+					<section>
+						<p>If we import <code>physics.py</code>, we can access definitions and statements.</p>
+						<p>That includes variables, functions, classes, etc.</p>
+						<pre><code>
+    # import physics.py file
+    import physics
+
+    # use it
+    print physics.solar_luminous_efficacy
+    print physics.get_speed_of_light()
+    print physics.ElectroMagneticConstants.magnetic_flux_quantum
+
+    eac = physics.ElectronAtomConstants()
+    print eac.electron_rest_mass
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<h3>from ... import statement</h3>
+				</section>
+
+				<section>
+					<h3>from ... import * statement</h3>
+				</section>
 
                 <section>
                     <h2>More on Modules</h2>
@@ -93,9 +169,9 @@
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
+					{ src: '../revealjs/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../revealjs/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../revealjs/plugin/notes/notes.js', async: true }
 				]
 			});
 
