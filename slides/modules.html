@@ -81,6 +81,16 @@
 					</section>
 
 					<section>
+						<p><code>import X</code> imports the module X, and creates a reference to that module in the
+						current namespace.</p>
+					</section>
+
+                    <section>
+                        <p>In other words, after you've run this statement, you can use <code>X.name</code> to
+                            refer to things defined in module X.</p>
+                    </section>
+
+					<section>
 						<p>Assume that we have this simple module</p>
 						<pre><code>
     # physics.py
@@ -107,30 +117,70 @@
     import physics
 
     # use it
-    print physics.solar_luminous_efficacy
-    print physics.get_speed_of_light()
+    print physics.solar_luminous_efficacy  # variable
+    print physics.get_speed_of_light()  # function
+    # class attribute
     print physics.ElectroMagneticConstants.magnetic_flux_quantum
 
-    eac = physics.ElectronAtomConstants()
-    print eac.electron_rest_mass
+    eac = physics.ElectronAtomConstants()  # Instantiate a class
+    print eac.electron_rest_mass  # instance variable
 						</code></pre>
 					</section>
 				</section>
 
 				<section>
-					<h3>from ... import statement</h3>
+					<h3>from X import statement</h3>
+
+                    <section>
+                        <p><code>from X import a, b, c</code> imports the module X, and creates references in the current namespace
+                        to the given objects.</p>
+                    </section>
+
+                    <section>
+                        <p>In other words, you can now use <code>a</code> and <code>b</code> and <code>c</code> in your program</p>
+                    </section>
+
+                    <section>
+                        <pre><code></code></pre>
+                    </section>
 				</section>
 
 				<section>
-					<h3>from ... import * statement</h3>
-				</section>
+					<h3>from X import * statement</h3>
 
-                <section>
-                    <h2>More on Modules</h2>
-                    + Locating Modules
-                    + Python Path
-                    + dir Function
-                </section>
+					<section>
+						<p><code>from X import *</code> imports the module X, and creates references in the current namespace to
+						all public objects defined by that module(that is, everything that doesn't have a name
+						starting with "__").</p>
+					</section>
+
+					<section>
+						<p>In other words, after you've run this statement, you can simply use a plain
+							<code>name</code> to refer to things defined in module X. But X itself is not defined,
+							so <code>X.name</code> doesn't work</p>
+					</section>
+
+					<section>
+						<pre><code></code></pre>
+					</section>
+
+					<section>
+						<p>If <code>name</code> was already defined, it is replaced by the new version</p>
+					</section>
+
+					<section>
+						<pre><code></code></pre>
+					</section>
+
+					<section>
+						<p>If <code>name</code> in X is changed to point to some other object, your module won't notice</p>
+					</section>
+
+					<section>
+						<pre><code></code></pre>
+					</section>
+
+				</section>
 
                 <section>
                     <h2>Standard Modules</h2>
@@ -140,6 +190,7 @@
                     + math
                     + random
                     + file
+                    https://docs.python.org/2/library/
                 </section>
 
                 <section>
