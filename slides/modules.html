@@ -39,7 +39,7 @@
 		<div class="reveal">
 			<div class="slides">
                 <section>
-                    <h1>Modules, Packages and More</h1>
+                    <h1>Modules and Packages</h1>
                 </section>
 
 				<section>
@@ -66,6 +66,10 @@
 							</tr>
 						</table>
 					</section>
+
+                    <section>
+                        <p><strong>DON'T</strong> use the dot(.) character in naming modules. You will see later why this is the case.</p>
+                    </section>
 
 				</section>
 
@@ -177,10 +181,218 @@
 					</section>
 
 					<section>
-						<pre><code></code></pre>
+						<pre><code>
+
+						</code></pre>
 					</section>
 
 				</section>
+
+                <section>
+                    <h3>dir and help function</h3>
+
+                    <section>
+                        <p>Two very important functions come in handy when exploring modules in Python - the <code>dir</code> and <code>help</code> functions</p>
+                    </section>
+
+                    <section>
+                        <p>Assume that we have this module</p>
+                        <pre><code>
+    # sample.py
+    sample_variable = "a"
+    def sample_function():
+        """
+        A sample function
+        """
+        pass
+    class SampleClass(object):
+        """
+        A sample class
+        """
+        pass
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Using <code>dir</code> on a module shows a list that contains the names of the module's attributes</p>
+                        <pre><code>
+    import sample
+    print dir(sample)
+    """
+    ['SampleClass', '__author__', '__builtins__', '__doc__',
+    '__file__', '__name__', '__package__', 'sample_function',
+    'sample_variable']
+    """
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Using <code>help</code> on a module generates a help page on that module</p>
+                        <pre><code>
+    import sample
+    print help(sample)
+
+    """
+    help on module sample:
+
+    name
+        sample - # sample.py
+
+    file
+        /../../../../sample.py
+
+    classes
+        __builtin__.object
+        sampleclass
+
+        class sampleclass(__builtin__.object)
+        |  a sample class
+        |
+        |  data descriptors defined here:
+        |
+        |  __dict__
+        |      dictionary for instance variables (if defined)
+        |
+        |  __weakref__
+        |      list of weak references to the object (if defined)
+
+    functions
+        sample_function()
+            a sample function
+
+    data
+        sample_variable = 'a'
+
+    none
+    """
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Packages</h2>
+                </section>
+
+				<section>
+					<h3>Creating Packages</h3>
+
+					<section>
+						<p>Packages are namespaces which contain multiple packages and modules themselves. They are simply directories, but with a twist.</p>
+					</section>
+
+					<section>
+						<p>Each package in Python is a directory which <strong>MUST</strong> contain a special file called <code>__init__.py</code></p>
+						<pre><code>
+	physics_package/
+		__init__.py
+		classical.py
+		thermodynamics.py
+		electromagnetism.py
+		relativity.py
+		quantum.py
+                        </code></pre>
+					</section>
+
+                    <section>
+                        <p>This file can be empty, and it indicates that the directory it contains is a Python package, so it can be imported the same way a module can be imported.</p>
+                    </section>
+
+                    <section>
+                        <p>It executes when the module is loaded. It is analogous to the constructor for classes.</p>
+                    </section>
+
+				</section>
+
+                <section>
+                    <h3>Importing a Package</h3>
+
+                    <section>
+                        <p>To import a package, use the same syntax as you would import a module</p>
+                        <pre><code>
+    import physics_package
+    print help(physics_package)
+    """
+    Help on package physics_package:
+
+    NAME
+        physics_package
+
+    FILE
+        /../../../physics_package/__init__.py
+
+    PACKAGE CONTENTS
+        classical
+        electromagnetism
+        quantum
+        relativity
+        thermodynamics
+
+    AUTHOR
+        avsimon
+
+    None
+    """
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Note that you can also use the <code>from X import</code> and <code>from X import *</code>
+                        form of importing</p>
+                        <pre><code>
+    from physics_package import classical, electromagnetism
+    print help(classical)
+    print help(electromagnetism)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h3>Nesting Packages</h3>
+
+                    <section>
+                        <p>Packages can be nested</p>
+						<pre><code>
+    parent_package/
+        __init__.py
+            child1_package/
+                __init_.py
+            child2_package/
+                __init__.py
+                grandchild_package/
+                    __init__.py
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h3>Importing Nested Packages or Modules</h3>
+
+                    <section>
+                        <p>To import nested packages or modules, you can access the child modules packages by using the
+                        dot operator. The dot operator acts like a directory.</p>
+                        <pre><code>
+    import parent_package.child2_package.grandchild_package
+    print help(parent_package.child2_package.grandchild_package)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>The previous example was too long. To make it simpler, we can use the <code>as</code> keyword
+                        to alias modules or packages</p>
+                        <pre><code>
+    import parent_package.child2_package.grandchild_package as grandchild
+    print help(grandchild)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>It could also be done using the <code>from * import</code> format</p>
+                        <pre><code>
+    from parent_package.child2_package import grandchild_package
+    print help(grandchild_package)
+                        </code></pre>
+                    </section>
+                </section>
 
                 <section>
                     <h2>Standard Modules</h2>
@@ -191,11 +403,6 @@
                     + random
                     + file
                     https://docs.python.org/2/library/
-                </section>
-
-                <section>
-                    <h2>Packages</h2>
-                    __init__.py
                 </section>
             </div>
 		</div>
