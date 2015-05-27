@@ -61,22 +61,30 @@
 								<th>filename</th>
 							</tr>
 							<tr>
-								<td>fubar</td>
-								<td>fubar.py</td>
+								<td>mundane</td>
+								<td>mundane.py</td>
 							</tr>
+                            <tr>
+                                <td>with_underscore</td>
+                                <td>with_underscore.py</td>
+                            </tr>
 						</table>
 					</section>
 
                     <section>
-                        <p><strong>DON'T</strong> use the dot(.) character in naming modules. You will see later why this is the case.</p>
+                        <h4>Recommended naming conventions</h4>
+                        <ul>
+                            <li>It is encouraged to use short, all-lowercase names for modules.</li>
+                            <li>Underscores can be used in the module name if it improves readability</li>
+                            <li><strong>DON'T</strong> use the dot(.) character in naming modules. You will see later why this is the case.</li>
+                        </ul>
                     </section>
 				</section>
 
                 <section>
                     <h3>Creating modules</h3>
                     <section>
-                    <p>Writing Python modules is very simple. To create a module of your own, simply create a new <code>.py</code> f
-                        ile with the module name</p>
+                    <p>Writing Python modules is very simple. To create a module of your own, simply create a new <code>.py</code> file with the module name</p>
                     </section>
                 </section>
 
@@ -86,7 +94,7 @@
 					<section>
 						<p>To use a module, we use the <code>import</code> command</p>
 						<pre><code>
-    # import a file
+    # import a user created module, fubar.py
     import fubar
 						</code></pre>
 					</section>
@@ -140,19 +148,38 @@
 				</section>
 
 				<section>
-					<h3>from X import statement</h3>
+					<h3>from X import ... statement</h3>
 
                     <section>
-                        <p><code>from X import a, b, c</code> imports the module X, and creates references in the current namespace
+                        <p><code>from X import a, b, c, ...</code> imports the module X, and creates references in the current namespace
                         to the given objects.</p>
                     </section>
 
                     <section>
-                        <p>In other words, you can now use <code>a</code> and <code>b</code> and <code>c</code> in your program</p>
+                        <p>In the example, you can now use <code>a</code> and <code>b</code> and <code>c</code> in your program</p>
                     </section>
 
                     <section>
-                        <pre><code></code></pre>
+                        <p>Using the same <code>physics.py</code> module, we do it like this</p>
+                        <pre><code>
+    # import a variable
+    from physics import solar_luminous_efficacy
+    print solar_luminous_efficacy
+
+    # import a function
+    from physics import get_speed_of_light
+    print get_speed_of_light()
+
+    # import a class
+    from physics import ElectronAtomConstants
+    eac = ElectronAtomConstants()
+    print eac.electron_rest_mass
+
+    # You can import more than one
+    from physics import solar_luminous_efficacy, get_speed_of_light
+    print solar_luminous_efficacy
+    print get_speed_of_light()
+                        </code></pre>
                     </section>
 				</section>
 
@@ -161,8 +188,7 @@
 
 					<section>
 						<p><code>from X import *</code> imports the module X, and creates references in the current namespace to
-						all public objects defined by that module(that is, everything that doesn't have a name
-						starting with "__").</p>
+						all public objects defined by that module</p>
 					</section>
 
 					<section>
@@ -172,31 +198,49 @@
 					</section>
 
 					<section>
-						<pre><code></code></pre>
+                        <p>Again, using the same <code>physics.py</code> module, we can do it like this</p>
+						<pre><code>
+    from physics import *
+    print solar_luminous_efficacy
+    print get_speed_of_light()
+    print ElectroMagneticConstants.magnetic_flux_quantum
+    eac = ElectronAtomConstants()
+    print eac.electron_rest_mass
+                        </code></pre>
 					</section>
+
+                    <section>
+                        <p>There are exceptions though. Everything that starts with __ does not get imported.</p>
+                        <pre><code>
+    # Let's assume that we have module named philippines
+    # and it has a variable called __cool_cars
+    from philippines import *
+
+    # This will either show an error
+    # or print the value of __cars
+    # if defined in the same file
+    print __cool_cars
+                        </code></pre>
+                    </section>
 
 					<section>
 						<p>If <code>name</code> was already defined, it is replaced by the new version</p>
+                        <pre><code>
+    # assume two modules which has a single variable
+    # spam.py, food = "spam"
+    # eggs.py, food = "eggs"
+
+    from spam import *
+    print food # "spam"
+
+    from eggs import *
+    print food # "eggs"
+                        </code></pre>
 					</section>
-
-					<section>
-						<pre><code></code></pre>
-					</section>
-
-					<section>
-						<p>If <code>name</code> in X is changed to point to some other object, your module won't notice</p>
-					</section>
-
-					<section>
-						<pre><code>
-
-						</code></pre>
-					</section>
-
 				</section>
 
                 <section>
-                    <h3>dir and help function</h3>
+                    <h3>The dir and help functions</h3>
 
                     <section>
                         <p>Two very important functions come in handy when exploring modules in Python - the <code>dir</code> and <code>help</code> functions</p>
@@ -274,6 +318,12 @@
     """
                         </code></pre>
                     </section>
+
+                    <section>
+                        <h4>dir and help without arguments</h4>
+                        <p>Running <code>dir()</code> is the same as using <code>dir</code> on the current file/module</p>
+                        <p>Running <code>help()</code> launches an interactive help program</p>
+                    </section>
                 </section>
 
                 <section>
@@ -305,7 +355,7 @@
                     </section>
 
                     <section>
-                        <p>It executes when the module is loaded. It is analogous to the constructor for classes.</p>
+                        <p>It can also not be empty. It executes when the module is loaded. It is analogous to the constructor for classes.</p>
                     </section>
 
 				</section>
