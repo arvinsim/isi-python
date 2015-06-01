@@ -115,7 +115,7 @@ print p1.is_palindrome() # True
 	d = sqrt((x2 - x1)^2 + (y2 - y1)^2)
 ```
 
-4. Create 2 `Rocket` object instances -- the first rocket object takes no arguments. Move the 2 rockets and calculate and print the distance between them.
+Create 2 `Rocket` object instances -- the first rocket object takes no arguments. Move the 2 rockets and calculate and print the distance between them.
 
 Tips
 -----------------------
@@ -144,15 +144,20 @@ and with 4 methods that you can use to move around a grid map
 and with a constructor where you can set the your starting position
 and destination
 
-Lastly, define a sequence of method calls on how to get to get to the destination
-The program should print out a message if it has arrived to its destination
+Lastly, define a sequence of method calls on how to get to the destination.
+The program should print out a message if it has arrived to its destination.
 
 ---
 
 ## 2. Obstacle
 
-Add an attribute that is a list of coordinates. This coordinates are the location
-of obstacles. If the `Person` object tries to go into a coordinate that is occupied
+Add an attribute that is a list of coordinates.
+
+```self.obstacles = [ (1,2), (2,2), ... ]
+
+This coordinates are the location of obstacles.
+
+If the `Person` object tries to go into a coordinate that is occupied
 by an obstacle, it should print out a message informing the user that it has ran
 into an obstacle and should NOT move into that coordinate. It should just stay put.
 
@@ -170,8 +175,9 @@ Instead of defining the obstacle coordinates yourself, make it random.
 ## 4. Boundary
 
 Since we haven't defined a boundary, add 2 attributes that represent the x and y
-boundaries of the map. We want this simple so that let's assume that it is always
-a rectangle(5x5, 3x6, 6x3)
+boundaries of the map.
+
+We want this simple so that let's assume that it is always a rectangle(5x5, 3x6, 6x3).
 
 When the `Person` tries to go out of bounds, it should act the same
 way as when it would encounter an obstacle.
