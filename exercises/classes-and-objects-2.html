@@ -132,20 +132,35 @@ Tips
 
 Create a `Person` class with the following attributes
 
-+ position using x, y coordinates
++ current_position using x, y coordinates
++ destination
 
-and with 4 methods that you can use to move around a grid map
+and with 4 methods that you can use to move around
 
 - `move_up()`
 - `move_down()`
 - `move_left()`
 - `move_right()`
 
-and with a constructor where you can set the your starting position
-and destination
+and with a constructor where you can set your starting position and destination
 
 Lastly, define a sequence of method calls on how to get to the destination.
 The program should print out a message if it has arrived to its destination.
+
+---
+
+## Example:
+
+NOTE: Computer Graphics assume that the (0,0) coordinate is on the top-left
+not bottom-left as would we do in math. That is what we are going to follow.
+
+```
+p = Person( [0, 0], [2,2] ) # current position is [0, 0]
+p.move_right() # current position is [1, 0]
+p.move_right() # current position is [2, 0]
+p.move_down() # current position is [2, 1]
+p.move_down() # current position is [2, 2]
+```
 
 ---
 
@@ -170,7 +185,7 @@ of method calls in where the `Person` bumps into at least one obstacle
 
 ## 3. Random Obstacle
 
-Instead of defining the obstacle coordinates yourself, make it random.
+Instead of defining the obstacle coordinates yourself, create them randomly.
 
 ---
 
@@ -191,10 +206,6 @@ Define a sequence of method calls in where the `Person` bumps into at least one 
 ## 5. Real Time Graphical Display
 
 For every movement method call, it should display out the current map status
-
-NOTE: Computer Graphics assume that the (0,0) coordinate is on the top-left
-not bottom-left as would we do in math. That is what we are going to follow.
-
 
 ```
 D = Destination
