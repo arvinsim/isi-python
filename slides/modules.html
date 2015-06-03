@@ -479,6 +479,212 @@
                 </section>
 
                 <section>
+                    <h2>Math</h2>
+
+                    <section>
+                        <p>Basic functions</p>
+                        <pre><code>
+    import math
+
+    # Returns the absolute value of -3
+    math.fabs(-3) # 3.0
+
+    # Round down 1.2
+    math.ceil(1.2) # 2.0
+
+    # Round up 6.7
+    math.floor(6.7) # 6.0
+
+    # Returns 5 factorial
+    math.factorial(5) # 120
+                        </code></pre>
+
+                    </section>
+
+                    <section>
+                        <p>Power and Logarithmic functions</p>
+                        <pre><code>
+    import math
+
+    math.exp(1) # Return e**1, 2.718281828459045
+
+    # Returns the natural logarithm of 2 to base 10
+    math.log(2, 10) # 0.30102999566398114
+
+    # Returns the natural logarithm of 2 to base 2
+    math.log(2, 2) # 1.0
+
+    math.pow(2, 4) # Returns 2 to the power of 4, 16.0
+    math.sqrt(9) # Gets the square root of 9, 3.0
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Trigonometric functions</p>
+                        <pre><code>
+    import math
+
+    # All of these methods return the value
+    # in radians, not in degrees
+    math.cos(0) # 1.0
+    math.sin(45) # 0.85090...
+    math.tan(90) # -1.99520...
+    math.acos(0) # 1.570796...
+    math.asin(0) # 0.0
+    math.atan(90) # 1.55968...
+    math.hypot(2, 3) # 3.60555...
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Angular Conversion</p>
+                        <pre><code>
+    import math
+
+    # convert angle x from radians to degrees
+    math.degrees(1) # 57.29577951308232 degrees
+
+    # convert angle x from degrees to radians
+    math.radians(57.29577951308232) # 1 radian
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Constants</p>
+                        <pre><code>
+    import math
+    # The mathematical constant &pi; = 3.141592...
+    math.pi
+
+    # The mathematical constant e = 2.718281...
+    math.e
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Random</h2>
+
+                    <section>
+                        <p>Basic Random Methods</p>
+                        <pre><code>
+    import random
+
+    # Returns a random float x, where 0.0 <= x < 1.0
+    random.random()
+
+    # Returns a random float x, where 1.0 <= 10.0
+    random.uniform(1, 10)
+
+    # Integer from 1 to 10, endpoints included
+    random.randint(1, 10)
+
+    # Even integer from 0 to 100
+    random.randrange(0, 101, 2)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>More Random Methods</p>
+                        <pre><code>
+    import random
+
+    # Return a random element from the non-empty sequence
+    # (umbrella term for list, tuples, dictionaries,
+    # iterators, etc)
+    fruits = ['apple', 'orange', 'strawberry']
+    random.choice(fruits)
+
+    # Shuffle the sequence in place
+    random.shuffle([1,2,3,4,5,6,7])
+
+    # Choose 3 random elements
+    random.sample([1,2,3,4,5], 3)
+
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>File Operations</h2>
+
+                    <section>
+                        <p>Opening a file</p>
+                        <pre><code>
+    """
+    The first argument is a string containing the filename.
+    The second parameter is another string containing a few
+    characters describing the way in which the file will be used.
+    'r' = read only
+    'w' = write only
+    'r+' = reading and writing
+    'a' = append to file
+    """
+    f = open('workfile.txt', 'w')
+    print f # &lt;open file 'workfile', 'w' at 80a0960&gt;
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Reading from a  file</p>
+                        <pre><code>
+    # f.read() returns the entire contents of the file
+    print f.read()
+
+    # f.readline() reads a single line from a file
+    print f.readline()
+
+    # f.readlines() reads the contents of the file
+    # into a list. Each item in the list is a single line
+    # from the file
+    print f.readlines()
+
+    # To read each line one by one, you can loop over
+    # the file object
+    for line in f:
+        print line
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Writing to a file</p>
+                        <pre><code>
+    # f.write(string) writes the contents of string to the file,
+    # returning None. To write something other than a string, it needs
+    # to be converted to a string first
+    f.write('This is a test\n')
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Closing a file</p>
+                        <pre><code>
+    # To close a file, just use f.close()
+    f.close()
+
+    # After calling f.close(), attempts to use the file object will automatically fail.
+    f.read()
+    """
+    Traceback (most recent call last):
+    File "<stdin>", line 1, in ?
+    ValueError: I/O operation on closed file
+    """
+
+    # To check if a file is closed or not, check the closed attribute
+    print f.closed # True
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>It is good practice to use the <code>with </code> keyword when dealing with file objects.</p>
+                        <pre><code>
+    with open('workfile', 'r') as f:
+         read_data = f.read()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
                     <h2>Python Standard Library Link</h2>
 
                     <section>
@@ -491,9 +697,6 @@
                             <li>sys</li>
                             <li>string</li>
                             <li>datetime</li>
-                            <li>math</li>
-                            <li>random</li>
-                            <li>file</li>
                         </ul>
                     </section>
 
