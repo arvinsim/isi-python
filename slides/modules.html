@@ -685,6 +685,115 @@
                 </section>
 
                 <section>
+                    <h2>Datetime</h2>
+
+                    <section>
+                        <p>Date Objects</p>
+                        <pre><code>
+    from datetime import date
+
+    print date.today() # Prints the current date
+
+    # Create a new date object
+    # arguments: year, month, day
+    d =  date(2015, 6, 7)
+
+    """
+    2015 # year
+    6    # month
+    7    # day
+    0    # hour
+    0    # minute
+    0    # second
+    6    # weekday (0 = Monday so 6 = Sunday)
+    158  # 158th day in the year
+    -1   # is DST
+    t = d.timetuple()
+    for i in t:
+        print i
+
+    # '2015-06-07'
+    print d.isoformat()
+
+    # '07/06/15'
+    print d.strftime("%d/%m/%y")
+
+    # 'Sunday 07. June 2015'
+    print d.strftime("%A %d. %B %Y")
+
+    # 'The day is 07, the month is June.'
+    print 'The {1} is {0:%d}, the {2} is {0:%B}.'.format(d, "day", "month")
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>time Object</p>
+                        <pre><code>
+    t = time(12, 10, 30)
+    print t # datetime.time(12, 10, 30)
+    print t.isoformat() # '12:10:30'
+    print t.strftime("%H:%M:%S %Z") # '12:10:30 '
+
+    # 'The time is 12:10.'
+    print 'The {} is {:%H:%M}.'.format("time", t)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>datetime object</p>
+                        <pre><code>
+    from datetime import datetime, date, time
+
+    # Using datetime.combine()
+    d = date(2005, 7, 14)
+    t = time(12, 30)
+    datetime.combine(d, t) # datetime.datetime(2005, 7, 14, 12, 30)
+
+    # Using datetime.now() or datetime.utcnow()
+    datetime.now() # datetime.datetime(2007, 12, 6, 16, 29, 43, 79043)
+    datetime.utcnow() #datetime.datetime(2007, 12, 6, 15, 29, 43, 79060)
+
+    # Using datetime.strptime()
+    # datetime.datetime(2006, 11, 21, 16, 30)
+    dt = datetime.strptime("21/11/06 16:30", "%d/%m/%y %H:%M")
+
+    # Using datetime.timetuple() to get tuple of all attributes
+    tt = dt.timetuple()
+    for it in tt:
+        print it
+    """
+    2006    # year
+    11      # month
+    21      # day
+    16      # hour
+    30      # minute
+    0       # second
+    1       # weekday (0 = Monday)
+    325     # number of days since 1st January
+    -1      # dst - method tzinfo.dst() returned None
+    """
+
+    # Date in ISO format
+    ic = dt.isocalendar()
+    for it in ic:
+        print it
+    """
+    2006    # ISO year
+    47      # ISO week
+    2       # ISO weekday
+    """
+
+    # Formatting datetime
+    # 'Tuesday, 21. November 2006 04:30PM'
+    dt.strftime("%A, %d. %B %Y %I:%M%p")
+
+    # 'The day is 21, the month is November, the time is 04:30PM.'
+    'The {1} is {0:%d}, the {2} is {0:%B}, the {3} is {0:%I:%M%p}.'.format(dt, "day", "month", "time")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
                     <h2>Python Standard Library Link</h2>
 
                     <section>
@@ -696,7 +805,6 @@
                         <ul>
                             <li>sys</li>
                             <li>string</li>
-                            <li>datetime</li>
                         </ul>
                     </section>
 
