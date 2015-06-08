@@ -128,23 +128,52 @@ Tips
 
 ---
 
-## 1. Person
+## 1. Coordinates
 
-Create a `Person` class with the following attributes
+Create a Coordinate object with the following attributes
 
-+ current_position using x, y coordinates
-+ destination
+- x position
+- y position
 
-and with 4 methods that you can use to move around
+Implement it with a constructor passing the x and y values.
+
+```
+class Coordinate(object):
+    ...
+
+coordinate1 = Coordinate(1,2)
+coordinate2 = Coordinate(2,3)
+...
+```
+
+Implement the `__repr__` method so that when print out
+a Coordinate object, it should output the x and y
+values this way
+
+```
+"Coordinate(1,2)"
+```
+
+---
+
+## 2. Person
+
+Create a `Person` class with the following requirements
+
+### Attributes(represented by `Coordinate` objects)
+
++ `current_position`
++ `destination`
+
+### Methods
 
 - `move_up()`
 - `move_down()`
 - `move_left()`
 - `move_right()`
+- constructor where you can set the `current_position` and `destination`
 
-and with a constructor where you can set your starting position and destination
-
-Lastly, define a sequence of method calls on how to get to the destination.
+Then define a sequence of method calls on how to get to the destination.
 The program should print out a message if it has arrived to its destination.
 
 ---
@@ -152,24 +181,40 @@ The program should print out a message if it has arrived to its destination.
 ## Example:
 
 NOTE: Computer Graphics assume that the (0,0) coordinate is on the top-left
-not bottom-left as would we do in math. That is what we are going to follow.
+not bottom-left as would we do in math.
+
+[Example here](http://programarcadegames.com/chapters/05_intro_to_graphics/Computer_coordinates_2D.png)
 
 ```
-p = Person( [0, 0], [2,2] ) # current position is [0, 0]
-p.move_right() # current position is [1, 0]
-p.move_right() # current position is [2, 0]
-p.move_down() # current position is [2, 1]
-p.move_down() # current position is [2, 2]
+start = Coordinate(0, 0)
+destination = Coordinate(2, 2)
+
+p = Person(start, destination) # current position is (0, 0)
+p.move_right() # current position is (1, 0)
+p.move_right() # current position is (2, 0)
+p.move_down() # current position is (2, 1)
+p.move_down() # current position is (2, 2)
 ```
+
+I have arrived at my final destinatio....
 
 ---
 
-## 2. Obstacle
+## 3. Obstacle
 
 Add an attribute that is a list of coordinates.
 
+Coordinates should be represented by objects with x and y attributes.
+
 ```
-self.obstacles = [ (1,2), (2,2), ... ]
+class Coordinate(object):
+    ...
+
+coordinate1 = Coordinate(1,2)
+coordinate2 = Coordinate(2,3)
+...
+
+self.obstacles = [ coordinate1, coordinate2, ... ]
 ```
 
 This coordinates are the location of obstacles.
@@ -183,23 +228,64 @@ of method calls in where the `Person` bumps into at least one obstacle
 
 ---
 
-## 3. Random Obstacle
+## Example:
 
-Instead of defining the obstacle coordinates yourself, create them randomly.
+Let's assume there is an obstacle at (2,1)
+
+```
+start = Coordinate(0, 0)
+destination = Coordinate(2, 2)
+
+p = Person(start, destination) # at (0, 0)
+p.move_right() # try moving to (1,0), success, at (1,0)
+p.move_right() # try moving to (2,0), success, at (2,0)
+p.move_down() # try moving to (2,1), fail, at (2,0)
+```
+
+Person uses ram strike on obstacle.
+It's super ineffective! The obstacle wins.
+
+```
+p.move_right() # try moving to (3,0), success, at (3,0)
+p.move_down() # try moving to (3,1), success, at (3,1)
+p.move_down() # try moving to (3,2), success, at (3,2)
+p.move_left() # try moving to (2,2), success, at (2,2)
+```
+
+Person arrives at the destination still bruised.
 
 ---
 
 ## 4. Boundary
 
-Since we haven't defined a boundary, add 2 attributes that represent the x and y
-boundaries of the map.
+Create a `Boundary` object which contains
 
-We want this simple so that let's assume that it is always a rectangle(5x5, 3x6, 6x3).
+### Attributes
 
-When the `Person` tries to go out of bounds, it should act the same
-way as when it would encounter an obstacle.
+- x1
+- x2
+- y1
+- y2
 
-Define a sequence of method calls in where the `Person` bumps into at least one boundary.
+Which represents the four sides of the rectangle.
+
+### Methods
+
+- `is_out_of_bounds(c)`
+    - accepts a `Coordinate` object
+    - checks if the `Coordinate` is out of bounds
+
+---
+
+## 4. Boundary
+
+Update the constructor of the `Person` object to accept a `Boundary` object as the 3rd parameter
+and set it as an attribute of `Person`
+
+When the `Person` tries to go out of bounds, it should act the same way as when it
+would encounter an obstacle.
+
+Define a sequence of method calls in where the `Person` tries to go out of bounds at least once.
 
 ---
 
