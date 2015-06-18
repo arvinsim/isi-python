@@ -351,11 +351,13 @@
 					</section>
 
                     <section>
-                        <p>This file can be empty, and it indicates that the directory it contains is a Python package, so it can be imported the same way a module can be imported.</p>
+                        <p><code>__init__.py</code> indicates that the directory is a Python package.</p>
+                        <p>Python packages can be imported the same way a module can be imported.</p>
                     </section>
 
                     <section>
-                        <p>It can also not be empty. It executes when the module is loaded. It is analogous to the constructor for classes.</p>
+                        <p><code>__init__.py</code> can be empty or can contain definitions and statements.</p>
+                        <p> It executes when the module is loaded. It is analogous to the constructor for classes.</p>
                     </section>
 
 				</section>
@@ -475,6 +477,88 @@
                             Python has a "batteries included" philosophy. This is best seen through the sophisticated and robust capabilities of its larger packages
                         </blockquote>
                         <p>-Guido van Rossum</p>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Examples of Standard Library Modules</h2>
+                </section>
+
+                <section>
+                    <h2>Sys</h2>
+
+                    <section>
+                        <pre><code>
+    import sys
+
+    print sys.version # version of the Python Interpreter
+    print sys.platform # platform identifier
+    print sys.path # search path for modules
+    print sys.maxint # largest positive integer of Python's integer type
+    print sys.executable # string giving the aboslute path of the executable binary
+    sys.exit() # exit Python
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>String</h2>
+
+                    <section>
+                        <p>Built-in String methods</p>
+                        <pre><code>
+    print "lorem ipsum".capitalize() # Lorem ipsum
+    print "LOREM ipsum".lower() # lorem ipsum
+    print "LOREM ipsum".upper() # LOREM IPSUM
+
+    print "lorem ipsum".center(20) # "   lorem ipsum     "
+    print "    spacious      ".strip() # "spacious"
+
+    # Note The find() method should be used
+    # only if you need to know the position
+    # of sub. To check if sub is a substring
+    # or not, use the in operator:
+    #
+    # >>> 'Py' in 'Python'
+    # True
+    #
+    print "lorem ipsum".find("ip") # 6
+
+    print "a1".isalnum()
+    print "b".isalpha()
+    print "123".isdigit()
+    print "d".islower()
+    print " \n\t".isspace()
+    print "F".isupper()
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>String Module</p>
+                        <pre><code>
+    import string
+
+    print string.ascii_letters
+    print string.ascii_lowercase
+    print string.ascii_uppercase
+
+    # Locale dependent
+    print string.letters
+    print string.lowercase
+    print string.uppercase
+
+    print string.hexdigits
+    print string.octdigits
+
+    print string.digits
+    print string.punctuation
+    print string.printable
+    print string.whitespace
+
+    s = "Lorem ipsum dolor"
+    # Outputs "Lorem Ipsum Dolor"
+    print string.capwords(s)
+                        </code></pre>
                     </section>
                 </section>
 
@@ -688,7 +772,7 @@
                     <h2>Datetime</h2>
 
                     <section>
-                        <p>Date Objects</p>
+                        <p>date objects</p>
                         <pre><code>
     from datetime import date
 
@@ -727,7 +811,7 @@
                     </section>
 
                     <section>
-                        <p>time Object</p>
+                        <p>time object</p>
                         <pre><code>
     t = time(12, 10, 30)
     print t # datetime.time(12, 10, 30)
@@ -794,18 +878,10 @@
                 </section>
 
                 <section>
-                    <h2>Python Standard Library Link</h2>
+                    <h2>Python Standard Library</h2>
 
                     <section>
-                        <a href="https://docs.python.org/2/library/">https://docs.python.org/2/library/</a>
-                        http://stackoverflow.com/questions/1453952/most-useful-python-modules-from-the-standard-library#1454779
-                    </section>
-
-                    <section>
-                        <ul>
-                            <li>sys</li>
-                            <li>string</li>
-                        </ul>
+                        <a href="https://docs.python.org/2/library/" target="_blank">https://docs.python.org/2/library/</a>
                     </section>
 
                 </section>
