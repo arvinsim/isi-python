@@ -39,7 +39,7 @@
 		<div class="reveal">
 			<div class="slides">
                 <section>
-                    <h1>Modules, Packages and More</h1>
+                    <h1>Modules and Packages</h1>
                 </section>
 
 				<section>
@@ -61,13 +61,32 @@
 								<th>filename</th>
 							</tr>
 							<tr>
-								<td>fubar</td>
-								<td>fubar.py</td>
+								<td>mundane</td>
+								<td>mundane.py</td>
 							</tr>
+                            <tr>
+                                <td>with_underscore</td>
+                                <td>with_underscore.py</td>
+                            </tr>
 						</table>
 					</section>
 
+                    <section>
+                        <h4>Recommended naming conventions</h4>
+                        <ul>
+                            <li>It is encouraged to use short, all-lowercase names for modules.</li>
+                            <li>Underscores can be used in the module name if it improves readability</li>
+                            <li><strong>DON'T</strong> use the dot(.) character in naming modules. You will see later why this is the case.</li>
+                        </ul>
+                    </section>
 				</section>
+
+                <section>
+                    <h3>Creating modules</h3>
+                    <section>
+                    <p>Writing Python modules is very simple. To create a module of your own, simply create a new <code>.py</code> file with the module name</p>
+                    </section>
+                </section>
 
 				<section>
 					<h3>import Statement</h3>
@@ -75,10 +94,20 @@
 					<section>
 						<p>To use a module, we use the <code>import</code> command</p>
 						<pre><code>
-    # import a file
+    # import a user created module, fubar.py
     import fubar
 						</code></pre>
 					</section>
+
+					<section>
+						<p><code>import X</code> imports the module X, and creates a reference to that module in the
+						current namespace.</p>
+					</section>
+
+                    <section>
+                        <p>In other words, after you've run this statement, you can use <code>X.name</code> to
+                            refer to things defined in module X.</p>
+                    </section>
 
 					<section>
 						<p>Assume that we have this simple module</p>
@@ -107,44 +136,754 @@
     import physics
 
     # use it
-    print physics.solar_luminous_efficacy
-    print physics.get_speed_of_light()
+    print physics.solar_luminous_efficacy  # variable
+    print physics.get_speed_of_light()  # function
+    # class attribute
     print physics.ElectroMagneticConstants.magnetic_flux_quantum
 
-    eac = physics.ElectronAtomConstants()
-    print eac.electron_rest_mass
+    eac = physics.ElectronAtomConstants()  # Instantiate a class
+    print eac.electron_rest_mass  # instance variable
 						</code></pre>
 					</section>
 				</section>
 
 				<section>
-					<h3>from ... import statement</h3>
+					<h3>from X import ... statement</h3>
+
+                    <section>
+                        <p><code>from X import a, b, c, ...</code> imports the module X, and creates references in the current namespace
+                        to the given objects.</p>
+                    </section>
+
+                    <section>
+                        <p>In the example, you can now use <code>a</code> and <code>b</code> and <code>c</code> in your program</p>
+                    </section>
+
+                    <section>
+                        <p>Using the same <code>physics.py</code> module, we do it like this</p>
+                        <pre><code>
+    # import a variable
+    from physics import solar_luminous_efficacy
+    print solar_luminous_efficacy
+
+    # import a function
+    from physics import get_speed_of_light
+    print get_speed_of_light()
+
+    # import a class
+    from physics import ElectronAtomConstants
+    eac = ElectronAtomConstants()
+    print eac.electron_rest_mass
+
+    # You can import more than one
+    from physics import solar_luminous_efficacy, get_speed_of_light
+    print solar_luminous_efficacy
+    print get_speed_of_light()
+                        </code></pre>
+                    </section>
 				</section>
 
 				<section>
-					<h3>from ... import * statement</h3>
+					<h3>from X import * statement</h3>
+
+					<section>
+						<p><code>from X import *</code> imports the module X, and creates references in the current namespace to
+						all public objects defined by that module</p>
+					</section>
+
+					<section>
+						<p>In other words, after you've run this statement, you can simply use a plain
+							<code>name</code> to refer to things defined in module X. But X itself is not defined,
+							so <code>X.name</code> doesn't work</p>
+					</section>
+
+					<section>
+                        <p>Again, using the same <code>physics.py</code> module, we can do it like this</p>
+						<pre><code>
+    from physics import *
+    print solar_luminous_efficacy
+    print get_speed_of_light()
+    print ElectroMagneticConstants.magnetic_flux_quantum
+    eac = ElectronAtomConstants()
+    print eac.electron_rest_mass
+                        </code></pre>
+					</section>
+
+                    <section>
+                        <p>There are exceptions though. Everything that starts with __ does not get imported.</p>
+                        <pre><code>
+    # Let's assume that we have module named philippines
+    # and it has a variable called __cool_cars
+    from philippines import *
+
+    # This will either show an error
+    # or print the value of __cars
+    # if defined in the same file
+    print __cool_cars
+                        </code></pre>
+                    </section>
+
+					<section>
+						<p>If <code>name</code> was already defined, it is replaced by the new version</p>
+                        <pre><code>
+    # assume two modules which has a single variable
+    # spam.py, food = "spam"
+    # eggs.py, food = "eggs"
+
+    from spam import *
+    print food # "spam"
+
+    from eggs import *
+    print food # "eggs"
+                        </code></pre>
+					</section>
 				</section>
 
                 <section>
-                    <h2>More on Modules</h2>
-                    + Locating Modules
-                    + Python Path
-                    + dir Function
-                </section>
+                    <h3>The dir and help functions</h3>
 
-                <section>
-                    <h2>Standard Modules</h2>
-                    + sys
-                    + string
-                    + datetime
-                    + math
-                    + random
-                    + file
+                    <section>
+                        <p>Two very important functions come in handy when exploring modules in Python - the <code>dir</code> and <code>help</code> functions</p>
+                    </section>
+
+                    <section>
+                        <p>Assume that we have this module</p>
+                        <pre><code>
+    # sample.py
+    sample_variable = "a"
+    def sample_function():
+        """
+        A sample function
+        """
+        pass
+    class SampleClass(object):
+        """
+        A sample class
+        """
+        pass
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Using <code>dir</code> on a module shows a list that contains the names of the module's attributes</p>
+                        <pre><code>
+    import sample
+    print dir(sample)
+    """
+    ['SampleClass', '__author__', '__builtins__', '__doc__',
+    '__file__', '__name__', '__package__', 'sample_function',
+    'sample_variable']
+    """
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Using <code>help</code> on a module generates a help page on that module</p>
+                        <pre><code>
+    import sample
+    print help(sample)
+
+    """
+    help on module sample:
+
+    name
+        sample - # sample.py
+
+    file
+        /../../../../sample.py
+
+    classes
+        __builtin__.object
+        sampleclass
+
+        class sampleclass(__builtin__.object)
+        |  a sample class
+        |
+        |  data descriptors defined here:
+        |
+        |  __dict__
+        |      dictionary for instance variables (if defined)
+        |
+        |  __weakref__
+        |      list of weak references to the object (if defined)
+
+    functions
+        sample_function()
+            a sample function
+
+    data
+        sample_variable = 'a'
+
+    none
+    """
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h4>dir and help without arguments</h4>
+                        <p>Running <code>dir()</code> is the same as using <code>dir</code> on the current file/module</p>
+                        <p>Running <code>help()</code> launches an interactive help program</p>
+                    </section>
                 </section>
 
                 <section>
                     <h2>Packages</h2>
+                </section>
+
+				<section>
+					<h3>Creating Packages</h3>
+
+					<section>
+						<p>Packages are namespaces which contain multiple packages and modules themselves. They are simply directories, but with a twist.</p>
+					</section>
+
+					<section>
+						<p>Each package in Python is a directory which <strong>MUST</strong> contain a special file called <code>__init__.py</code></p>
+						<pre><code>
+	physics_package/
+		__init__.py
+		classical.py
+		thermodynamics.py
+		electromagnetism.py
+		relativity.py
+		quantum.py
+                        </code></pre>
+					</section>
+
+                    <section>
+                        <p><code>__init__.py</code> indicates that the directory is a Python package.</p>
+                        <p>Python packages can be imported the same way a module can be imported.</p>
+                    </section>
+
+                    <section>
+                        <p><code>__init__.py</code> can be empty or can contain definitions and statements.</p>
+                        <p> It executes when the module is loaded. It is analogous to the constructor for classes.</p>
+                    </section>
+
+				</section>
+
+                <section>
+                    <h3>Importing a Package</h3>
+
+                    <section>
+                        <p>To import a package, use the same syntax as you would import a module</p>
+                        <pre><code>
+    import physics_package
+    print help(physics_package)
+    """
+    Help on package physics_package:
+
+    NAME
+        physics_package
+
+    FILE
+        /../../../physics_package/__init__.py
+
+    PACKAGE CONTENTS
+        classical
+        electromagnetism
+        quantum
+        relativity
+        thermodynamics
+
+    AUTHOR
+        avsimon
+
+    None
+    """
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Note that you can also use the <code>from X import</code> and <code>from X import *</code>
+                        form of importing</p>
+                        <pre><code>
+    from physics_package import classical, electromagnetism
+    print help(classical)
+    print help(electromagnetism)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h3>Nesting Packages</h3>
+
+                    <section>
+                        <p>Packages can be nested</p>
+						<pre><code>
+    parent_package/
+        __init__.py
+            child1_package/
+                __init_.py
+            child2_package/
+                __init__.py
+                grandchild_package/
                     __init__.py
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h3>Importing Nested Packages or Modules</h3>
+
+                    <section>
+                        <p>To import nested packages or modules, you can access the child modules packages by using the
+                        dot operator. The dot operator acts like a directory.</p>
+                        <pre><code>
+    import parent_package.child2_package.grandchild_package
+    print help(parent_package.child2_package.grandchild_package)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>The previous example was too long. To make it simpler, we can use the <code>as</code> keyword
+                        to alias modules or packages</p>
+                        <pre><code>
+    import parent_package.child2_package.grandchild_package as grandchild
+    print help(grandchild)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>It could also be done using the <code>from * import</code> format</p>
+                        <pre><code>
+    from parent_package.child2_package import grandchild_package
+    print help(grandchild_package)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Python Standard Library</h2>
+                </section>
+
+                <section>
+                    <h2>What is a Standard Library</h2>
+
+                    <section>
+                        <p>A standard library in computer programming is the library made available across implementations of a programming language.</p>
+                    </section>
+
+                    <section>
+                        <p>A language's standard library is often treated as part of the language by its users, although the designers may have treated it as a separate entity.</p>
+                    </section>
+
+                    <section>
+                        <p>Standard libraries typically include definitions for commonly used algorithms, data structures, and mechanisms for input and output.</p>
+                    </section>
+
+                    <section>
+                        <blockquote>
+                            Python has a "batteries included" philosophy. This is best seen through the sophisticated and robust capabilities of its larger packages
+                        </blockquote>
+                        <p>-Guido van Rossum</p>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Examples of Standard Library Modules</h2>
+                </section>
+
+                <section>
+                    <h2>Sys</h2>
+
+                    <section>
+                        <pre><code>
+    import sys
+
+    print sys.version # version of the Python Interpreter
+    print sys.platform # platform identifier
+    print sys.path # search path for modules
+    print sys.maxint # largest positive integer of Python's integer type
+    print sys.executable # string giving the aboslute path of the executable binary
+    sys.exit() # exit Python
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>String</h2>
+
+                    <section>
+                        <p>Built-in String methods</p>
+                        <pre><code>
+    print "lorem ipsum".capitalize() # Lorem ipsum
+    print "LOREM ipsum".lower() # lorem ipsum
+    print "LOREM ipsum".upper() # LOREM IPSUM
+
+    print "lorem ipsum".center(20) # "   lorem ipsum     "
+    print "    spacious      ".strip() # "spacious"
+
+    # Note The find() method should be used
+    # only if you need to know the position
+    # of sub. To check if sub is a substring
+    # or not, use the in operator:
+    #
+    # >>> 'Py' in 'Python'
+    # True
+    #
+    print "lorem ipsum".find("ip") # 6
+
+    print "a1".isalnum()
+    print "b".isalpha()
+    print "123".isdigit()
+    print "d".islower()
+    print " \n\t".isspace()
+    print "F".isupper()
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>String Module</p>
+                        <pre><code>
+    import string
+
+    print string.ascii_letters
+    print string.ascii_lowercase
+    print string.ascii_uppercase
+
+    # Locale dependent
+    print string.letters
+    print string.lowercase
+    print string.uppercase
+
+    print string.hexdigits
+    print string.octdigits
+
+    print string.digits
+    print string.punctuation
+    print string.printable
+    print string.whitespace
+
+    s = "Lorem ipsum dolor"
+    # Outputs "Lorem Ipsum Dolor"
+    print string.capwords(s)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Math</h2>
+
+                    <section>
+                        <p>Basic functions</p>
+                        <pre><code>
+    import math
+
+    # Returns the absolute value of -3
+    math.fabs(-3) # 3.0
+
+    # Round down 1.2
+    math.ceil(1.2) # 2.0
+
+    # Round up 6.7
+    math.floor(6.7) # 6.0
+
+    # Returns 5 factorial
+    math.factorial(5) # 120
+                        </code></pre>
+
+                    </section>
+
+                    <section>
+                        <p>Power and Logarithmic functions</p>
+                        <pre><code>
+    import math
+
+    math.exp(1) # Return e**1, 2.718281828459045
+
+    # Returns the natural logarithm of 2 to base 10
+    math.log(2, 10) # 0.30102999566398114
+
+    # Returns the natural logarithm of 2 to base 2
+    math.log(2, 2) # 1.0
+
+    math.pow(2, 4) # Returns 2 to the power of 4, 16.0
+    math.sqrt(9) # Gets the square root of 9, 3.0
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Trigonometric functions</p>
+                        <pre><code>
+    import math
+
+    # All of these methods return the value
+    # in radians, not in degrees
+    math.cos(0) # 1.0
+    math.sin(45) # 0.85090...
+    math.tan(90) # -1.99520...
+    math.acos(0) # 1.570796...
+    math.asin(0) # 0.0
+    math.atan(90) # 1.55968...
+    math.hypot(2, 3) # 3.60555...
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Angular Conversion</p>
+                        <pre><code>
+    import math
+
+    # convert angle x from radians to degrees
+    math.degrees(1) # 57.29577951308232 degrees
+
+    # convert angle x from degrees to radians
+    math.radians(57.29577951308232) # 1 radian
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Constants</p>
+                        <pre><code>
+    import math
+    # The mathematical constant &pi; = 3.141592...
+    math.pi
+
+    # The mathematical constant e = 2.718281...
+    math.e
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Random</h2>
+
+                    <section>
+                        <p>Basic Random Methods</p>
+                        <pre><code>
+    import random
+
+    # Returns a random float x, where 0.0 <= x < 1.0
+    random.random()
+
+    # Returns a random float x, where 1.0 <= 10.0
+    random.uniform(1, 10)
+
+    # Integer from 1 to 10, endpoints included
+    random.randint(1, 10)
+
+    # Even integer from 0 to 100
+    random.randrange(0, 101, 2)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>More Random Methods</p>
+                        <pre><code>
+    import random
+
+    # Return a random element from the non-empty sequence
+    # (umbrella term for list, tuples, dictionaries,
+    # iterators, etc)
+    fruits = ['apple', 'orange', 'strawberry']
+    random.choice(fruits)
+
+    # Shuffle the sequence in place
+    random.shuffle([1,2,3,4,5,6,7])
+
+    # Choose 3 random elements
+    random.sample([1,2,3,4,5], 3)
+
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>File Operations</h2>
+
+                    <section>
+                        <p>Opening a file</p>
+                        <pre><code>
+    """
+    The first argument is a string containing the filename.
+    The second parameter is another string containing a few
+    characters describing the way in which the file will be used.
+    'r' = read only
+    'w' = write only
+    'r+' = reading and writing
+    'a' = append to file
+    """
+    f = open('workfile.txt', 'w')
+    print f # &lt;open file 'workfile', 'w' at 80a0960&gt;
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Reading from a  file</p>
+                        <pre><code>
+    # f.read() returns the entire contents of the file
+    print f.read()
+
+    # f.readline() reads a single line from a file
+    print f.readline()
+
+    # f.readlines() reads the contents of the file
+    # into a list. Each item in the list is a single line
+    # from the file
+    print f.readlines()
+
+    # To read each line one by one, you can loop over
+    # the file object
+    for line in f:
+        print line
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Writing to a file</p>
+                        <pre><code>
+    # f.write(string) writes the contents of string to the file,
+    # returning None. To write something other than a string, it needs
+    # to be converted to a string first
+    f.write('This is a test\n')
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Closing a file</p>
+                        <pre><code>
+    # To close a file, just use f.close()
+    f.close()
+
+    # After calling f.close(), attempts to use the file object will automatically fail.
+    f.read()
+    """
+    Traceback (most recent call last):
+    File "<stdin>", line 1, in ?
+    ValueError: I/O operation on closed file
+    """
+
+    # To check if a file is closed or not, check the closed attribute
+    print f.closed # True
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>It is good practice to use the <code>with </code> keyword when dealing with file objects.</p>
+                        <pre><code>
+    with open('workfile', 'r') as f:
+         read_data = f.read()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Datetime</h2>
+
+                    <section>
+                        <p>date objects</p>
+                        <pre><code>
+    from datetime import date
+
+    print date.today() # Prints the current date
+
+    # Create a new date object
+    # arguments: year, month, day
+    d =  date(2015, 6, 7)
+
+    """
+    2015 # year
+    6    # month
+    7    # day
+    0    # hour
+    0    # minute
+    0    # second
+    6    # weekday (0 = Monday so 6 = Sunday)
+    158  # 158th day in the year
+    -1   # is DST
+    t = d.timetuple()
+    for i in t:
+        print i
+
+    # '2015-06-07'
+    print d.isoformat()
+
+    # '07/06/15'
+    print d.strftime("%d/%m/%y")
+
+    # 'Sunday 07. June 2015'
+    print d.strftime("%A %d. %B %Y")
+
+    # 'The day is 07, the month is June.'
+    print 'The {1} is {0:%d}, the {2} is {0:%B}.'.format(d, "day", "month")
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>time object</p>
+                        <pre><code>
+    t = time(12, 10, 30)
+    print t # datetime.time(12, 10, 30)
+    print t.isoformat() # '12:10:30'
+    print t.strftime("%H:%M:%S %Z") # '12:10:30 '
+
+    # 'The time is 12:10.'
+    print 'The {} is {:%H:%M}.'.format("time", t)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>datetime object</p>
+                        <pre><code>
+    from datetime import datetime, date, time
+
+    # Using datetime.combine()
+    d = date(2005, 7, 14)
+    t = time(12, 30)
+    datetime.combine(d, t) # datetime.datetime(2005, 7, 14, 12, 30)
+
+    # Using datetime.now() or datetime.utcnow()
+    datetime.now() # datetime.datetime(2007, 12, 6, 16, 29, 43, 79043)
+    datetime.utcnow() #datetime.datetime(2007, 12, 6, 15, 29, 43, 79060)
+
+    # Using datetime.strptime()
+    # datetime.datetime(2006, 11, 21, 16, 30)
+    dt = datetime.strptime("21/11/06 16:30", "%d/%m/%y %H:%M")
+
+    # Using datetime.timetuple() to get tuple of all attributes
+    tt = dt.timetuple()
+    for it in tt:
+        print it
+    """
+    2006    # year
+    11      # month
+    21      # day
+    16      # hour
+    30      # minute
+    0       # second
+    1       # weekday (0 = Monday)
+    325     # number of days since 1st January
+    -1      # dst - method tzinfo.dst() returned None
+    """
+
+    # Date in ISO format
+    ic = dt.isocalendar()
+    for it in ic:
+        print it
+    """
+    2006    # ISO year
+    47      # ISO week
+    2       # ISO weekday
+    """
+
+    # Formatting datetime
+    # 'Tuesday, 21. November 2006 04:30PM'
+    dt.strftime("%A, %d. %B %Y %I:%M%p")
+
+    # 'The day is 21, the month is November, the time is 04:30PM.'
+    'The {1} is {0:%d}, the {2} is {0:%B}, the {3} is {0:%I:%M%p}.'.format(dt, "day", "month", "time")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Python Standard Library</h2>
+
+                    <section>
+                        <a href="https://docs.python.org/2/library/" target="_blank">https://docs.python.org/2/library/</a>
+                    </section>
+
                 </section>
             </div>
 		</div>
