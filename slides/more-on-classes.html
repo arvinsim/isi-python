@@ -86,14 +86,65 @@
 
             <section>
                 <p>The "object" parameter in the class definition</p>
+                The object parameter that you pass to a Python class is actually a built-in class in Python.
+                Basically, by passing it, it is implying that the class you are making inherits from the "object" class
             </section>
 
             <section>
-                <p>How to make class A "inherit" class B</p>
+                <p>How to make a class inherit another class</p>
+                To make an object inherit another class, simply replace the "object" parameter with the name of the class
+            </section>
+
+            <section>
+                """ Code example that shows how to do inheritance """
+            </section>
+
+            <section>
+                <p>Quick Exercise</p>
+                <p>Define two empty classes, <code>ParentClass</code> and <code>ChildClass</code>. Make <code>ChildClass</code> inherit from <code>ParentClass</code></p>
+                <p>Use the function <code>isInstance()</code> to check if <code>ChildClass</code> inherited from <code>ParentClass</code></p>
+                <pre><code>
+    cc = ChildClass()
+    print isInstance(cc, ParentClass) # Should be True
+                </code></pre>
             </section>
 
             <section>
                 <p>Parent and Child relationship</p>
+                in the previous example, class ParentClass is defined as the parent class or superclass
+                while class ChildClass is defined as the child class or subclass
+            </section>
+        </section>
+
+        <section>
+            <h2>Inherited Attributes and Methods</h2>
+
+            <section>
+                When a class inherits from another class, it inherits all the attributes and methods of the parent class
+            </section>
+
+            <section>
+                """ Code Example showing that child class inherits from parent class """
+            </section>
+
+            <section>
+                There are some exceptions to this. Methods that start with a double underscore don't get inherited
+            </section>
+
+            <section>
+                """ Code Example showing that child class don't inherit methods starting with double underscore """
+            </section>
+
+            <section>
+                Quick Exercise
+
+                Define a parent class Parent. class Child should inherit from it in such a way that the code below
+                would run True
+
+                c = Child()
+                print ( isInstance( c, Parent) == True ) # Child should be an instance of Parent
+                print ( c.gender == "Male" ) # Child should inherit "gender" attribute from its parent
+                print ( "_Parent__hidden" in dir(Parent) ) # A "__hidden" attribute or method should be in the Parent class
             </section>
         </section>
 
