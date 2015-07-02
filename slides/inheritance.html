@@ -83,34 +83,102 @@
 
         <section>
             <section>
-                <p>The "object" parameter in the class definition</p>
-                The object parameter that you pass to a Python class is actually a built-in class in Python.
-                Basically, by passing it, it is implying that the class you are making inherits from the "object" class
+                <em>Ever wonder what that "object" argument in a class declaration means?</em>
             </section>
 
             <section>
-                <p>How to make a class inherit another class</p>
-                To make an object inherit another class, simply replace the "object" parameter with the name of the class
-            </section>
-
-            <section>
-                """ Code example that shows how to do inheritance """
-            </section>
-
-            <section>
-                <p>Quick Exercise</p>
-                <p>Define two empty classes, <code>ParentClass</code> and <code>ChildClass</code>. Make <code>ChildClass</code> inherit from <code>ParentClass</code></p>
-                <p>Use the function <code>isInstance()</code> to check if <code>ChildClass</code> inherited from <code>ParentClass</code></p>
                 <pre><code>
-    cc = ChildClass()
-    print isInstance(cc, ParentClass) # Should be True
+    class AClass(object):
+        pass
+                </code></pre>
+            </section>
+
+            <section>The object parameter that you pass to a Python class is actually a built-in class in Python.</section>
+
+            <section>
+                <pre><code>
+    # "object" is actually a built-in class!
+    class AClass(object):
+        pass
+                </code></pre>
+            </section>
+
+            <section>Passing the "object" class as an argument to a class means that the class is inheriting from the "object" class</section>
+
+            <section>
+                <pre><code>
+    # This inherits the built-in 'object' class
+    class ChildOfObjectClass(object):
+        pass
                 </code></pre>
             </section>
 
             <section>
-                <p>Parent and Child relationship</p>
-                in the previous example, class ParentClass is defined as the parent class or superclass
-                while class ChildClass is defined as the child class or subclass
+                <em>How do we make a class inherit another class?</em>
+            </section>
+
+            <section>To make an object inherit another class, simply replace the "object" parameter with the name of the class you want to inherit from</section>
+
+            <section>
+                <pre><code>
+    class Parent(object):
+        pass
+
+    # We are declaring that Child inherits from Parent
+    class Child(Parent):
+        pass
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Quick Exercise</h3>
+            </section>
+
+            <section>
+                <p>Define two empty classes</p>
+                <ul>
+                    <li>Vehicle</li>
+                    <li>Car</li>
+                </ul>
+                <p>Make it so that Car inherits from Vehicle</p>
+            </section>
+
+            <section>
+                <p>Use the function <code>isInstance()</code> to check if Car inherited from Vehicle</p>
+                <pre><code>
+    c = Car()
+    print isInstance(c, Vehicle) # Should be True
+                </code></pre>
+            </section>
+
+            <section>
+                <em>Parent and Child relationship</em>
+            </section>
+
+            <section>Parent classes(or Superclasses) are the classes we inherit from</section>
+
+            <section>
+                <pre><code>
+    # Parent class
+    class Vehicle(object):
+        pass
+
+    class Car(Vehicle):
+        pass
+                </code></pre>
+            </section>
+
+            <section>Child classes(or Subclasses) are the classes that inherit from one or more Parent class</section>
+
+            <section>
+                <pre><code>
+    class Vehicle(object):
+        pass
+
+    # Child class
+    class Car(Vehicle):
+        pass
+                </code></pre>
             </section>
         </section>
 
@@ -120,36 +188,75 @@
 
         <section>
             <section>
-                When a class inherits from another class, it inherits all the attributes and methods of the parent class
+                A child class inherits all the attributes and methods of the parent class
             </section>
 
             <section>
-                """ Code Example showing that child class inherits from parent class """
+                <pre><code>
+    class Parent(object):
+        an_attribute = "parent attribute"
+
+        def a_method(self):
+            print "parent method"
+
+    class Child(Parent):
+        pass
+
+    c = Child()
+    print c.an_attribute # "parent attribute"
+    c.a_method() # "parent method"
+                </code></pre>
             </section>
 
             <section>
-                There are some exceptions to this. Methods that start with a double underscore don't get inherited
+                <p>Exceptions to this rule are methods and attributes that start with a double underscore(__) don't get inherited</p>
             </section>
 
             <section>
-                """ Code Example showing that child class don't inherit methods starting with double underscore """
+                <pre><code>
+    class Parent(object):
+        __an_attribute = "parent attribute"
+
+        def __a_method(self):
+            print "parent method"
+
+    class Child(Parent):
+        pass
+
+    c = Child()
+    print c.__an_attribute # Error!
+    c.__a_method # Error!
+                </code></pre>
             </section>
 
             <section>
-                Quick Exercise
-
-                Define a parent class Parent. class Child should inherit from it in such a way that the code below
-                would run True
-
-                c = Child()
-                print ( isInstance( c, Parent) == True ) # Child should be an instance of Parent
-                print ( c.gender == "Male" ) # Child should inherit "gender" attribute from its parent
-                print ( "_Parent__hidden" in dir(Parent) ) # A "__hidden" attribute or method should be in the Parent class
+                <h3>Quick Exercise</h3>
             </section>
-        </section>
 
-        <section>
-            <h2>Advanced</h2>
+            <section>
+               <p>Define 2 classes</p>
+                <ul>
+                    <li>Parent</li>
+                    <li>Child</li>
+                </ul>
+            </section>
+
+            <section>Child should inherit from Parent in such a way that the code below would run True</section>
+
+            <section>
+                <pre><code>
+    c = Child()
+
+    # Child should be an instance of Parent
+    print ( isInstance( c, Parent) == True )
+
+    # Child should inherit "gender" attribute from its parent
+    print ( c.gender == "Male" )
+
+    # A "__hidden" attribute or method should be in the Parent class
+    print ( "_Parent__hidden" in dir(Parent) )
+                </code></pre>
+            </section>
         </section>
 
         <section>
@@ -158,15 +265,11 @@
 
         <section>
             <section>
-                <p>We have already seen that a child class will inherit its parent's attributes and methods.</p>
+                <em>What happens when an attribute or a method in a child class has the same name as the parent class?</em>
             </section>
 
             <section>
-                <p>However, what happens when an attribute or a method in a child has the same name as the parent?</p>
-            </section>
-
-            <section>
-                <p>The correct answer is that the child class will "override" the attribute or method of the parent class</p>
+                <p>The answer is that the child class will "override" the attribute or method of the parent class</p>
             </section>
 
             <section>
@@ -187,7 +290,7 @@
 
     c = Child()
     print c.message
-    print c.age
+    print c.age # Overriden!
     print c.gender
                 </code></pre>
             </section>
@@ -208,9 +311,9 @@
                 </code></pre>
             </section>
 
+            <section>It doesn't matter if the parameters are different. If a child attribute or method has the same name as the parent, it will replaced that attribute or method.</section>
+
             <section>
-                <p>It doesn't matter if the parameters are different. If a child attribute or method has the same
-                name as the parent, it will replaced that attribute or method.</p>
                 <pre><code>
     class Parent(object):
         def receives(self):
@@ -226,21 +329,40 @@
                 print "muh muh boo boo"
 
     c = Child()
+    # .receives() is overriden to an implementation that
+    # accepts 1 argument
     c.receives("pacifier")
                 </code></pre>
             </section>
 
             <section>
-                Quick Exercise:
+                <h3>Quick Exercise:</h3>
+            </section>
 
-                Given the class Vehicle
+            <section>
+                <p>Given the class Vehicle</p>
+                <pre><code>
+    class Vehicle(object):
+        number_of_wheels = 4
 
-                class Vehicle(object):
-                    def get_number_of_wheels(self):
-                        return 4
+        def get_number_of_wheels(self):
+            return self.number_of_wheels
+                </code></pre>
+            </section>
 
-                create child classes for Car, Tricycle, Bike and Boat
-                Set the correct method as it corresponds to reality
+            <section>
+                <p>create child classes for</p>
+                <ul>
+                    <li>Car, which has 4 wheels</li>
+                    <li>Tricycle, which has 3 wheels</li>
+                    <li>Bike, which has 2 wheels </li>
+                    <li>Boat, which has no wheels</li>
+                </ul>
+            </section>
+
+            <section>
+                <p>Override Vehicle to return the correct number of wheels for the child classes</p>
+                <p>There is more than one way to do it</p>
             </section>
         </section>
 
@@ -249,66 +371,106 @@
         </section>
 
         <section>
+            <section>We already have discussed how to override attributes and methods.</section>
+            <section>However, sometimes we don't want the child class to override the some of the parent's methods.</section>
+            <section>We might want to reuse those methods because they can still help.</section>
+            <section>In that case, we want to "extend" the class</section>
+        </section>
+
+        <section>
+            <section>To extend a class, we need to use the super() built-in function</section>
+            <section>The super() built-in function allows us to call attributes and methods from the parent in the child class</section>
+            <section>Here is the typical way the super() built-in function is used.</section>
             <section>
-                We already have discussed how to override attributes and methods.
-                However, sometimes we don't want the child class to override the some of the parent's methods.
-                We might want to reuse those methods because they can still help.
-                In that case, we want to "extend" the class
+                <pre><code>
+    class Parent(object):
+        def method(self, arg):
+            print "This is the arg: {}".format(arg)
+
+    class Child(Parent):
+        def method(self, arg):
+            arg = "{}(called by Child)".format(arg)
+            super(Child, self).method(arg)
+                </code></pre>
+            </section>
+
+            <section>Let's breakdown the relevant code</section>
+
+            <section>
+                <pre><code>
+    # super(Child, self) evaluates to the parent class
+    # (which is named Parent)
+
+    # super(Child, self).method(arg) calls the method named
+    # "method" in the Parent Class
+                </code></pre>
             </section>
 
             <section>
-                to extend a class, we need to use the super() built-in function
-                The super() built-in function allows us to call attributes and methods from the
-                parent in the child class
+                <pre><code>
+    c = Child()
 
-                Here is the typical way the super() built-in function is used.
+    # This prints out "This is the arg: foobar(called by Child)"
+    c.method("foobar")
+                </code></pre>
+            </section>
 
-                class Child(Parent):
-                    def method(self, arg):
-                        super(Child, self).method(arg)
+            <section>Here is an example of a child class calling a parent attribute</section>
 
+            <section>
+                <pre><code>
+    class Parent(object):
+        message = "Don't worry child, Mommy is here"
 
-                # Child here is the child class
-                # super(Child, self) evaluates to the parent class(which is Parent)
-                # super(Child, self).method(arg) calls the method named "method"
-                # in the Parent Class
-                super(Child, self).method(arg)
+    class Child(Parent):
+        def consult_parent(self):
+            return super(Child, self).message
 
-                Here is an example of a child class calling a parent attribute
+    c = Child()
+    print c.consult_parent()
 
-                class Parent(object):
-                    message = "Don't worry child, Mommy is here"
+                </code></pre>
+            </section>
 
-                class Child(Parent):
-                    def consult_parent(self):
-                        return super(Child, self).message
+            <section>Here is an example of a child class extending a parent method</section>
 
-                c = Child()
-                print c.consult_parent()
-
-
-                Here is an example of a child class extending a parent method
-
-                """ Example of a child class extending a parent method """
+            <section>
+                <pre><code>
+    """ Example of a child class extending a parent method """
+                </code></pre>
             </section>
 
             <section>
-                Quick Exercise:
+                <h3>Quick Exercise:</h3>
+            </section>
 
-                Given this class
+            <section>
+                <p>We have a DefaultWorkstation class</p>
+                <pre><code>
+    class DefaultWorkstation(object):
+        def get_monitor(self):
+            return ['Asus 23" Full HD']
 
-                class DefaultWorkstation(object):
-                    def get_monitor(self):
-                        return ['Asus 23" Full HD']
+        def get_processor(self):
+            return 'Intel I7'
+                </code></pre>
+            </section>
 
-                    def get_processor(self):
-                        return 'Intel I7'
-
-                Let's say that we have a custom workstation that has a AOC 23" Full HD
-                monitor in addition to the default monitor.
-
+            <section>Let's say that we have a custom workstation that has a AOC 23" Full HD
+                monitor in addition to the default monitor.</section>
+            <section>
                 Create a child class CustomWorkstation and extend DefaultWorkstation to
                 represent that
+            </section>
+
+            <section>
+                <pre><code>
+    cw = CustomWorkstation()
+
+    # Should output
+    # ['Asus 23" Full HD', 'AOC 23" Full HD']
+    cw.get_monitor()
+                </code></pre>
             </section>
         </section>
 
