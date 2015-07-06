@@ -144,10 +144,10 @@
             </section>
 
             <section>
-                <p>Use the function <code>isInstance()</code> to check if Car inherited from Vehicle</p>
+                <p>Use the function <code>isinstance()</code> to check if Car inherited from Vehicle</p>
                 <pre><code>
     c = Car()
-    print isInstance(c, Vehicle) # Should be True
+    print isinstance(c, Vehicle) # Should be True
                 </code></pre>
             </section>
 
@@ -248,7 +248,7 @@
     c = Child()
 
     # Child should be an instance of Parent
-    print ( isInstance( c, Parent) == True )
+    print ( isinstance( c, Parent) == True )
 
     # Child should inherit "gender" attribute from its parent
     print ( c.gender == "Male" )
@@ -289,9 +289,9 @@
         gender = "male"
 
     c = Child()
-    print c.message
-    print c.age # Overriden!
-    print c.gender
+    print c.message # "Hello There!"
+    print c.age # Overriden to 8
+    print c.gender # "male"
                 </code></pre>
             </section>
 
@@ -307,11 +307,11 @@
             return ['eating', 'playing', 'pooping']
 
     c = Child()
-    print c.get_hobbies()
+    print c.get_hobbies() # ['eating', 'playing', 'pooping']
                 </code></pre>
             </section>
 
-            <section>It doesn't matter if the parameters are different. If a child attribute or method has the same name as the parent, it will replaced that attribute or method.</section>
+            <section>It doesn't matter if the parameters are different. If a child attribute or method has the same name as the parent, it will replace that attribute or method.</section>
 
             <section>
                 <pre><code>
@@ -355,15 +355,32 @@
                 <ul>
                     <li>Car, which has 4 wheels</li>
                     <li>Tricycle, which has 3 wheels</li>
-                    <li>Bike, which has 2 wheels </li>
+                    <li>Motorcycle, which has 2 wheels </li>
+                    <li>Unicycle, which has 1 wheel</li>
                     <li>Boat, which has no wheels</li>
                 </ul>
             </section>
 
             <section>
                 <p>Override Vehicle to return the correct number of wheels for the child classes</p>
-                <p>There is more than one way to do it</p>
             </section>
+
+            <section>
+                <pre><code>
+    c = Car()
+    t = Tricycle()
+    m = Motorcycle()
+    u = Unicycle()
+    b = Boat
+    print c.get_number_of_wheels() # 4
+    print t.get_number_of_wheels() # 3
+    print m.get_number_of_wheels() # 2
+    print u.get_number_of_wheels() # 1
+    print b.get_number_of_wheels() # 0
+                </code></pre>
+            </section>
+
+            <section>There are 2 ways to do it.</section>
         </section>
 
         <section>
@@ -436,7 +453,28 @@
 
             <section>
                 <pre><code>
-    """ Example of a child class extending a parent method """
+    class Car(object):
+        def get_viable_terrains(self):
+            return ['land']
+
+    class JamesBondCar(Car):
+        def get_viable_terrains(self):
+            parent_viable_terrains = super(
+                JamesBondCar,
+                self
+            ).get_viable_terrains()
+
+            # Super Spy cars can travel anywhere!
+            parent_viable_terrains.append('sea')
+            parent_viable_terrains.append('air')
+            parent_viable_terrains.append('space')
+
+            return parent_viable_terrains
+
+    jbc = JamesBondCar()
+
+    # ['land', 'sea', 'air', 'space']
+    print jbc.get_viable_terrains()
                 </code></pre>
             </section>
 
@@ -480,14 +518,26 @@
 
         <section>
             <h3>Single</h3>
-            <section>All the examples that we were using uses single inheritance</section>
-
             <section>In Single inheritance, we have exactly one parent and one child</section>
+            <section>All the examples that we were using uses single inheritance</section>
             <section>
                 <img src="https://upload.wikimedia.org/wikipedia/en/3/32/Single_Inheritance.jpg" alt="Single Inheritance"/>
             </section>
 
-            """ Example of Single Inheritance"""
+            <section>Here is a recap of single inheritance(not that you need it)</section>
+
+            <section>
+                <pre><code>
+    class Parent(object):
+        pass
+
+    class Child(Parent):
+        pass
+
+    c = Child()
+    print isinstance(c, Parent) # True
+                </code></pre>
+            </section>
         </section>
 
         <section>
@@ -498,16 +548,96 @@
                 <img src="https://upload.wikimedia.org/wikipedia/en/0/0e/Multilevel_Inheritance.jpg" alt="Multilevel Inheritance"/>
             </section>
 
+            <section>
+                <pre><code>
+    class GrandFather(object):
+        pass
+
+    class Father(GrandFather):
+        pass
+
+    class Child(Father):
+        pass
+
+    c = Child()
+    print isinstance(c, Father) # True
+    print isinstance(c, GrandFather) # True
+                </code></pre>
+            </section>
+
             <section>The parent, the parent's parent, etc. of a class are called ancestor classes</section>
 
             <section>
-                """ Example of Ancestor Classes
+                <pre><code>
+    # An ancestor of Child and Father
+    class GrandFather(object):
+        pass
+
+    # An ancestor of Child
+    class Father(GrandFather):
+        pass
+
+    class Child(Father):
+        pass
+                </code></pre>
             </section>
 
             <section>The children, the children's children, etc. of a class are called descendant classes</section>
 
             <section>
-                """ Example of Descendant classes
+                <pre><code>
+    class GrandFather(object):
+        pass
+
+    # A descendant of GrandFather
+    class Father(GrandFather):
+        pass
+
+    # A descendant of GrandFather and Father
+    class Child(Father):
+        pass
+                </code></pre>
+            </section>
+
+            <section>Descendant classes will inherit attributes and methods of their ancestor classes, following
+            the rules for overriding and extending classes</section>
+
+            <section>
+                <pre><code>
+    class GrandFather(object):
+        age = 70
+
+        def get_playlist(self):
+            return ["60's"]
+
+    class Father(GrandFather):
+        age = 40
+
+        def get_playlist(self):
+            playlist = super(Father, self).get_playlist()
+            playlist.append("80's")
+            return playlist
+
+    class Child(Father):
+        age = 20
+
+        def get_playlist(self):
+            playlist = super(Child, self).get_playlist()
+            playlist.append("2000's")
+            return playlist
+
+    g = GrandFather()
+    f = Father()
+    c = Child()
+
+    print g.age # 70
+    print f.age # 40
+    print f.age # 20
+
+    print g.get_playlist() # ["60's"]
+    print f.get_playlist() # ["60's", "80's"]
+    print c.get_playlist() # ["60's", "80's", "2000's"]
+                </code></pre>
             </section>
 
             <section>Ancestor classes can be the parent of more than one class</section>
@@ -515,12 +645,25 @@
             <section>
                 <img src="http://www.dotnetspark.com/kbPicture/gurumatrix_633858094737105515_3.jpg" alt=""/>
             </section>
+
+            <section>
+                <pre><code>
+    class Persons(object): pass
+
+    class Employee(Persons): pass
+    class Student(Persons): pass
+
+    class Worker(Employee): pass
+    class SoftwareDeveloper(Employee): pass
+
+    class SchoolStudent(Student): pass
+    class CollegeStudent(Employee): pass
+                </code></pre>
+            </section>
         </section>
 
         <section>
             <h2>Multiple</h2>
-
-            <section>We have seen in multilevel inheritance that a parent class can have more than one child</section>
 
             <section>In Multiple Inheritance, a child class has more than one parent</section>
 
@@ -528,18 +671,75 @@
                 <img src="https://upload.wikimedia.org/wikipedia/en/6/69/Multiple_Inheritance.jpg" alt="Multiple Inheritance"/>
             </section>
 
-            </section>
-                """ Example of Multiple inheritance """
+            <section>To do this, pass the parent names as arguments to the class</section>
+
             <section>
+                <pre><code>
+    class Father(object):
+        pass
 
-            Discuss MRO
-            use super() for single inheritance, baseclass.method() for multiple inheritance
+    class Mother(object):
+        pass
 
-            """ Example of Multiple inheritance using super """
-            """ Example of Multiple inheritance using baseclass.method() """
+    class Child(Father, Mother):
+        pass
 
-            Caution: Multiple inheritance is powerful. However, this kind of inheritance is complex and error prone.
-            you should ask yourself thrice if you really need to use this. There is usually a alternative solution that doesn't involve using multiple inheritance
+    c = Child()
+    print isinstance(c, Father) # True
+    print isinstance(c, Mother) # True
+                </code></pre>
+            </section>
+
+            <section><em>What happens when a child's parents have similar attributes and/or methods?</em></section>
+
+            <section>Python uses an algorithm called Method Resolution Order(MRO) to decided which attribute or methods
+            get priority</section>
+
+            <section>MRO is a complicated algorithm. It takes an <a href="https://www.python.org/download/releases/2.3/mro/">long article</a> to explain it in its entirety!</section>
+
+            <section><img src="http://rs1img.memecdn.com/ain-amp-039-t-nobody-got-time-for-that_o_1582005.jpg" alt="Nobody ain't got time for that"/></section>
+
+            <section>Fortunately, there is a way to circumvent MRO entirely and explicitly define which parent we are referring to.</section>
+
+            <section>
+                <p>We do this by using the baseclass syntax</p>
+                <pre><code>
+    # baseclass is the name of the parent class
+
+    # attribute refers to the method you want to
+    # access in the parent class
+    baseclass.attribute
+
+    # method refers to the method you want to
+    # access in the parent class
+    baseclass.method()
+                </code></pre>
+            </section>
+
+            <section>Here is an example demonstrating how to use baseclass</section>
+
+            <section>
+                <pre><code>
+    class Father(object):
+        pass
+
+    class Mother(object):
+        pass
+
+    class Child(Father, Mother):
+        pass
+                </code></pre>
+            </section>
+
+            <section>
+                use super() for single inheritance, baseclass.method() for multiple inheritance
+
+                """ Example of Multiple inheritance using super """
+                """ Example of Multiple inheritance using baseclass.method() """
+
+                Caution: Multiple inheritance is powerful. However, this kind of inheritance is complex and error prone.
+                you should ask yourself thrice if you really need to use this. There is usually a alternative solution that doesn't involve using multiple inheritance
+            </section>
         </section>
     </div>
 </div>
