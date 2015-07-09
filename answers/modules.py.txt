@@ -1,0 +1,196 @@
+"""
+ANSWER #2
+"""
+
+"""
+lib/functions.py
+"""
+import string
+
+class ROT13(object):
+    def __init__(self, context):
+        # reverse input string
+        self.context = context[::-1]
+
+        # private letters you don't wanna know :)
+        self._letters = string.ascii_lowercase
+
+    def render(self):
+        r = '' # initial result string
+
+        # loop thru input string
+        for c in self.context:
+            # get rotated character and append to result string
+            r += self._translate(c)
+
+        print r # 2D-print it!
+
+        # 1-liner rendering, with dash added :)
+        #return for c in self.context: print chr(ord('z')-(13-(ord(c)-ord('a'))-1) if ord(c)-13<ord('a') else ord(c)-13),
+
+    """
+    This is our ROT-13 algorithm implementation
+    """
+    def _translate(self, c):
+        # not a valid ascii letter? skip
+        if not c in self._letters:
+            return c
+
+        # get current index
+        idx = self._letters.index(c)
+
+        # rotate
+        for i in range(0,13):
+            # lowercase or not, reset index if on the end of the alphabet
+            if self._letters[idx] is 'z':
+                idx = -1
+
+            # increment
+            idx += 1
+
+        # return rotated character
+        return self._letters[idx]
+
+
+"""
+rot13.py
+"""
+r = ROT13('ehugen lnqugevo lccnu')
+r.render() # happy birthday arthur
+
+"""
+ANSWER #3
+"""
+
+"""
+Basketball
+"""
+
+from math import ceil
+
+# shot class
+class Shot(object):
+    def __init__(self):
+        self.made = 0
+        self.missed = 0
+
+    def get_total_points(self):
+        return self.made + self.missed
+
+    def get_percentage(self):
+        total = self.made + self.missed
+        if total > 0:
+            return int(ceil((float(self.made)/float(total)) * 100))
+        else:
+            return 0
+
+    def __repr__(self):
+        return "{}/{} = {}%".format(self.made, self.total, self.percentage)
+
+    # setter
+    total = property(get_total_points, None)
+    percentage = property(get_percentage, None)
+
+# stats class
+class Stats(object):
+    def __init__(self):
+        self.total_points = 0
+        self.freethrows = Shot()
+        self.two_points = Shot()
+        self.three_points = Shot()
+        self.total_assists = 0
+        self.total_rebounds = 0
+        self.total_turnovers = 0
+
+    def __repr__(self):
+        # total points
+        output = "Points {total_points}"
+
+        # point stats
+        output += """
+        Freethrows {freethrows}
+        2-point shots {two_points}
+        3-point shots {three_points}"""
+
+        # other stats
+        output += "\nAssists {total_assists}\nRebounds {total_rebounds}\nTurnovers {total_turnovers}\n"
+
+        return output.format(**self.__dict__)
+
+# player class
+class Player(object):
+    def __init__(self, number=None):
+        self.number = number
+        self.stats = Stats()
+
+    def __repr__(self):
+        return "PLAYER {number}\n{stats}".format(**self.__dict__)
+
+# basketball class
+class Basketball(object):
+    def __init__(self, filename):
+        self.source = filename
+        self.players = []
+
+    # private property?
+    def __parse(self):
+        with open(self.source, 'r') as f:
+            for line in f:
+                self.get_stats(line)
+
+    def get_stats(self, context):
+        ctx = context.split(' ')
+
+        # init player
+        player = Player(ctx[0])
+
+        # get stats
+        for c in ctx[1]:
+            # points made
+            if c.isdigit() and not c is '0':
+                pt = int(c)
+                player.stats.total_points += pt
+
+                if pt > 1:
+                    if pt > 2:
+                        # 3-point
+                        player.stats.three_points.made += 1
+                    else:
+                        # 2-point
+                        player.stats.two_points.made += 1
+                else:
+                    # we've made a freethrow
+                    player.stats.freethrows.made += 1
+
+            # assists
+            elif c is 'A':
+                player.stats.total_assists += 1
+            # rebounds
+            elif c is 'R':
+                player.stats.total_rebounds += 1
+            # turnovers
+            elif c is 'T':
+                player.stats.total_turnovers += 1
+
+            # missed shots
+            elif c is '0':
+                player.stats.freethrows.missed += 1
+            elif c is 'X':
+                player.stats.two_points.missed += 1
+            elif c is 'Y':
+                player.stats.three_points.missed += 1
+
+        # add to list
+        self.players.append(player)
+
+    def display_stats(self):
+        self.__parse()
+
+        # print players with stats
+        print "".join(str(player) for player in self.players)
+
+#
+# load it up
+#
+b = Basketball('data/basketball.txt')
+b.display_stats()
