@@ -37,7 +37,7 @@
 <body>
 
 <div class="reveal">
-    <div class="slides">
+    <section class="slides">
         <section>
             <h1>Inheritance</h1>
         </section>
@@ -54,26 +54,112 @@
             </section>
 
             <section>
-                <blockquote>Inheritance is when a class is based on another class, using the same implementation (inheriting from an object or class) specifying implementation to maintain the same behavior.
+                <blockquote>Inheritance is the practice of passing on property, titles, debts, rights and obligations upon the death of an individual.
                 </blockquote>
             </section>
 
+            <section>Not really the best definition to use</section>
+
+            <section>Let's try again, this time in biology using the definition of heredity</section>
+
             <section>
-                <blockquote>Inheritance is used to indicate that one class will get most or all its features from another class</blockquote>
+                <blockquote>Heredity is the passing of traits from parents to their offspring. You can say that the offspring inherits the traits from the parents.</blockquote>
+            </section>
+
+            <section>Much better and closer to the concept that we want</section>
+
+            <section>Finally, the definition of inheritance in programming, paraphrased for simplicity</section>
+
+            <section>
+                <blockquote>Inheritance is when a class will get or inherit some of its implementation from other class or classes. This includes attributes and methods.</blockquote>
             </section>
         </section>
 
-        <section>
-            <h3>Composition vs Inheritance</h3>
+        <section>Examples of the Inheritance concept in the Real World</section>
 
+        <section>
+            <section>Here are some concrete examples of inheritance</section>
             <section>
-                <h4>Composition</h4>
-                "has-a" relationship
+                <ul>
+                    <li>Father &rArr; Child</li>
+                    <li>Mother &rArr; Child</li>
+                    <li>Grandparent &rArr; Child </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li>
+                        Living &rArr; Plant
+                    </li>
+                    <li>
+                        Living &rArr; Protista
+                    </li>
+                    <li>
+                        Living &rArr; Animal
+                    </li>
+                </ul>
             </section>
 
             <section>
-                <h4>Inheritance</h4>
-                "is-a" relationship
+                <ul>
+                    <li>
+                        Animal &rArr; Lion
+                    </li>
+                    <li>
+                        Animal &rArr; Eagle
+                    </li>
+                    <li>
+                        Animal &rArr; Marlin
+                    </li>
+                </ul>
+            </section>
+
+            <section>Here are some abstract examples of inheritance</section>
+
+            <section>
+                <ul>
+                    <li>
+                        Shape &rArr; Square
+                    </li>
+                    <li>
+                        Shape &rArr; Circle
+                    </li>
+                    <li>
+                        Shape &rArr; Triangle
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <ul>
+                    <li>
+                        Number &rArr; Natural Number
+                    </li>
+                    <li>
+                        Number &rArr; Rational Number
+                    </li>
+                    <li>
+                        Natural Number &rArr; Whole Number
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                A good rule of thumb to check if X inherits from Y is to ask yourself, "is Y a X?"
+            </section>
+
+            <section>
+                <ul>
+                    <li>
+                        Is a lion an animal?
+                    </li>
+                    <li>
+                        Is square a shape?
+                    </li>
+                    <li>
+                        Is a natural number a number?
+                    </li>
+                </ul>
             </section>
         </section>
 
@@ -519,12 +605,10 @@
         <section>
             <h3>Single</h3>
             <section>In Single inheritance, we have exactly one parent and one child</section>
-            <section>All the examples that we were using uses single inheritance</section>
             <section>
                 <img src="https://upload.wikimedia.org/wikipedia/en/3/32/Single_Inheritance.jpg" alt="Single Inheritance"/>
             </section>
-
-            <section>Here is a recap of single inheritance(not that you need it)</section>
+            <section>All the examples that we were using uses single inheritance</section>
 
             <section>
                 <pre><code>
@@ -721,25 +805,52 @@
             <section>
                 <pre><code>
     class Father(object):
-        pass
+        eye_color = 'blue'
+
+        def get_personality_type(self):
+            return 'extrovert'
 
     class Mother(object):
-        pass
+        eye_color = 'green'
+
+        def get_personality_type(self):
+            return 'introvert'
 
     class Child(Father, Mother):
-        pass
+        eye_color = Father.eye_color
+
+        def get_personality_type(self):
+            # NOTE: you need to pass self as the first argument
+            # to call the base class method using the 'baseclass'
+            # style
+            return Mother.get_personality_type(self)
+
+    c = Child()
+    print c.eye_color
+    print c.get_personality_type()
                 </code></pre>
             </section>
 
             <section>
-                use super() for single inheritance, baseclass.method() for multiple inheritance
-
-                """ Example of Multiple inheritance using super """
-                """ Example of Multiple inheritance using baseclass.method() """
-
-                Caution: Multiple inheritance is powerful. However, this kind of inheritance is complex and error prone.
-                you should ask yourself thrice if you really need to use this. There is usually a alternative solution that doesn't involve using multiple inheritance
+                <p>To recap:</p>
+                <blockquote>use super() for single/multilevel inheritance, baseclass.method() for multiple inheritance</blockquote>
             </section>
+
+            <section>
+                <p>A word of caution</p>
+            </section>
+
+            <section>Multiple inheritance is a very powerful feature</section>
+            <section>However, this kind of inheritance is complex and error prone.</section>
+            <section>This is especially true if you are using multiple inheritance with many classes</section>
+            <section>
+                <p>You should always ask yourself if you can implement what you had in mind using single or multilevel inheritance</p>
+                <p>Because there's almost always a alternative solution that doesn't involve using multiple inheritance.</p>
+            </section>
+        </section>
+
+        <section>
+            <img src="https://s-media-cache-ak0.pinimg.com/736x/ae/c2/8f/aec28f0b31f6f5bbf6c6b4321eed2186.jpg" alt="That's all folks"/>
         </section>
     </div>
 </div>
