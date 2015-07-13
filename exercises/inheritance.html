@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Inheritance</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../revealjs/css/reveal.css">
+    <link rel="stylesheet" href="../revealjs/css/theme/black.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="../revealjs/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="../revealjs/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>Inheritance Exercises</h1>
+        </section>
+
+        <section>
+            <h2>#1 Shapes</h2>
+        </section>
+
+        <section>
+            <section>
+                <p>Define 2 classes</p>
+                <ul>
+                    <li>Circle</li>
+                    <li>Cylinder</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Circle</h3>
+            </section>
+
+            <section>
+                The Circle class should have a radius attribute. This should be set during initialization.
+            </section>
+
+            <section>
+                <p>The radius should have a method called get_area() which returns the area</p>
+            </section>
+
+            <section>
+                <p>Area = &pi;<i>r</i><sup>2</sup></p>
+            </section>
+
+            <section>
+                <h3>Cylinder</h3>
+            </section>
+
+            <section>The Cylinder class should inherit the Circle class</section>
+
+            <section>The Cylinder class have a height attribute. This should be set during initialization.</section>
+
+            <section>
+                The Cylinder class should have a method, getVolume() which gets the volume
+            </section>
+
+            <section>Volume = &pi;<i>r</i><sup>2</sup>h</section>
+        </section>
+
+        <section>
+            <h2>#2 Notebook Contacts</h2>
+        </section>
+
+        <section>
+            <section>
+                <p>Define 4 classes</p>
+                <ul>
+                    <li>Address</li>
+                    <li>Person</li>
+                    <li>Contact</li>
+                    <li>Notebook</li>
+                </ul>
+            </section>
+
+            <section><h3>Address</h3></section>
+
+            <section>The Address class should contain the city and street address.</section>
+            <section>It should also contain a method show() that prints those information</section>
+
+            <section><h3>Person</h3></section>
+
+            <section>The Person class should contain the name and email address of a person.</section>
+            <section>It should also contain a method show() that prints those information</section>
+
+            <section><h3>Contact</h3></section>
+
+            <section>The Contact class inherits from both Address and Person</section>
+            <section>The Contact class should have a method show() that prints the city, street address,
+            name and email address</section>
+
+            <section><h3>Notebook</h3></section>
+
+            <section>The Notebook class should have 2 methods.</section>
+            <section>A add() method where it accepts 4 parameters(city, street, name and email)</section>
+            <section>A show() method that accepts the 1 parameter(name) and prints the contact information
+            of the person(it should use the Contact class show() method ).</section>
+            <section>If it cannot find a person what that name, it should print "Unknown <person_name>"</section>
+
+            <section><h3>Output</h3></section>
+
+            <section>
+                <p>Given this code</p>
+                <pre><code>
+    notes = Notebook()
+    notes.add('Nancy', 'ndrew@gmail.com', 'River Heights', 'Grinell')
+    notes.add('Joe', 'jhardy@gmail.com', 'Bayport', 'Terrace Road')
+
+    notes.show('Nancy')
+    notes.show('SpongeBob')
+                </code></pre>
+            </section>
+
+            <section>
+                <p>The output should be</p>
+                <pre>
+Nancy ndrew@gmail.com
+River Heights
+Grinell
+
+Unknown SpongeBob
+                </pre>
+            </section>
+        </section>
+    </div>
+</div>
+
+<script src="../revealjs/lib/js/head.min.js"></script>
+<script src="../revealjs/js/reveal.js"></script>
+
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'plugin/zoom-js/zoom.js', async: true },
+            { src: 'plugin/notes/notes.js', async: true }
+        ]
+    });
+
+</script>
+
+</body>
+</html>
