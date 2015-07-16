@@ -150,6 +150,45 @@ Unknown SpongeBob
                 </pre>
             </section>
         </section>
+
+        <section>
+            <h2>#3 The Part Timer</h2>
+        </section>
+
+        <section>
+            <section>
+                <h3>Employee</h3>
+            </section>
+
+            <section>Create a base class named "Employee" that requires a full_name as an argument when instantiated.</section>
+            <section>Define a method name "calculate_wage" and takes an "hours" as an argument. This method would then return the calculated
+            salary multipled by 250.00.</section>
+
+            <section>
+                <h3>PartTimeEmployee</h3>
+            </section>
+
+            <section>
+                Create a class "PartTimeEmployee" that inherits from Employee.
+            </section>
+
+            <section>
+                <p>Give this derived class a method called "calculate_wage" that override the base class (Employee) and will take "hours" as argument as well.</p>
+                <p>It should return the part time employee's number of hours worked multiplied by 125.00</p>
+            </section>
+
+            <section>
+                Lastly, create a method "full_time_wage" (doesn't take any arguments) and will return the employee's wage salary with hours rendered in full time.
+            </section>
+
+            <section>
+                <pre><code>
+    emp = PartTimeEmployee("Rvin")
+    print emp.calculate_wage(10) # RVin salary: 1250.00
+    print emp.full_time_wage()   # RVin salary (full-time): 2500.00
+                </code></pre>
+            </section>
+        </section>
     </div>
 </div>
 
